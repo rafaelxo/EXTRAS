@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <style>
+        body {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btnCarregaDados">Carregar dados</button>
+    <ul id="ulCidades">
+        <li>Belo Horizonte</li>
+        <li>São Paluo</li>
+        <li>Rio de Janeiro</li>
+        <li>Curitiba</li>
+        <li>Fortaleza</li>
+    </ul>
+
+    <div>
+        <input type="text" id="corFundo" placeholder="Cor desejada">
+        <button id="btnMudaFundo">Mudar fundo da tela</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('btnMudaFundo').addEventListener('click', mudaFundo);
+        function mudaFundo() {
+            let cor = document.getElementById('corFundo').value;
+            document.body.style.backgroundColor = cor;
+        }
+
+        document.getElementById('btnCarregaDados').addEventListener('click', carregaDados);
+        function carregaDados() {
+            let ulCidades = document.getElementById('ulCidades');
+            strTextoHTML = '';
+
+            for (let x = 0; x < cidades.length; x++) {
+                let cidade = cidades[x];
+                strTextoHTML += `<li><a href="detalhes.html?id=${cidade.id}">${cidade.nome} - ${cidade.estado}</a></li>`;
+            }
+
+            ulCidades.innerHTML = strTextoHTML;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes</title>
+    <style>
+        body {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tela">
+
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        let params = new URLSearchParams(location.search);
+        let id = params.get('id');
+        let cidade = cidades.find(function (elem) { return elem.id == id });
+        let tela = document.getElementById('tela');
+        if (cidade) {
+            tela.innerHTML = `id: ${cidade.id} <br> cidade: <strong>${cidade.nome}</strong> <br> estado: ${cidade.estado} <br> populacao: ${cidade.populacao}</p>`;
+        }
+        else {
+            tela.innerHTML = 'Cidade não encontrada!';
+        }
+    </script>
+</body>
+
+</html>
