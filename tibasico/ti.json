@@ -1,0 +1,178 @@
+{
+    "habitos": [
+        {
+            "atividades": [
+                {
+                    "id_usuario": 1,
+                    "data": "22/04/2025",
+                    "horas_diarias": "5h10min",
+                    "atividade": [
+                        {
+                            "id": 1,
+                            "tipo": "Leitura",
+                            "tempo_gasto": "1h",
+                            "limite_meta": 10,
+                            "concluido": true
+                        },
+                        {
+                            "id": 2,
+                            "tipo": "Jogatina",
+                            "tempo_gasto": "3h",
+                            "limite_meta": 10,
+                            "concluido": true
+                        },
+                        {
+                            "id": 3,
+                            "tipo": "Estudos",
+                            "tempo_gasto": "5h",
+                            "limite_meta": 10,
+                            "concluido": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "monitoramento": [
+        {
+            "id_usuario": 1,
+            "data": "22/04/2025",
+            "horas_diarias": "5h10min",
+            "apps": [
+                {
+                    "app_id": 1,
+                    "nome": "WhatsApp",
+                    "uso": "2h"
+                },
+                {
+                    "app_id": 2,
+                    "nome": "Instagram",
+                    "uso": "1h30min"
+                },
+                {
+                    "app_id": 3,
+                    "nome": "TikTok",
+                    "uso": "1h"
+                }
+            ],
+            "atividades_offline": "Leitura e caminhada",
+            "classe": "Moderado",
+            "observacoes": "Comecei a controlar melhor meu tempo",
+            "objetivos": "Reduzir o uso de redes sociais"
+        }
+    ],
+    "graficos": [
+        {
+            "sumarioHoras": {
+                "total_horas": 5423,
+                "percentual_mudanca": 10,
+                "horas_semanais": 44,
+                "diferencas_semanais": -1,
+                "horas_diarias": "5h30min"
+            },
+            "distribuicaoTempo": [
+                {
+                    "categoria": [
+                        {
+                            "id": 1,
+                            "nome": "Reuniões",
+                            "percentual": 25
+                        },
+                        {
+                            "id": 2,
+                            "nome": "Dev",
+                            "pecentual": 40
+                        },
+                        {
+                            "id": 3,
+                            "nome": "Bugfix",
+                            "percentual": 20
+                        },
+                        {
+                            "id": 4,
+                            "nome": "Outros",
+                            "percentual": 15
+                        }
+                    ]
+                }
+            ],
+            "situacao": {
+                "horas_objetivo": 5000,
+                "horas_recorrentes": 5423
+            },
+            "comparacoesMensais": {
+                "meses": [
+                    "JAN",
+                    "FEV",
+                    "MAR",
+                    "ABR",
+                    "MAI",
+                    "JUN",
+                    "JUL",
+                    "AGO",
+                    "SET",
+                    "OUT",
+                    "NOV",
+                    "DEZ"
+                ],
+                "ano_atual": [
+                    2025
+                ],
+                "ano_passado": [
+                    2020,
+                    2021,
+                    2022,
+                    2023,
+                    2024,
+                    2025
+                ]
+            }
+        }
+    ],
+    "recomendacoes": [
+        {
+            "id_usuario": 1,
+            "horas_diarias": "6h45min",
+            "recomendacoes": [
+                {
+                    "id": 1,
+                    "dica": "Faça pausas curtas a cada hora;",
+                    "importancia": "Fundamental"
+                },
+                {
+                    "id": 2,
+                    "dica": "Caminhe um pouco ao ar livre;",
+                    "importancia": "Mediana"
+                },
+                {
+                    "id": 3,
+                    "dica": "Evite telas antes de dormir;",
+                    "importancia": "Benéfica"
+                },
+                {
+                    "id": 4,
+                    "dica": "Troque redes sociais por uma boa conversa.",
+                    "importancia": "Essencial"
+                }
+            ],
+            "data": "22/04/2025",
+            "horas_semanais": "5h10min",
+            "classe": "Moderado"
+        }
+    ],
+    "feedback": [
+        {
+            "id_usuario": 1,
+            "data_inicio": "22/04/2025",
+            "atrasos_iniciais": "Perda de tempo",
+            "objetivos_iniciais": "Otimizar o tempo",
+            "atividades_realizadas": "Evitar o uso do telefone",
+            "dificuldades_encontradas": "Procrastinação",
+            "beneficios_obtidos": "Mais foco e disciplina",
+            "tempo_duracao": "2 meses",
+            "nivel_satisfacao": 10,
+            "observacoes": "Gostei muito do projeto",
+            "proximas_metas": "Aumentar a produtividade"
+        }
+    ]
+}
