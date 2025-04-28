@@ -4,7 +4,7 @@
 int somaDigitos (int N) {
     int exp = 1;
     if (N == 0) return 0;
-    else return (N%10 
+    else return (N%10) + somaDigitos(N/10);
 }
 
 int main () {
