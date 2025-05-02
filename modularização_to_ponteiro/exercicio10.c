@@ -6,15 +6,15 @@ int fatorial (int cont1) {
     else return cont1 * fatorial(cont1 - 1);
 }
 
-float expressao (int N) {
+float expressao (int *N) {
     float S = 1;
-    for (int cont1 = 1; cont1 <= N; cont1++) S += 1.0/fatorial(cont1);
+    for (int cont1 = 1; cont1 <= *N; cont1++) S += 1.0/fatorial(cont1);
     return S;
 }
 
 int main () {
-    int N;
+    int *N = (int*) malloc(sizeof(int));
     printf("Insira o valor para calcular a expressao:\n");
-    scanf("%d", &N);
+    scanf("%d", N);
     printf("\nO valor da expressao e %.2f!\n", expressao(N));
 }
