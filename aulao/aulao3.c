@@ -6,7 +6,7 @@
 int multiplicacao (int n1, int n2) {
     int resultado = 0;
     if (n2 - 1 > 0) resultado = n1;
-    else resultado += multiplicacao(n1, n2-1)
+    else resultado += multiplicacao(n1, n2-1);
     return resultado;
 }
 
