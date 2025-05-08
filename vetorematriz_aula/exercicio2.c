@@ -36,9 +36,8 @@ void preenche (int *matriz, int totalLn, int totalCol) {
 }
 
 void exibeMatriz (int *mat, int totalLn, int totalCol) {
-    printf("Dados gravados:\n");
     for (int i = 0; i < totalLn; i++) {
-        for (int j = 0; j < totalCol; j++) printf("%4d ", *(mat + i*totalCol + j));
+        for (int j = 0; j < totalCol; j++) printf("%3d ", *(mat + i*totalCol + j));
         printf("\n");
     }
     printf("\n");
@@ -52,8 +51,7 @@ void somaLinhas (int *matriz, int *somas, int totalLn, int totalCol) {
 }
 
 void exibeVetor (int *vet, int total) {
-    printf("Dados do vetor:\n");
-    for (int pos = 0; pos < total; pos++) printf("%4d ", *(vet + pos));
+    for (int pos = 0; pos < total; pos++) printf("%d ", *(vet + pos));
     printf("\n");
 }
 
@@ -73,10 +71,13 @@ int main () {
     int mat[M][N], linhas[M], pares[N];
     printf("Matriz %d x %d\n", M, N);
     preenche(mat, M, N);
+    printf("Dados gravados:\n");
     exibeMatriz(mat, M, N);
     somaLinhas(mat, linhas, M, N);
+    printf("Soma das linhas:\n");
     exibeVetor(linhas, M);
     quantPares(mat, pares, M, N);
+    printf("\nQuantidade de pares por coluna, respectivamente:\n");
     exibeVetor(pares, N);
     geraArquivoSaida(linhas, pares, M, N);
 }

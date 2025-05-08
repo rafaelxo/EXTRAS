@@ -1,357 +1,73 @@
-89 figuras
+18 figuras
+
+Triangulo
+Area: 13.05
+Perimetro: 16.47
+
+Triangulo
+Area: 12.91
+Perimetro: 16.38
 
 Quadrado
-Area: 35.52
-Perimetro: 23.84
-
-Triangulo
-Area: 30.99
-Perimetro: 25.38
+Area: 82.08
+Perimetro: 36.24
 
 Quadrado
-Area: 4.80
-Perimetro: 8.76
+Area: 38.69
+Perimetro: 24.88
 
 Quadrado
-Area: 55.80
-Perimetro: 29.88
-
-Triangulo
-Area: 25.27
-Perimetro: 22.92
-
-Triangulo
-Area: 1.24
-Perimetro: 5.07
+Area: 1.39
+Perimetro: 4.72
 
 Quadrado
-Area: 50.69
-Perimetro: 28.48
+Area: 35.88
+Perimetro: 23.96
 
 Triangulo
-Area: 4.77
-Perimetro: 9.96
+Area: 33.38
+Perimetro: 26.34
+
+Triangulo
+Area: 17.79
+Perimetro: 19.23
 
 Quadrado
-Area: 0.45
-Perimetro: 2.68
-
-Triangulo
-Area: 11.71
-Perimetro: 15.60
-
-Triangulo
-Area: 19.09
-Perimetro: 19.92
+Area: 13.47
+Perimetro: 14.68
 
 Quadrado
-Area: 48.72
-Perimetro: 27.92
+Area: 91.78
+Perimetro: 38.32
 
 Triangulo
-Area: 0.51
-Perimetro: 3.27
+Area: 15.90
+Perimetro: 18.18
 
 Quadrado
-Area: 9.36
-Perimetro: 12.24
+Area: 5.20
+Perimetro: 9.12
+
+Triangulo
+Area: 41.08
+Perimetro: 29.22
 
 Quadrado
-Area: 51.98
-Perimetro: 28.84
+Area: 1.82
+Perimetro: 5.40
 
 Triangulo
-Area: 1.80
-Perimetro: 6.12
-
-Quadrado
-Area: 0.36
-Perimetro: 2.40
+Area: 4.52
+Perimetro: 9.69
 
 Triangulo
-Area: 35.94
-Perimetro: 27.33
+Area: 3.42
+Perimetro: 8.43
 
 Triangulo
-Area: 19.44
-Perimetro: 20.10
+Area: 42.53
+Perimetro: 29.73
 
 Triangulo
-Area: 40.24
-Perimetro: 28.92
-
-Quadrado
-Area: 21.07
-Perimetro: 18.36
-
-Triangulo
-Area: 0.42
-Perimetro: 2.97
-
-Quadrado
-Area: 16.32
-Perimetro: 16.16
-
-Triangulo
-Area: 7.60
-Perimetro: 12.57
-
-Triangulo
-Area: 0.07
-Perimetro: 1.23
-
-Triangulo
-Area: 20.08
-Perimetro: 20.43
-
-Quadrado
-Area: 28.52
-Perimetro: 21.36
-
-Quadrado
-Area: 9.49
-Perimetro: 12.32
-
-Quadrado
-Area: 94.48
-Perimetro: 38.88
-
-Triangulo
-Area: 4.83
-Perimetro: 10.02
-
-Triangulo
-Area: 1.03
-Perimetro: 4.62
-
-Triangulo
-Area: 34.53
-Perimetro: 26.79
-
-Triangulo
-Area: 6.79
-Perimetro: 11.88
-
-Quadrado
-Area: 5.11
-Perimetro: 9.04
-
-Triangulo
-Area: 0.05
-Perimetro: 1.02
-
-Quadrado
-Area: 44.22
-Perimetro: 26.60
-
-Quadrado
-Area: 39.44
-Perimetro: 25.12
-
-Quadrado
-Area: 0.12
-Perimetro: 1.40
-
-Triangulo
-Area: 0.08
-Perimetro: 1.32
-
-Quadrado
-Area: 98.60
-Perimetro: 39.72
-
-Quadrado
-Area: 0.36
-Perimetro: 2.40
-
-Triangulo
-Area: 25.08
-Perimetro: 22.83
-
-Triangulo
-Area: 8.81
-Perimetro: 13.53
-
-Quadrado
-Area: 0.02
-Perimetro: 0.56
-
-Triangulo
-Area: 31.29
-Perimetro: 25.50
-
-Quadrado
-Area: 75.17
-Perimetro: 34.68
-
-Triangulo
-Area: 16.59
-Perimetro: 18.57
-
-Quadrado
-Area: 89.11
-Perimetro: 37.76
-
-Triangulo
-Area: 4.32
-Perimetro: 9.48
-
-Quadrado
-Area: 1.44
-Perimetro: 4.80
-
-Quadrado
-Area: 7.40
-Perimetro: 10.88
-
-Quadrado
-Area: 86.49
-Perimetro: 37.20
-
-Quadrado
-Area: 46.10
-Perimetro: 27.16
-
-Quadrado
-Area: 15.29
-Perimetro: 15.64
-
-Quadrado
-Area: 5.02
-Perimetro: 8.96
-
-Quadrado
-Area: 72.42
-Perimetro: 34.04
-
-Quadrado
-Area: 91.39
-Perimetro: 38.24
-
-Triangulo
-Area: 36.65
-Perimetro: 27.60
-
-Triangulo
-Area: 2.10
-Perimetro: 6.60
-
-Quadrado
-Area: 98.21
-Perimetro: 39.64
-
-Quadrado
-Area: 52.56
-Perimetro: 29.00
-
-Quadrado
-Area: 28.73
-Perimetro: 21.44
-
-Quadrado
-Area: 16.24
-Perimetro: 16.12
-
-Quadrado
-Area: 11.09
-Perimetro: 13.32
-
-Triangulo
-Area: 30.85
-Perimetro: 25.32
-
-Triangulo
-Area: 0.63
-Perimetro: 3.63
-
-Triangulo
-Area: 5.09
-Perimetro: 10.29
-
-Triangulo
-Area: 10.57
-Perimetro: 14.82
-
-Triangulo
-Area: 17.57
-Perimetro: 19.11
-
-Triangulo
-Area: 13.19
-Perimetro: 16.56
-
-Quadrado
-Area: 85.75
-Perimetro: 37.04
-
-Triangulo
-Area: 16.22
-Perimetro: 18.36
-
-Quadrado
-Area: 88.92
-Perimetro: 37.72
-
-Triangulo
-Area: 5.55
-Perimetro: 10.74
-
-Triangulo
-Area: 0.57
-Perimetro: 3.45
-
-Triangulo
-Area: 2.35
-Perimetro: 6.99
-
-Triangulo
-Area: 0.70
-Perimetro: 3.81
-
-Quadrado
-Area: 6.10
-Perimetro: 9.88
-
-Triangulo
-Area: 39.41
-Perimetro: 28.62
-
-Triangulo
-Area: 6.49
-Perimetro: 11.61
-
-Triangulo
-Area: 26.41
-Perimetro: 23.43
-
-Quadrado
-Area: 63.52
-Perimetro: 31.88
-
-Quadrado
-Area: 69.22
-Perimetro: 33.28
-
-Quadrado
-Area: 46.10
-Perimetro: 27.16
-
-Quadrado
-Area: 0.48
-Perimetro: 2.76
-
-Triangulo
-Area: 38.42
-Perimetro: 28.26
-
-Quadrado
-Area: 36.00
-Perimetro: 24.00
-
-Triangulo
-Area: 0.30
-Perimetro: 2.49
-
-Triangulo
-Area: 9.94
-Perimetro: 14.37
+Area: 33.46
+Perimetro: 26.37
