@@ -30,7 +30,7 @@ void preenche (int *matriz, int totalLn, int totalCol) {
     FILE *entrada = fopen("numeros.txt", "r");
     fscanf(entrada, "%d%d", &totalLn, &totalCol);
     for (int ln = 0; ln < totalLn; ln++) {
-        for (int col = 0; col < totalCol; col++) fscanf(entrada, "%d", (matriz +ln*totalCol + col));
+        for (int col = 0; col < totalCol; col++) fscanf(entrada, "%d", (matriz + ln*totalCol + col));
     }
     fclose(entrada);
 }
