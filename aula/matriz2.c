@@ -10,10 +10,11 @@ void geraArquivoDados (int *ptrM, int *ptrN) {
     for (int i = 0; i < *ptrM; i++) {
         for (int j = 0; j < *ptrN; j++) {
             valor = rand()%1000;
-            fprintf(arq, "%2d ", valor);
+            fprintf(arq, "%3d ", valor);
         }
         fprintf(arq, "\n");
     }
+    fprintf(arq, "\n");
     fclose(arq);
 }
 
@@ -51,15 +52,15 @@ void somaLinhas (int *matriz, int *somas, int totalLn, int totalCol) {
 }
 
 void exibeVetor (int *vet, int total) {
-    for (int pos = 0; pos < total; pos++) printf("%d ", *(vet + pos));
+    for (int i = 0; i < total; i++) printf("%d ", *(vet + i));
     printf("\n");
 }
 
-void quantPares (int *valores, int *quantidades, int totalLn, int totalCol) {
+void quantPares (int *matriz, int *quantidades, int totalLn, int totalCol) {
     for (int col = 0; col < totalCol; col++) {
         *(quantidades + col) = 0;
         for (int ln = 0; ln < totalLn; ln++) {
-            if (*(valores + ln*totalCol + col)%2 == 0) (*(quantidades + col))++;
+            if (*(matriz + ln*totalCol + col)%2 == 0) (*(quantidades + col))++;
         }
     }
 }
