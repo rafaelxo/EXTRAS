@@ -35,7 +35,7 @@ void exibe (Al *vet, int N) {
         printf("Nome: %s\n", (vet + i)->nome);
         printf("Idade: %d\n", vet[i].idade);
         printf("Notas: ");
-        for (int j = 0; j < 3; j++) printf("%.2f ", vet[i].notas[j]);
+        for (int j = 0; j < 3; j++) printf("%.2f / ", vet[i].notas[j]);
         printf("\nEndereco: ");
         printf("%s, %d, %s\n", (vet + i)->endereco.logradouro, vet[i].endereco.numero, (vet + i)->endereco.complemento);
         printf("\n");
@@ -43,11 +43,11 @@ void exibe (Al *vet, int N) {
 }
 
 Al maisVelho (Al *vet, int N) {
-    Al maiorIdade = *(vet + 0);
+    Al maior = *(vet);
     for (int i = 1; i < N; i++) {
-        if(vet[i].idade > maiorIdade.idade) maiorIdade = *(vet + i);
+        if(vet[i].idade > maior.idade) maior = *(vet + i);
     }
-    return maiorIdade;
+    return maior;
 }
 
 void alunoVelho (Al velho) {
