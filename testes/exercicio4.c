@@ -1,17 +1,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct Aluno {
-    char nome[50];
+typedef struct Aluno {
+    char *nome;
     float notas[3];
-};
+} Al;
 
 int main () {
     int N;
     scanf("%d", &N);
-    struct Aluno a[N];
+    Al a[N];
     FILE *arquivo = fopen("alunos.txt", "w");
     for (int i = 0; i < N; i++) {
+        a[i].nome = (char*)malloc(50*sizeof(char));
         scanf(" %[^\n]", a[i].nome);
         fprintf(arquivo, "%s ", a[i].nome);
         for (int j = 0; j < 3; j++) {

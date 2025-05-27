@@ -16,6 +16,7 @@ void calculaMedia (float *mat, float *vet) {
         *(vet + j) = 0;
         for (int i = 0; i < 50; i++) *(vet + j) += *(mat + i*50 + j);
     }
+    for (int i = 0; i < 50; i++) *(vet + i) /= 50;
 }
 
 void exibeMatriz (float *mat) {

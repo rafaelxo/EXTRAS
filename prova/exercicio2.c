@@ -9,9 +9,9 @@ int main () {
     FILE *arquivo = fopen(nomeArq, "w");
     int N;
     scanf("%d", &N);
-    int num;
     for (int i = 0; i < N; i++) {
-        num = rand()%100;
+        int num = 0;
+        num = rand()%100 + 1;
         fprintf(arquivo, "%d ", num);
     }
 }

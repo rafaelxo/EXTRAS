@@ -14,5 +14,5 @@ int main () {
             if (matriz[i][j] > vetor[i]) vetor[i] = matriz[i][j];
         }
     }
-    for (int i = 0; i < 3; i++) printf("Maior da linha %d: %d!\n", i, vetor[i]);
+    for (int i = 0; i < 3; i++) printf("Maior da linha %d: %d!\n", i + 1, vetor[i]);
 }

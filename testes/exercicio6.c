@@ -13,8 +13,7 @@ char *criarArq () {
     float notas[3];
     for (int i = 0; i < 3; i++) scanf("%f", &notas[i]);
     fprintf(arq, "%s\n%d\n%f %f %f\n", nome, idade, notas[0], notas[1], notas[2]);
-    fclose(arq);
-    free(nome);
+    fclose(arq); free(nome);
     return nomeArq;
 }
 
