@@ -9,7 +9,7 @@ void moduloA (int *matriz, int M, int N) {
 
 void moduloB (int *matriz, int M, int N) {
     for (int col = 0; col < N; col++) {
-        for (int ln = 0; ln < M; ln++) printf("%d ", *(matriz + col*M + ln));
+        for (int ln = 0; ln < M; ln++) printf("%d ", *(matriz + ln*N + col));
     }
 }
 
