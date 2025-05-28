@@ -45,7 +45,7 @@ void exibe (Al *vet, int N) {
 Al maisVelho (Al *vet, int N) {
     Al maior = *(vet);
     for (int i = 1; i < N; i++) {
-        if(vet[i].idade > maior.idade) maior = *(vet + i);
+        if((vet + i)->idade > maior.idade) maior = *(vet + i);
     }
     return maior;
 }
@@ -61,6 +61,15 @@ void alunoVelho (Al velho) {
     printf("\n");
 }
 
+float mediaAlunos (Al *vet, int N) {
+    float media = 0;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < 3; j++) media += vet[i].notas[j];
+    }
+    media /= (N*3);
+    return media;
+}
+
 int main () {
     int N;
     scanf("%d", &N);
@@ -74,5 +83,7 @@ int main () {
         free(turma[i].endereco.logradouro);
         free(turma[i].endereco.complemento);
     }
+    float media = mediaAlunos(turma, N);
+    printf("Media das notas: %.2f\n", media);
     free(turma);
 }
