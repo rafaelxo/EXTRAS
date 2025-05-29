@@ -38,6 +38,6 @@ int main () {
     float *vetor = (float*)malloc(15*sizeof(float));
     vetor = maior(matriz);
     for (int i = 0; i < 15; i++) printf("%f ", *(vetor + i));
-    void multiplica(matriz, vetor);
+    multiplica(matriz, vetor);
     exibeMat(matriz);
 }
