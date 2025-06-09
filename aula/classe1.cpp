@@ -1,45 +1,49 @@
 #include <iostream>
 using namespace std;
 
-class Aluno {
+class Endereco {
     private:
-        string nome;
-        int idade;
-        float notas[3];
-        int dia, mes, ano;
         string logradouro;
         int numero;
         string complemento;
     public:
-        Aluno() {
-            float val[3] = {0, 0, 0};
-            setNome("nenhum");
-            setIdade(1);
-            setNotas(val);
-            setData(1, 1, 2000);
-            setEndereco("nenhum", 0, "nenhum");
+        Endereco() {
+            setLogradouro("rua");
+            setNumero(0);
+            setComplemento("nenhum");
         }
-        Aluno(string nNome, int nIdade, float nNotas[3], int nDia, int nMes, int nAno, string nLogradouro, int nNumero, string nComplemento) {
-            setNome(nNome);
-            setIdade(nIdade);
-            setNotas(nNotas);
-            setData(nDia, nMes, nAno);
-            setEndereco(nLogradouro, nNumero, nComplemento);
+        Endereco(string nLogradouro, int nNumero, string nComplemento) {
+            setLogradouro(nLogradouro);
+            setNumero(nNumero);
+            setComplemento(nComplemento);
         }
-        void setNome(string texto) {
-            if (texto.length() > 2) nome = texto;
-            else cout << "ERRO - Nome com menos de 2 caracteres!" << endl;
+        void setLogradouro(string log) {
+            if(log.length() > 5) logradouro = log;
+            else cout << "ERRO - Logradouro deve ter mais de 5 caracteres!" << endl;
         }
-        void setIdade(int numero) {
-            if (numero > 0) idade = numero;
-            else cout << "ERRO - Idade nula ou negativa!" << endl;
+        void setNumero(int num) {
+            if (num > 0) numero = num;
+            else cout << "ERRO - Numero deve ser positivo!" << endl;
         }
-        void setNotas(float vet[3]) {
-            for (int i = 0; i < 3; i++) {
-                if (vet[i] >= 0) notas[i] = vet[i];
-                else cout << "ERRO - Nota negativa para prova " << (i + 1) << "!" << endl;
-            }
+        void setComplemento(string comp) {
+            if (comp.length() > 3) complemento = comp;
+            else cout << "ERRO - Complemento deve ter mais de 3 caracteres!" << endl;
         }
+        string getLogradouro() { return logradouro; }
+        int getNumero() { return numero; }
+        string getComplemento() { return complemento; }
+        string getEndereco () { 
+            string texto = getLogradouro() + ", " + to_string(getNumero()) + "\n" + getComplemento();
+            return texto;
+        }
+};
+
+class Data {
+    private:
+        int dia, mes, ano;
+    public:
+        Data () { setData(1, 1, 2000); }
+        Data(int d, int m, int a) { setData(d, m, a); }
         void setData(int d, int m, int a) {
             switch (m) {
                 case 1: case 3: case 5: case 7: case 8: case 10: case 12: 
@@ -60,86 +64,22 @@ class Aluno {
             if (a > 1910 && a <= 2025) ano = a;
             else cout << "ERRO - Ano improvavel!" << endl;
         }
-        void setEndereco(string log, int num, string comp) {
-            if (log.length() > 5) logradouro = log;
-            else cout << "ERRO - Logradouro deve ter mais de 5 caracteres!" << endl;
-            if (num > 0) numero = num;
-            else cout << "ERRO - Numero deve ser positivo!" << endl;
-            if (comp.length() > 3) complemento = comp;
-            else cout << "ERRO - Complemento deve ter mais de 3 caracteres!" << endl;
-        }
-        void preenche() {
-            string enter, texto, log, comp;
-            int valor, diaNasc, mesNasc, anoNasc, num;
-            float vet[3];
-            cout << "Nome: ";
-            getline(cin, texto);
-            setNome(texto);
-            cout << "Idade: ";
-            cin >> valor;
-            setIdade(valor);
-            cout << "Notas: ";
-            for (int i = 0; i < 3; i++) cin >> vet[i];
-            setNotas(vet);
-            cout << "Dia do nascimento: ";
-            cin >> diaNasc;
-            cout << "Mes do nascimento: ";
-            cin >> mesNasc;
-            cout << "Ano do nascimento: ";
-            cin >> anoNasc;
-            setData(diaNasc, mesNasc, anoNasc);
-            getline(cin, enter);
-            cout << "Logradouro: ";
-            getline(cin, log);
-            cout << "Numero: ";
-            cin >> num;
-            getline(cin, enter);
-            cout << "Complemento: ";
-            getline(cin, comp);
-            setEndereco(log, num, comp);
-            getline(cin, enter);
-        }
-        void exibe() {
-            cout << "Nome: " << getNome() << endl;
-            cout << "Idade: " << getIdade() << endl;
-            cout << "Notas: ";
-            for (int i = 0; i < 3; i++) cout << getNotas()[i] << " ";
-            cout << endl;
-            cout << "Data de nascimento: " << getData() << endl;
-            cout << "Endereco: " << getEndereco() << endl;
-        }
-        string getNome() { return nome; }
-        int getIdade() { return idade; }
-        float *getNotas() { return notas; }
         int getDia() { return dia; }
         string getMes() {
             switch (mes) {
-                case 1:
-                    return string("Janeiro");
-                case 2:
-                    return string("Fevereiro");
-                case 3:
-                    return string("Marco");
-                case 4:
-                    return string("Abril");
-                case 5:
-                    return string("Maio");
-                case 6:
-                    return string("Junho");
-                case 7:
-                    return string("Julho");
-                case 8:
-                    return string("Agosto");
-                case 9:
-                    return string("Setembro");
-                case 10:
-                    return string("Outubro");
-                case 11:
-                    return string("Novembro");
-                case 12:
-                    return string("Dezembro");
-                default:
-                    return string("Mes invalido!");
+                case 1: return string("Janeiro");
+                case 2: return string("Fevereiro");
+                case 3: return string("Marco");
+                case 4: return string("Abril");
+                case 5: return string("Maio");
+                case 6: return string("Junho");
+                case 7: return string("Julho");
+                case 8: return string("Agosto");
+                case 9: return string("Setembro");
+                case 10: return string("Outubro");
+                case 11: return string("Novembro");
+                case 12: return string("Dezembro");
+                default: return string("Mes invalido!");
             }
         }
         int getAno() { return ano; }
@@ -147,7 +87,85 @@ class Aluno {
             string texto = to_string(getDia()) + " de " + getMes() + " de " + to_string(getAno());
             return texto;
         }
-        string getEndereco() { return logradouro + ", " + to_string(numero) + " - " + complemento;}
+};
+
+class Aluno {
+    private:
+        string nome;
+        int idade;
+        float notas[3];
+        Data nasc;
+        Endereco ende;
+    public:
+        Aluno() {
+            float val[3] = {0, 0, 0};
+            setNome("nenhum");
+            setIdade(1);
+            setNotas(val);
+        }
+        Aluno(string nNome, int nIdade, float nNotas[3], int nDia, int nMes, int nAno, string nLog, int nNum, string nComp) {
+            setNome(nNome);
+            setIdade(nIdade);
+            setNotas(nNotas);
+            nasc.setData(nDia, nMes, nAno);
+            ende.setLogradouro(nLog);
+            ende.setNumero(nNum);
+            ende.setComplemento(nComp);
+        }
+        void setNome(string texto) {
+            if (texto.length() > 2) nome = texto;
+            else cout << "ERRO - Nome com menos de 2 caracteres!" << endl;
+        }
+        void setIdade(int numero) {
+            if (numero > 0) idade = numero;
+            else cout << "ERRO - Idade nula ou negativa!" << endl;
+        }
+        void setNotas(float vet[3]) {
+            for (int i = 0; i < 3; i++) {
+                if (vet[i] >= 0) notas[i] = vet[i];
+                else cout << "ERRO - Nota negativa para prova " << (i + 1) << "!" << endl;
+            }
+        }
+        void preenche() {
+            string enter, texto, log, comp;
+            int valor, diaN, mesN, anoN, num;
+            float val[3];
+            cout << "Nome: ";
+            getline(cin, texto);
+            setNome(texto);
+            cout << "Idade: ";
+            cin >> valor;
+            setIdade(valor);
+            cout << "Notas: ";
+            for (int i = 0; i < 3; i++) cin >> val[i];
+            setNotas(val);
+            cout << "Data do nascimento (dd mm aaaa): ";
+            cin >> diaN >> mesN >> anoN;
+            nasc.setData(diaN, mesN, anoN);
+            getline(cin, enter);
+            cout << "Logradouro: ";
+            getline(cin, log);
+            ende.setLogradouro(log);
+            cout << "Numero: ";
+            cin >> num;
+            ende.setNumero(num);
+            getline(cin, enter);
+            cout << "Complemento: ";
+            getline(cin, comp);
+            ende.setComplemento(comp);
+        }
+        void exibe() {
+            cout << "Nome: " << getNome() << endl;
+            cout << "Idade: " << getIdade() << endl;
+            cout << "Notas: ";
+            for (int i = 0; i < 3; i++) cout << getNotas()[i] << " ";
+            cout << endl;
+            cout << "Data de nascimento: " << nasc.getData() << endl;
+            cout << "Endereco: " << ende.getEndereco() << endl;
+        }
+        string getNome() { return nome; }
+        int getIdade() { return idade; }
+        float *getNotas() { return notas; }
 };
 
 void preencheTurma(Aluno turma[3]) {
@@ -186,7 +204,7 @@ int main() {
     Aluno turma[3];
     float vet[3] = {0, 0, 0};
     float idades, notas;
-    for (int i = 0; i < 3; i++) turma[i] = Aluno("nome", 30, vet, 1, 1, 2000, "logradouro", 0, "complemento");
+    for (int i = 0; i < 3; i++) turma[i] = Aluno("nome", 30, vet, 1, 1, 2000, "logradouro", 1, "complemento");
     preencheTurma(turma);
     exibeTurma(turma);
     idades = mediaIdades(turma);
