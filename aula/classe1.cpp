@@ -168,6 +168,63 @@ class Aluno {
         float *getNotas() { return notas; }
 };
 
+
+class AlunoGrad : public Aluno {
+    private:
+        string TCC;
+    public:
+        AlunoGrad() { setTCC("nada"); }
+        AlunoGrad(string texto) { setTCC(texto); }
+        AlunoGrad(string nomeAluno, int idadeAluno, float notasAluno[3], int diaNasc, int mesNasc, int anoNasc, string logEnd, int numEnd, string compEnd, string tcc) 
+            : Aluno(nomeAluno, idadeAluno, notasAluno, diaNasc, mesNasc, anoNasc, logEnd, numEnd, compEnd) {
+            setTCC(tcc);
+        }
+        void setTCC(string texto) {
+            if (texto.length() > 10) TCC = texto;
+            else cout << "ERRO - TCC deve ter mais de 10 caracteres!" << endl;
+        }
+        string getTCC() { return TCC; }
+        void preenche() {
+            string texto;
+            Aluno::preenche();
+            cout << "TCC: ";
+            getline(cin, texto);
+            setTCC(texto);
+        }
+        void exibe() {
+            Aluno::exibe();
+            cout << "TCC: " << getTCC() << endl;
+        }
+};
+
+class AlunoMestr : public Aluno {
+    private:
+        string artigo;
+    public:
+        AlunoMestr() { setArtigo("nada"); }
+        AlunoMestr(string texto) { setArtigo(texto); }
+        AlunoMestr(string nomeAluno, int idadeAluno, float notasAluno[3], int diaNasc, int mesNasc, int anoNasc, string logEnd, int numEnd, string compEnd, string Artigo) 
+            : Aluno(nomeAluno, idadeAluno, notasAluno, diaNasc, mesNasc, anoNasc, logEnd, numEnd, compEnd) {
+            setArtigo(Artigo);
+        }
+        void setArtigo(string texto) {
+            if (texto.length() > 10) artigo = texto;
+            else cout << "ERRO - Artigo deve ter mais de 10 caracteres!" << endl;
+        }
+        string getArtigo() { return artigo; }
+        void preenche() {
+            string texto;
+            Aluno::preenche();
+            cout << "Artigo: ";
+            getline(cin, texto);
+            setArtigo(texto);
+        }
+        void exibe() {
+            Aluno::exibe();
+            cout << "Artigo: " << getArtigo() << endl;
+        }
+};
+
 void preencheTurma(Aluno turma[3]) {
     cout << endl << "Preenche dados dos alunos" << endl;
     for (int pos = 0; pos < 3; pos++) {
@@ -203,6 +260,12 @@ float mediaNotas(Aluno turma[3]) {
 int main() {
     Aluno turma[3];
     float vet[3] = {0, 0, 0};
+    AlunoGrad individual ("Jorge", 20, vet, 3, 5, 2015, "Rua Claudio", 1100, "Sala 200", "Titulo do TCC");
+    individual.exibe();
+    cout << endl;
+    AlunoMestr solo ("Mateus", 28, vet, 9, 5, 1997, "Rua Alagoas", 750, "Sala 8", "Artigo");
+    solo.exibe();
+    cout << endl;
     float idades, notas;
     for (int i = 0; i < 3; i++) turma[i] = Aluno("nome", 30, vet, 1, 1, 2000, "logradouro", 1, "complemento");
     preencheTurma(turma);
