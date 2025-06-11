@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
 using namespace std;
 
 class Endereco {
@@ -35,9 +36,15 @@ class Endereco {
         }
     private:
         void inicializaEnd(string log, int num, string comp) {
-            setLogradouro(log);
-            setNumero(num);
-            setComplemento(comp);
+            try {
+                setLogradouro(log);
+                setNumero(num);
+                setComplemento(comp);
+            } catch (exception &e) {
+                cerr << e.what();
+            } catch (invalid_argument &i) {
+                cerr << "Nao inicializou o endereco corretamente!" << endl;
+            }
         }
 };
 
@@ -106,18 +113,30 @@ class Aluno {
             setIdade(1);
             setNotas(val);
             nasc.setData(1, 1, 2000);
-            ende.setLogradouro("nenhum");
-            ende.setNumero(1);
-            ende.setComplemento("nenhum");
+            try {
+                ende.setLogradouro("nenhum");
+                ende.setNumero(1);
+                ende.setComplemento("nenhum");
+            } catch (exception &e) {
+                cerr << e.what();
+            } catch (invalid_argument &i) {
+                cerr << "Nao inicializou o endereco corretamente!" << endl;
+            }
         }
         Aluno(string nNome, int nIdade, float nNotas[3], int nDia, int nMes, int nAno, string nLog, int nNum, string nComp) {
             setNome(nNome);
             setIdade(nIdade);
             setNotas(nNotas);
             nasc.setData(nDia, nMes, nAno);
-            ende.setLogradouro(nLog);
-            ende.setNumero(nNum);
-            ende.setComplemento(nComp);
+            try {
+                ende.setLogradouro(nLog);
+                ende.setNumero(nNum);
+                ende.setComplemento(nComp);
+            } catch (exception &e) {
+                cerr << e.what();
+            } catch (invalid_argument &ex) {
+                cerr << "Nao inicializou endereco corretamente" << endl;
+            }
         }
         void setNome(string texto) {
             if (texto.length() > 2) nome = texto;
@@ -152,7 +171,13 @@ class Aluno {
             getline(cin, enter);
             cout << "Logradouro: ";
             getline(cin, log);
-            ende.setLogradouro(log);
+            try {
+                ende.setLogradouro(texto);
+            } catch (exception &e) {
+                cerr << e.what();
+            } catch (invalid_argument &ex) {
+                cerr << "Nao inicializou endereco corretamente" << endl;
+            }
             cout << "Numero: ";
             cin >> num;
             ende.setNumero(num);
