@@ -9,7 +9,7 @@ class Endereco {
         string complemento;
     public:
         Endereco() {
-            inicializaEnd(string ("rua"), 1, string("nenhum"));
+            inicializaEnd(string ("nenhum"), 1, string("nenhum"));
         }
         Endereco(string nLogradouro, int nNumero, string nComplemento) {
             inicializaEnd(nLogradouro, nNumero, nComplemento);
@@ -101,14 +101,14 @@ class Aluno {
         Endereco ende;
     public:
         Aluno() {
-            float val[3] = {0, 0, 0};
+            float val[3] = {1, 1, 1};
             setNome("nenhum");
             setIdade(1);
             setNotas(val);
             nasc.setData(1, 1, 2000);
             ende.setLogradouro("nenhum");
             ende.setNumero(1);
-            ende.setComplemento("rua");
+            ende.setComplemento("nenhum");
         }
         Aluno(string nNome, int nIdade, float nNotas[3], int nDia, int nMes, int nAno, string nLog, int nNum, string nComp) {
             setNome(nNome);
@@ -180,7 +180,7 @@ class AlunoGrad : public Aluno {
     private:
         string TCC;
     public:
-        AlunoGrad() { setTCC("nada"); }
+        AlunoGrad() { setTCC("inicializacao"); }
         AlunoGrad(string texto) { setTCC(texto); }
         AlunoGrad(string nomeAluno, int idadeAluno, float notasAluno[3], int diaNasc, int mesNasc, int anoNasc, string logEnd, int numEnd, string compEnd, string tcc) 
             : Aluno(nomeAluno, idadeAluno, notasAluno, diaNasc, mesNasc, anoNasc, logEnd, numEnd, compEnd) {
@@ -214,7 +214,7 @@ void preencheTurma(AlunoGrad turma[2]) {
 }
 
 void exibeTurma(AlunoGrad turma[2]) {
-    cout << endl << "Exibe dados dos alunos" << endl << endl;
+    cout << "Exibe dados dos alunos" << endl << endl;
     for (int pos = 0; pos < 2; pos++) {
         cout << "Aluno " << (pos + 1) << endl;
         turma[pos].exibe();
@@ -238,13 +238,10 @@ float mediaNotas(AlunoGrad turma[2]) {
 
 int main() {
     AlunoGrad turma[2];
-    float vet[3] = {0, 0, 0};
-    float idades, notas;
-    for (int i = 0; i < 2; i++) turma[i] = AlunoGrad("nome", 30, vet, 1, 1, 2000, "logradouro", 1, "complemento", "TCC");
     preencheTurma(turma);
     exibeTurma(turma);
-    idades = mediaIdades(turma);
-    notas = mediaNotas(turma);
+    float idades = mediaIdades(turma);
+    float notas = mediaNotas(turma);
     cout << "A media das idades e " << idades << " anos!" << endl;
     cout << "A media das notas e " << notas << " pontos!" << endl;
 }
