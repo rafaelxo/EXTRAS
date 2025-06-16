@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
-#include <math.h>
+#include <cmath>
 using namespace std;
 
 class Figura {
