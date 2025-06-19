@@ -65,6 +65,48 @@ class Triangulo : public Figura {
         float calculaArea () { return (pow(getTam(), 2) * sqrt(3) / 4); }
 };
 
+void exibeMaior(Quadrado q[10], Triangulo t[10]) {
+    int maior = 0, figura = 0, pos = 0;
+    for (int i = 0; i < 10; i++) {
+        if (q[i].getTam() > maior) {
+            maior = q[i].getTam();
+            figura = 1; pos = i;
+        } if (t[i].getTam() > maior) {
+            maior = t[i].getTam();
+            figura = 2; pos = i;
+        }
+    }
+    if (figura == 1) q[pos].exibe();
+    else if (figura == 2) t[pos].exibe();
+}
+
+void ordena(Quadrado q[10], Triangulo t[10]) {
+    Quadrado quad; Triangulo triang;
+    int menor, indice;
+    for (int i = 0; i < 9; i++) {
+        menor = q[i].getTam();
+        indice = i;
+        for (int j = 1; j < 10; j++) {
+            if (q[i].getTam() < menor) {
+                menor = q[i].getTam();
+                indice = j;
+            }
+        }
+        quad = q[i]; q[i] = q[indice]; q[indice] = quad;
+    }
+    for (int i = 0; i < 9; i++) {
+        menor = t[i].getTam();
+        indice = i;
+        for (int j = 1; j < 10; j++) {
+            if (t[i].getTam() < menor) {
+                menor = t[i].getTam();
+                indice = j;
+            }
+        }
+        triang = t[i]; t[i] = t[indice]; t[indice] = triang;
+    }
+}
+
 int main () {
     int tamanho;
     Quadrado q1; Triangulo t1;
