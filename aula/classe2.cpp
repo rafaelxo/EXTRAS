@@ -65,17 +65,52 @@ class Triangulo : public Figura {
         float calculaArea () { return (pow(getTam(), 2) * sqrt(3) / 4); }
 };
 
+void exibeMaior(Quadrado q[10], Triangulo t[10]) {
+    int maior = 0, figura = 0, pos = 0;
+    for (int i = 0; i < 10; i++) {
+        if (q[i].getTam() > maior) {
+            maior = q[i].getTam(); figura = 1; pos = i;
+        }
+    }
+    for (int i = 0; i < 10; i++) {
+        if (t[i].getTam() > maior) {
+            maior = t[i].getTam(); figura = 2; pos = i;
+        }
+    }
+    if (figura == 1) q[pos].exibe();
+    else if (figura == 2) t[pos].exibe();
+}
+
+void ordena(Quadrado q[10], Triangulo t[10]) {
+
+}
+
 int main () {
-    int tamanho;
-    Quadrado q1; Triangulo t1;
-    cout << "Insira o tamanho do quadrado: " << endl;
-    cin >> tamanho;
-    q1.setTam(tamanho);
-    cout << "Insira o tamanho do triangulo: " << endl;
-    cin >> tamanho;
-    t1.setTam(tamanho);
-    q1.exibe();
-    cout << "Area do quadrado: " << q1.calculaArea() << endl << "Perimetro do quadrado: " << q1.calculaPerimetro() << endl;
-    t1.exibe();
-    cout << "Area do triangulo: " << t1.calculaArea() << endl << "Perimetro do triangulo: " << t1.calculaPerimetro() << endl;
+    int tam;
+    Quadrado q[10]; Triangulo t[10];
+    for (int i = 0; i < 10; i++) {
+        cout << "Insira o tamanho do quadrado: " << endl;
+        cin >> tam;
+        q[i].setTam(tam);
+    }
+    for (int i = 0; i < 10; i++) {
+        cout << "Insira o tamanho do triangulo: " << endl;
+        cin >> tam;
+        t[i].setTam(tam);
+    }
+    for (int i = 0; i < 10; i++) {
+        cout << "Quadrado " << (i + 1) << ":" << endl;
+        q[i].exibe();
+        cout << endl;
+        cout << "Area: " << q[i].calculaArea() << endl << "Perimetro: " << q[i].calculaPerimetro() << endl;
+    }
+    for (int i = 0; i < 10; i++) {
+        cout << "Triangulo " << (i + 1) << ":" << endl;
+        t[i].exibe();
+        cout << endl;
+        cout << "Area: " << t[i].calculaArea() << endl << "Perimetro: " << t[i].calculaPerimetro() << endl;
+    }
+    exibeMaior(q, t); ordena(q, t);
+    for (int i = 0; i < 10; i++) q[i].exibe();
+    for (int i = 0; i < 10; i++) q[i].exibe();
 }
