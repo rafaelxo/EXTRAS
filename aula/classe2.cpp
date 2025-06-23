@@ -82,7 +82,26 @@ void exibeMaior(Quadrado q[10], Triangulo t[10]) {
 }
 
 void ordena(Quadrado q[10], Triangulo t[10]) {
-
+    Quadrado quad; Triangulo triang;
+    int menor, indice;
+    for (int i = 0; i < 9; i++) {
+        menor = q[i].getTam(); indice = i;
+        for (int j = 1; j < 10; j++) {
+            if (q[i].getTam() < menor) {
+                menor = q[i].getTam(); indice = j;
+            }
+        }
+        quad = q[i]; q[i] = q[indice]; q[indice] = quad;
+    }
+    for (int i = 0; i < 9; i++) {
+        menor = t[i].getTam(); indice = i;
+        for (int j = 1; j < 10; j++) {
+            if (t[i].getTam() < menor) {
+                menor = t[i].getTam(); indice = j;
+            }
+        }
+        triang = t[i]; t[i] = t[indice]; t[indice] = triang;
+    }
 }
 
 int main () {
