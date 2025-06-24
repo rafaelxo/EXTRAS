@@ -9,8 +9,8 @@ class Figura {
         int lados;
         float tamanho;
     public:
-        Figura () { inicializaTudo(1, 1); }
-        Figura (int num, float val) { inicializaTudo(num, val); }
+        Figura () { setNum(1); setTam(1); }
+        Figura (int num, float val) { setNum(num); setTam(val); }
         void setNum (int num) {
             try {
                 if (num > 0) lados = num;
@@ -28,22 +28,15 @@ class Figura {
         virtual void exibe () {}
         virtual float calculaArea () {}
         virtual float calculaPerimetro () {}
-    private:
-        void inicializaTudo (int num, float val) {
-            setNum(num);
-            setTam(val);
-        }
 };
 
 class Quadrado : public Figura {
     public:
         Quadrado () {
-            setNum(4);
-            setTam(1);
+            setNum(4); setTam(1);
         }
         Quadrado (float tam) {
-            setNum(4);
-            setTam(tam);
+            setNum(4); setTam(tam);
         }
         void exibe () { cout << "Quadrado com lados de tamanho " << getTam() << endl; }
         float calculaPerimetro () { return (getNum() * getTam()); }
@@ -53,12 +46,10 @@ class Quadrado : public Figura {
 class Triangulo : public Figura {
     public:
         Triangulo () {
-            setNum(3);
-            setTam(1);
+            setNum(3); setTam(1);
         }
         Triangulo (float tam) {
-            setNum(3);
-            setTam(tam);
+            setNum(3); setTam(tam);
         }
         void exibe () { cout << "Triangulo com lados de tamanho " << getTam() << endl; }
         float calculaPerimetro () { return (getNum() * getTam()); }
@@ -109,13 +100,11 @@ int main () {
     Quadrado q[10]; Triangulo t[10];
     for (int i = 0; i < 10; i++) {
         cout << "Insira o tamanho do quadrado: " << endl;
-        cin >> tam;
-        q[i].setTam(tam);
+        cin >> tam; q[i].setTam(tam);
     }
     for (int i = 0; i < 10; i++) {
         cout << "Insira o tamanho do triangulo: " << endl;
-        cin >> tam;
-        t[i].setTam(tam);
+        cin >> tam; t[i].setTam(tam);
     }
     for (int i = 0; i < 10; i++) {
         cout << "Quadrado " << (i + 1) << ":" << endl;
