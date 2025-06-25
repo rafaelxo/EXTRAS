@@ -17,20 +17,20 @@ class Endereco {
         }
         void setLogradouro(string log) {
             if(log.length() > 5) logradouro = log;
-            else cout << "ERRO - Logradouro deve ter mais de 5 caracteres!" << endl;
+            else throw invalid_argument ("Logradouro invalido!");
         }
         void setNumero(int num) {
             if (num > 0) numero = num;
-            else cout << "ERRO - Numero deve ser positivo!" << endl;
+            else throw invalid_argument ("Numero invalido!");
         }
         void setComplemento(string comp) {
             if (comp.length() > 3) complemento = comp;
-            else cout << "ERRO - Complemento deve ter mais de 3 caracteres!" << endl;
+            else throw invalid_argument ("Complemento invalido!");
         }
         string getLogradouro() { return logradouro; }
         int getNumero() { return numero; }
         string getComplemento() { return complemento; }
-        string getEndereco () { 
+        string getEndereco () {
             string texto = getLogradouro() + ", " + to_string(getNumero()) + " - " + getComplemento();
             return texto;
         }
@@ -40,9 +40,9 @@ class Endereco {
                 setLogradouro(log);
                 setNumero(num);
                 setComplemento(comp);
-            } catch (exception &e) {
-                cerr << e.what();
             } catch (invalid_argument &i) {
+                cerr << i.what();
+            } catch (exception &e) {
                 cerr << "Nao inicializou o endereco corretamente!" << endl;
             }
         }
@@ -56,7 +56,7 @@ class Data {
         Data(int d, int m, int a) { setData(d, m, a); }
         void setData(int d, int m, int a) {
             switch (m) {
-                case 1: case 3: case 5: case 7: case 8: case 10: case 12: 
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
                     if (d >= 1 && d <= 31) dia = d;
                 break;
                 case 2:
@@ -117,9 +117,9 @@ class Aluno {
                 ende.setLogradouro("nenhum");
                 ende.setNumero(1);
                 ende.setComplemento("nenhum");
-            } catch (exception &e) {
-                cerr << e.what();
             } catch (invalid_argument &i) {
+                cerr << i.what();
+            } catch (exception &e) {
                 cerr << "Nao inicializou o endereco corretamente!" << endl;
             }
         }
@@ -173,9 +173,9 @@ class Aluno {
             getline(cin, log);
             try {
                 ende.setLogradouro(texto);
+            } catch (invalid_argument &i) {
+                cerr << i.what();
             } catch (exception &e) {
-                cerr << e.what();
-            } catch (invalid_argument &ex) {
                 cerr << "Nao inicializou endereco corretamente" << endl;
             }
             cout << "Numero: ";
@@ -207,7 +207,7 @@ class AlunoGrad : public Aluno {
     public:
         AlunoGrad() { setTCC("inicializacao"); }
         AlunoGrad(string texto) { setTCC(texto); }
-        AlunoGrad(string nomeAluno, int idadeAluno, float notasAluno[3], int diaNasc, int mesNasc, int anoNasc, string logEnd, int numEnd, string compEnd, string tcc) 
+        AlunoGrad(string nomeAluno, int idadeAluno, float notasAluno[3], int diaNasc, int mesNasc, int anoNasc, string logEnd, int numEnd, string compEnd, string tcc)
             : Aluno(nomeAluno, idadeAluno, notasAluno, diaNasc, mesNasc, anoNasc, logEnd, numEnd, compEnd) {
             setTCC(tcc);
         }
