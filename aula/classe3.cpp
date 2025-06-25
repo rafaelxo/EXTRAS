@@ -85,6 +85,7 @@ class Caminhao : public Veiculo {
             setCarroceria(10);
         }
         Caminhao(float consumo, float tanque, float maxComb, float carga, float maxCarga) {
+            setRodas(4);
             setConsumo(consumo);
             setTanque(tanque);
             setCapacidade(maxComb);
@@ -104,13 +105,17 @@ class Caminhao : public Veiculo {
                 else throw invalid_argument ("Carroceria maxima invalida!");
             } catch (exception &e) { cerr << e.what() << endl; }
         }
+        float getCarroceria() { return capacCarroceria; }
+        void carrega(float nova) {
+            if (nova + getCarga() <= getCarroceria()) setCarga(nova + getCarga());
+        }
         void preenche() {
             float val;
             Veiculo :: preenche();
             cout << "Carga atual: ";
             cin >> val; setCarga(val);
             cout << "Capacidade maxima: ";
-            cin >> val; setCapacidade(val);
+            cin >> val; setCarroceria(val);
         }
         void exibe() {
             Veiculo :: exibe();
