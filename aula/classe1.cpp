@@ -200,7 +200,6 @@ class Aluno {
         float *getNotas() { return notas; }
 };
 
-
 class AlunoGrad : public Aluno {
     private:
         string TCC;
