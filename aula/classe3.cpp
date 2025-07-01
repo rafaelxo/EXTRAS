@@ -12,7 +12,7 @@ class Veiculo {
         Veiculo(int n, float num, float val, float tam) { inicializa(n, num, val, tam); }
         void setRodas(int n) {
             try {
-                if (n > 2 && n%2 == 0) numRodas = n;
+                if (n > 1 && n%2 == 0) numRodas = n;
                 else throw invalid_argument ("Numero de rodas invalido!");
             } catch (exception &e) { cerr << e.what() << endl; }
         }
