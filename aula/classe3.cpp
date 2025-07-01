@@ -124,9 +124,16 @@ class Caminhao : public Veiculo {
 };
 
 int main () {
+    float val;
     Motocicleta m; Caminhao c;
-    cout << "Motocicleta" << endl;
-    m.preenche(); m.exibe();
-    cout << "Caminhao" << endl;
-    c.preenche(); c.exibe();
+    cout << "Motocicleta" << endl; m.preenche();
+    cout << "Quantos litros deseja abastecer? ";
+    cin >> val; m.abastece(val);
+    cout << "Motocicleta" << endl; m.exibe();
+    cout << "Caminhao" << endl; c.preenche();
+    cout << "Quantos litros deseja abastecer? ";
+    cin >> val; c.abastece(val);
+    cout << "Quantos kg deseja carregar? ";
+    cin >> val; c.carrega(val);
+    cout << "Caminhao" << endl; c.exibe();
 }
