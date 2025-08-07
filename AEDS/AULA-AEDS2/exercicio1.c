@@ -12,7 +12,7 @@ int contMaiusc (char *str) {
 int main () {
     char *str = (char*)malloc(100*sizeof(char));
     scanf(" %[^\n]", str);
-    while (str[0] != 'F' && str[1] != 'I' && str[2] != 'M' && str[3] != '\0') {
+    while (str[0] != 'F' && str[1] != 'I' && str[2] != 'M' && str[3] == '\0') {
         printf("%d\n", contMaiusc(str));
         scanf(" %[^\n]", str);
     }
