@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 
 int contMaiusc (char *str) {
     int quant = 0;
