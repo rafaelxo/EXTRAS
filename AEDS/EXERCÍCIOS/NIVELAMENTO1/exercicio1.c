@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int comparar(int vet[], int N, int x) {
+int comparar (int vet[], int N, int x) {
     for (int i = 0; i < N; i++) {
         if (vet[i] == x) return 1;
     }

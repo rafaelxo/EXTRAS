@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int compararOrd(int vet[], int N, int x) {
+int compararOrd (int vet[], int N, int x) {
     int esq = 0; int dir = N - 1;
     while (esq <= dir) {
         int meio = (esq + dir) / 2;
