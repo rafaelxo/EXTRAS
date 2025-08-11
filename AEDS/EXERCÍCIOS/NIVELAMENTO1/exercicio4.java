@@ -21,5 +21,6 @@ public class exercicio4 {
         int N = sc.nextInt();
         int vet[] = new int[N]; for (int i = 0; i < N; i++) vet[i] = sc.nextInt();
         elementosOtim(vet, N);
+        sc.close();
     }
 }

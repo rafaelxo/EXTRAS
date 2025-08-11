@@ -16,5 +16,6 @@ public class exercicio1 {
         int comp = comparar(vet, N, x);
         if (comp == 1) System.out.println("SIM");
         else System.out.println("NAO");
+        sc.close();
     }
 }
