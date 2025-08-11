@@ -1,6 +1,6 @@
 import java.util.Scanner; import java.io.*;
 
-public class Main {
+public class exercicio1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String nomeArq = sc.nextLine();
