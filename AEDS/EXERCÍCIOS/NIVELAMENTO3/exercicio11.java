@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
 public class exercicio11 {
-    public static void swap () {
-
+    public static void swap (int a, int b, int[] array) {
+        int temp = array[a];
+        array[a] = array[b];
+        array[b] = temp;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -14,7 +16,7 @@ public class exercicio11 {
             for (int j = i + 1; j < n; j++) {
                 if (array[j] < array[menor]) menor = j;
             }
-            swap ()
+            swap (menor, i, array);
         }
         sc.close();
     }
