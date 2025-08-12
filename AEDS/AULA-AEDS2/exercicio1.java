@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class exercicio1 {
     public static int contMaiusc(String str) {
         int quant = 0;
         for (int i = 0; i < str.length(); i++) {

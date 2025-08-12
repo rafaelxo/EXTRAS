@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class exercicio2 {
     public static int contMaiuscRec(String str) {
         if (str.isEmpty()) return 0;
         else if (Character.isUpperCase(str.charAt(0))) return 1 + contMaiuscRec(str.substring(1));
