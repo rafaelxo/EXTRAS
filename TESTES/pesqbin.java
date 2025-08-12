@@ -7,20 +7,14 @@ public class pesqbin {
         int array[] = new int[n];
         for (int i = 0; i < n; i++) array[i] = sc.nextInt();
         int x = sc.nextInt();
-        boolean resp = false;
         int dir = n - 1; int esq = 0; int meio = 0;
-        while (esq <= dir) {
+        while (esq < dir) {
             meio = (esq + dir) / 2;
-            if (x == array[meio]) {
-                resp = true;
-                esq = n;
-            }
-            else if (x > array[meio]) esq = meio + 1;
-            else dir = meio - 1;
+            if (x > array[meio]) esq = meio + 1;
+            else dir = meio;
         }
-        if (resp == true) System.out.println("Elemento " + x + " encontrado na posição " + meio + "!");
+        if (esq == dir && array[esq] == x) System.out.println("Elemento " + x + " encontrado na posição " + esq + "!");
+        else System.out.println("Elemento " + x + " não encontrado!");
         sc.close();
     }
 }
-
-A solução apresentada para pesquisa binária faz duas comparações entreelementos do array em cada execução da repetição, modifique o código para efetuarmos apenas uma
