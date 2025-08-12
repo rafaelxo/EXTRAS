@@ -1,13 +1,11 @@
 import java.util.Scanner;
-import java.util.Random;
 
 public class pbinaria {
     public static void main (String []args) {
         Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
         int n = sc.nextInt();
         int array[] = new int[n];
-        for (int i = 0; i < n; i++) array[i] = rand.nextInt(100);
+        for (int i = 0; i < n; i++) array[i] = sc.nextInt();
         int x = sc.nextInt();
         boolean resp = false;
         int dir = n - 1; int esq = 0; int meio = 0;
