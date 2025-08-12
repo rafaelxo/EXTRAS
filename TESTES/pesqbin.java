@@ -22,3 +22,5 @@ public class pesqbin {
         sc.close();
     }
 }
+
+A solução apresentada para pesquisa binária faz duas comparações entreelementos do array em cada execução da repetição, modifique o código para efetuarmos apenas uma
