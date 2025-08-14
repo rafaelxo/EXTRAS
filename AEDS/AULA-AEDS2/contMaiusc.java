@@ -4,7 +4,7 @@ public class contMaiusc {
     public static int contarMaiusculas (String str) {
         int quant = 0;
         for (int i = 0; i < str.length(); i++) {
-            if (Character.isUpperCase(str.charAt(i))) quant++;
+            if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') quant++;
         }
         return quant;
     }
