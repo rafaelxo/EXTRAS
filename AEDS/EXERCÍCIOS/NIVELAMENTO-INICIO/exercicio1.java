@@ -3,8 +3,7 @@ import java.util.Scanner;
 public class exercicio1 {
     public static int comparar(int vet[], int N, int x) {
         for (int i = 0; i < N; i++) {
-            if (vet[i] == x)
-                return 1;
+            if (vet[i] == x) return 1;
         }
         return 0;
     }
