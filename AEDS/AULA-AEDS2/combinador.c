@@ -20,11 +20,10 @@ void combinacao (char str1[], char str2[]) {
 
 int main () {
     char str1[100], str2[100];
-    scanf(" %s", str1); scanf(" %s", str2);
-    while (!(str1[0] == 'F' && str1[1] == 'I' && str1[2] == 'M' && str1[3] == '\0')) {
-        combinacao (str1, str2);
+    scanf("%s %s", str1, str2);
+    while (scanf("%s %s", str1, str2) != EOF) {
+        combinacao(str1, str2);
         printf("\n");
-        scanf(" %s", str1); scanf(" %s", str2);
     }
     return 0;
 }
