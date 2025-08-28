@@ -16,8 +16,7 @@ public class espelho {
     public static void main (String[] args) {
         while (sc.hasNext()) {
             int n1 = sc.nextInt(); int n2 = sc.nextInt();
-            espelhar(n1, n2);
-            System.out.println();
+            espelhar(n1, n2); System.out.println();
         }
     }
 }
