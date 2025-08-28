@@ -14,8 +14,8 @@ public class espelho {
         for (int i = n2; i >= n1; i--) imprimeInvertido(i);
     }
     public static void main (String[] args) {
-        int n1 = sc.nextInt(); int n2 = sc.nextInt();
         while (sc.hasNext()) {
+            int n1 = sc.nextInt(); int n2 = sc.nextInt();
             espelhar(n1, n2);
             System.out.println();
         }
