@@ -5,8 +5,7 @@ public class espelho {
     public static void imprimeInvertido (int n) {
         if (n < 10) System.out.print(n);
         else {
-            System.out.print(n%10);
-            imprimeInvertido(n/10);
+            System.out.print(n%10); imprimeInvertido(n/10);
         }
     }
     public static void espelhar (int n1, int n2) {
