@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int length (char str[]) {
     int i = 0;
@@ -21,7 +20,8 @@ void combinacao (char str1[], char str2[]) {
 int main () {
     char str1[100], str2[100];
     while (scanf("%s %s", str1, str2) != EOF) {
-        combinacao(str1, str2); printf("\n");
+        combinacao(str1, str2);
+        printf("\n");
     }
     return 0;
 }
