@@ -18,13 +18,19 @@ public class fila {
             primeiro = (primeiro + 1) % array.length;
             return resp;
         }
-        public void mostrar (int i) {
+        public boolean vazia () { return primeiro == ultimo; }
+        public void mostrar () {
+            System.out.println("[ ");
+            for (int i = primeiro; i != ultimo; i += 1 % array.length) System.out.print(array[i] + " ");
+            System.out.print("]");
+        }
+        public void mostrarRec (int i) {
             if (i == primeiro) System.out.println("[ ");
             if (i != ultimo) {
-                System.out.println(array[i] + " ");
-                mostrar((i + 1) % array.length);
+                System.out.print(array[i] + " ");
+                mostrarRec((i + 1) % array.length);
             }
-            if (i == primeiro) System.out.println("]");
+            if (i == primeiro) System.out.print("]");
         }
     }
     public static void main (String[] args) {
@@ -36,15 +42,15 @@ public class fila {
             f.inserir(7);
             f.inserir(9);
             f.inserir(2);
-            f.mostrar(f.primeiro);
+            f.mostrarRec(f.primeiro);
             System.out.println("Removido: " + f.remover());
             System.out.println("Removido: " + f.remover());
             f.inserir(4);
             f.inserir(6);
-            f.mostrar(f.primeiro);
+            f.mostrarRec(f.primeiro);
             System.out.println("Removido: " + f.remover());
             f.inserir(8);
-            f.mostrar(f.primeiro);
+            f.mostrarRec(f.primeiro);
         } catch (Exception e) { System.out.println(e.getMessage()); }
     }
 }
