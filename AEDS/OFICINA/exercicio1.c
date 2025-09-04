@@ -32,7 +32,6 @@ Tarefa processarTarefa(PilhaEmergencia *p, FilaPeriodica *f, ListaBackground *l)
 }
 
 void promoverTarefa(PilhaEmergencia *p, ListaBackground *l, int id) {
-
     // TO DO: IMPLEMENTAR
     // passar a tarefa de identificador id da lista para a pilha
 }
@@ -58,13 +57,28 @@ Tarefa desempilharEmergencia(PilhaEmergencia *p) {
 }
 
 void enfileirarPeriodica(FilaPeriodica *f, Tarefa t) {
-    // TO DO: IMPLEMENTAR
-    // enfilierar um elemento na fila
+    if (f->ultimo >= MAX_PERIODICA) {
+        printf("Fila cheia!\n");
+        return;
+    } else {
+        f->fila[f->ultimo] = t;
+        f->ultimo++;
+    }
 }
 
 Tarefa desenfileirarPeriodica(FilaPeriodica *f) {
-    // TO DO: IMPLEMENTAR
-    // desinfileirar uma tarefa da fila
+    if (f->primeiro == f->ultimo) {
+        printf("Fila vazia!\n");
+        return;
+    } else {
+        Tarefa t = f->fila[f->primeiro];
+        f->primeiro++;
+        if (f->primeiro == f->ultimo) {
+            f->primeiro = 0;
+            f->ultimo = 0;
+        }
+        return t;
+    }
 }
 
 void inserirBackground(ListaBackground *l, Tarefa t) {
@@ -78,8 +92,22 @@ Tarefa removerBackground(ListaBackground *l) {
 }
 
 void imprimirEstruturas(PilhaEmergencia *p, FilaPeriodica *f, ListaBackground *l) {
-    // TO DO: IMPLEMENTAR
-    // printar a pilha, lista e fila
+    if (p->n == 0 && f->primeiro == f->ultimo && l->n == 0) {
+        printf("Nenhuma tarefa pendente\n");
+        return;
+    }
+    else if (p->n > 0) {
+        printf("Pilha de Emergencia: ");
+        for (int i = p->n - 1; i >= 0; i--) printf("%d ", p->pilha[i].id);
+    }
+    else if (f->primeiro != f->ultimo) {
+        printf("Fila Periodica: ");
+        for (int i = f->primeiro; i < f->ultimo; i++) printf("%d ", f->fila[i].id);
+    }
+    else if (l->n > 0) {
+        printf("Lista Background: ");
+        for (int i = 0; i < l->n; i++) printf("%d ", l->lista[i].id);
+    }
 }
 
 void criarTarefa(PilhaEmergencia *p, FilaPeriodica *f, ListaBackground *l) {
