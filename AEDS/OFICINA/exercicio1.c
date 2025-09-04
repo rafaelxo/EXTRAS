@@ -32,8 +32,15 @@ Tarefa processarTarefa(PilhaEmergencia *p, FilaPeriodica *f, ListaBackground *l)
 }
 
 void promoverTarefa(PilhaEmergencia *p, ListaBackground *l, int id) {
-    // TO DO: IMPLEMENTAR
-    // passar a tarefa de identificador id da lista para a pilha
+    for (int i = 0; i < l->n; i++) {
+        if (l->lista[i].id == id) {
+            Tarefa t = l->lista[i];
+            for (int j = i; j < l->n - 1; j++) l->lista[j] = l->lista[j+1];
+            l->n--;
+            empilharEmergencia(p, t);
+            return;
+        }
+    }
 }
 
 void empilharEmergencia(PilhaEmergencia *p, Tarefa t) {
