@@ -26,25 +26,35 @@ typedef struct {
 } ListaBackground;
 
 Tarefa processarTarefa(PilhaEmergencia *p, FilaPeriodica *f, ListaBackground *l) {
-    // TO DO: IMPLEMENTAR
-    // desempilhar uma tarefa da pilha (se houver)
-    // OU desinfileirar uma tarefa da fila (se houver)
-    // OU retirar a tarefa mais prioritária da lista
+    if (p->n > 0) return desempilharEmergencia(p);
+    else if (f->primeiro != f->ultimo) return desenfileirarPeriodica(f);
+    else if (l->n > 0) return removerBackground(l);
 }
 
 void promoverTarefa(PilhaEmergencia *p, ListaBackground *l, int id) {
+
     // TO DO: IMPLEMENTAR
     // passar a tarefa de identificador id da lista para a pilha
 }
 
 void empilharEmergencia(PilhaEmergencia *p, Tarefa t) {
-    // TO DO: IMPLEMENTAR
-    // empilhar uma tarefa na pilha
+    if (p->n >= MAX_EMERGENCIA) {
+        printf("Pilha cheia!\n");
+        return;
+    } else {
+        p->pilha[p->n] = t;
+        p->n++;
+    }
 }
 
 Tarefa desempilharEmergencia(PilhaEmergencia *p) {
-    // TO DO: IMPLEMENTAR
-    // desempilhar uma tarefa da pilha
+    if (p->n == 0) {
+        printf("Pilha vazia!\n");
+        return;
+    } else {
+        p->n--;
+        return p->pilha[p->n];
+    }
 }
 
 void enfileirarPeriodica(FilaPeriodica *f, Tarefa t) {
