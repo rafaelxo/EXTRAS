@@ -57,12 +57,12 @@ Tarefa desempilharEmergencia(PilhaEmergencia *p) {
 }
 
 void enfileirarPeriodica(FilaPeriodica *f, Tarefa t) {
-    if (f->ultimo >= MAX_PERIODICA) {
+    if (f->(ultimo + 1) % MAX_PERIODICA == f->primeiro) {
         printf("Fila cheia!\n");
         return;
     } else {
         f->fila[f->ultimo] = t;
-        f->ultimo++;
+        f->ultimo = (ultimo+1) % MAX_PERIODICA;
     }
 }
 
@@ -71,13 +71,8 @@ Tarefa desenfileirarPeriodica(FilaPeriodica *f) {
         printf("Fila vazia!\n");
         return;
     } else {
-        Tarefa t = f->fila[f->primeiro];
-        f->primeiro++;
-        if (f->primeiro == f->ultimo) {
-            f->primeiro = 0;
-            f->ultimo = 0;
-        }
-        return t;
+        f->primeiro = (f->primeiro + 1) % MAX_PERIODICA;
+        return f->fila[f->primeiro];
     }
 }
 
