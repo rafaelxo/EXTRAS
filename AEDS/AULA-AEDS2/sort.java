@@ -17,11 +17,13 @@ public class sort {
         }
     }
     public static void esquematizacao (int[] v, int n, int m) {
-        for (int i = n - 1; i >= 0; i++) {
-            if (v[i] % m == 0 && v[i] % 2 != 0) System.out.println(v[i]);
-        }
-        for (int i = 0; i < n; i++) {
-            if (v[i] % m != 0 && v[i] % 2 == 0) System.out.println(v[i]);
+        for (int mod = -m + 1; mod < m; mod++) {
+            for (int i = n - 1; i >= 0; i--) {
+                if (v[i] % m == mod && v[i] % 2 != 0) System.out.println(v[i]);
+            }
+            for (int i = 0; i < n; i++) {
+                if (v[i] % m == mod && v[i] % 2 == 0) System.out.println(v[i]);
+            }
         }
     }
     public static void main (String[] args) {
@@ -29,8 +31,8 @@ public class sort {
         while (n != 0 && m != 0) {
             int[] nums = new int[n];
             for (int i = 0; i < n; i++) nums[i] = sc.nextInt();
-            selecao(nums);
-            esquematizacao(nums, n, m);
+            selecao(nums); esquematizacao(nums, n, m);
+            n = sc.nextInt(); m = sc.nextInt();
         }
         System.out.println("0 0");
     }
