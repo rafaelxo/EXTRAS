@@ -82,13 +82,25 @@ Tarefa desenfileirarPeriodica(FilaPeriodica *f) {
 }
 
 void inserirBackground(ListaBackground *l, Tarefa t) {
-    // TO DO: IMPLEMENTAR
-    // inserir uma tarefa na lista
+    if (l->n >= MAX_BACKGROUND) {
+        printf("Lista cheia!\n");
+        return;
+    }
+    else {
+        l->lista[l->n] = t;
+        l->n++;
+    }
 }
 
 Tarefa removerBackground(ListaBackground *l) {
-    // TO DO: IMPLEMENTAR
-    // remover a tarefa mais prioritaria da lista
+    if (l->n == 0) {
+        printf("Lista vazia!\n");
+        return;
+    } else {
+        for (int i = 0; i < l->n - 1; i++) l->lista[i] = l->lista[i+1];
+        l->n--;
+        return l->lista[0];
+    }
 }
 
 void imprimirEstruturas(PilhaEmergencia *p, FilaPeriodica *f, ListaBackground *l) {
