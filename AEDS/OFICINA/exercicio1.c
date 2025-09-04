@@ -59,7 +59,8 @@ Tarefa desempilharEmergencia(PilhaEmergencia *p) {
         return;
     } else {
         p->n--;
-        return p->pilha[p->n];
+        Tarefa desempilhada = p->pilha[p->n]
+        return desempilhada;
     }
 }
 
@@ -68,7 +69,7 @@ void enfileirarPeriodica(FilaPeriodica *f, Tarefa t) {
         printf("Fila cheia!\n");
         return;
     } else {
-        f->fila[f->ultimo] = t;
+        f->fila[f->(ultimo+1) % MAX_PERIODICA] = t;
         f->ultimo = (ultimo+1) % MAX_PERIODICA;
     }
 }
@@ -78,8 +79,9 @@ Tarefa desenfileirarPeriodica(FilaPeriodica *f) {
         printf("Fila vazia!\n");
         return;
     } else {
-        f->primeiro = (f->primeiro + 1) % MAX_PERIODICA;
-        return f->fila[f->primeiro];
+        Tarefa desenfileirada = f->fila[f->primeiro];
+        f->primeiro = f->(primeiro + 1) % MAX_PERIODICA;
+        return desenfileirada;
     }
 }
 
