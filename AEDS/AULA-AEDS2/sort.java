@@ -29,11 +29,12 @@ public class sort {
     public static void main (String[] args) {
         int n = sc.nextInt(); int m = sc.nextInt();
         while (n != 0 && m != 0) {
+            System.out.println(n + " " + m);
             int[] nums = new int[n];
             for (int i = 0; i < n; i++) nums[i] = sc.nextInt();
             selecao(nums); esquematizacao(nums, n, m);
             n = sc.nextInt(); m = sc.nextInt();
         }
-        System.out.println("0 0");
+        System.out.println(n + " " + m);
     }
 }
