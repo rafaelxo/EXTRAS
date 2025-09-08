@@ -39,5 +39,17 @@ public class fila {
             }
             if (i == primeiro) System.out.print("]");
         }
+        public void mostrarInvertido () {
+            if (primeiro == ultimo) throw new RuntimeException("Erro!");
+            else {
+                System.out.println("[");
+                int quant = (ultimo - primeiro + array.length) % array.length;
+                for (int i = quant - 1; i >= 0; i--) {
+                    int j = (primeiro + i) % array.length;
+                    System.out.print(array[j] + " ");
+                }
+                System.out.print("]");
+            }
+        }
     }
 }
