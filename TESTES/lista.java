@@ -38,6 +38,16 @@ public class lista {
             n--;
         }
         public boolean vazia () { return n == 0; }
+        public int[] contador () {
+            int pares = 0, impares = 0;
+            for (int i = 0; i < n; i++) {
+                if (array[i] % 2 == 0) pares++;
+                else impares++;
+            }
+            int[] array = new int[2];
+            array[0] = pares; array[1] = impares;
+            return array;
+        }
         public void mostrar () {
             System.out.print("[ ");
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
