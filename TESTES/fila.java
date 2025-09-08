@@ -7,13 +7,20 @@ public class fila {
             array = new int[tam + 1];
             primeiro = ultimo = 0;
         }
-        public void inserir (int num) throws Exception {
-            if ((ultimo + 1) % array.length == primeiro) throw new Exception ("Erro");
+        public void inserir (int num) {
+            if ((ultimo + 1) % array.length == primeiro) throw new RuntimeException("Erro");
             array[ultimo] = num;
             ultimo = (ultimo + 1) % array.length;
         }
-        public int remover () throws Exception {
-            if (primeiro == ultimo) throw new Exception ("Erro");
+        public void inserirPar (int num) {
+            if ((ultimo + 1) % array.length == primeiro) throw new RuntimeException("Erro");
+            if (num % 2 == 0) {
+                array[ultimo] = num;
+                ultimo = (ultimo + 1) % array.length;
+            } else throw new RuntimeException("Impar!");
+        }
+        public int remover ()  {
+            if (primeiro == ultimo) throw new RuntimeException ("Erro");
             int resp = array[primeiro];
             primeiro = (primeiro + 1) % array.length;
             return resp;

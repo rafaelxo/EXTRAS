@@ -29,5 +29,15 @@ public class pilha {
             }
             if (i == n - 1) System.out.print("]");
         }
+        public void mostrarPares () {
+            System.out.println("[ ");
+            for (int i = n - 1; i >= 0; i--) if (array[i] % 2 == 0) System.out.print(array[i] + " ");
+            System.out.println("]");
+        }
+        public void mostrarImpares () {
+            System.out.println("[ ");
+            for (int i = n - 1; i >= 0; i--) if (array[i] % 2 != 0) System.out.print(array[i] + " ");
+            System.out.println("]");
+        }
     }
 }
