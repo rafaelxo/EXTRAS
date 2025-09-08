@@ -1,3 +1,55 @@
 public class lista {
-    
+    public class Lista {
+        public int[] array;
+        public int n;
+        public Lista () { this(6); }
+        public Lista (int tam) {
+            array = new int[tam];
+            n = 0;
+        }
+        public void inserirInicio (int num) {
+            if (n >= array.length) throw new RuntimeException("Array cheio!");
+            for (int i = n; i > 0; i--) array[i] = array[i - 1];
+            array[0] = num;
+            n++;
+        }
+        public void inserirFim (int num) {
+            if (n >= array.length) throw new RuntimeException("Array cheio!");
+            array[n++] = num;
+        }
+        public void inserir (int num, int pos) {
+            if (n >= array.length || pos < 0 || pos > n) throw new RuntimeException("Erro!");
+            for (int i = n; i > pos; i--) array[i] = array[i - 1];
+            array[pos] = num;
+            n++;
+        }
+        public void removerInicio () {
+            if (n == 0) throw new RuntimeException("Array vazio!");
+            for (int i = 0; i < n - 1; i++) array[i] = array[i + 1];
+            n--;
+        }
+        public void removerFim () {
+            if (n == 0) throw new RuntimeException("Array vazio!");
+            n--;
+        }
+        public void remover (int pos) {
+            if (n == 0 || pos < 0 || pos >= n) throw new RuntimeException("Erro!");
+            for (int i = pos; i < n - 1; i++) array[i] = array[i + 1];
+            n--;
+        }
+        public boolean vazia () { return n == 0; }
+        public void mostrar () {
+            System.out.print("[ ");
+            for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
+            System.out.println("]");
+        }
+        public void mostrarRec (int i) {
+            if (n == 0) System.out.println("[");
+            else {
+                System.out.print(array[i] + " ");
+                mostrarRec(i + 1);
+            }
+            if (i == n - 1) System.out.print("]");
+        }
+    }
 }

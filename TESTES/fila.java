@@ -33,24 +33,4 @@ public class fila {
             if (i == primeiro) System.out.print("]");
         }
     }
-    public static void main (String[] args) {
-        Fila f = new fila().new Fila(6);
-        try {
-            f.inserir(1);
-            f.inserir(3);
-            f.inserir(5);
-            f.inserir(7);
-            f.inserir(9);
-            f.inserir(2);
-            f.mostrarRec(f.primeiro);
-            System.out.println("Removido: " + f.remover());
-            System.out.println("Removido: " + f.remover());
-            f.inserir(4);
-            f.inserir(6);
-            f.mostrarRec(f.primeiro);
-            System.out.println("Removido: " + f.remover());
-            f.inserir(8);
-            f.mostrarRec(f.primeiro);
-        } catch (Exception e) { System.out.println(e.getMessage()); }
-    }
 }

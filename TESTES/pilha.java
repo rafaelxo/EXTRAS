@@ -21,5 +21,13 @@ public class pilha {
             for (int i = n - 1; i >= 0; i--) System.out.print(array[i] + " ");
             System.out.println("]");
         }
+        public void mostrarRec (int i) {
+            if (n == 0) System.out.println("[");
+            else {
+                System.out.print(array[i] + " ");
+                mostrarRec(i - 1);
+            }
+            if (i == n - 1) System.out.print("]");
+        }
     }
 }
