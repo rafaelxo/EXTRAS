@@ -34,19 +34,23 @@ public class lista {
             array[i + 1] = num;
             n++;
         }
-        public void removerInicio () {
+        public int removerInicio () {
             if (n == 0) throw new RuntimeException("Erro!");
+            int resp = array[0];
             n--;
             for (int i = 0; i < n; i++) array[i] = array[i + 1];
+            return resp;
         }
-        public void removerFim () {
+        public int removerFim () {
             if (n == 0) throw new RuntimeException("Erro!");
-            n--;
+            return array[--n];
         }
-        public void remover (int pos) {
+        public int remover (int pos) {
             if (n == 0 || pos < 0 || pos >= n) throw new RuntimeException("Erro!");
+            int resp = array[pos];
             n--;
             for (int i = pos; i < n; i++) array[i] = array[i + 1];
+            return resp;
         }
         public boolean vazia () { return n == 0; }
         public int[] impPar () {
