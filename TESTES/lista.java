@@ -18,7 +18,7 @@ public class lista {
             array[n++] = num;
         }
         public void inserir (int num, int pos) {
-            if (n >= array.length || pos < 0 || pos > n) throw new RuntimeException("Erro!");
+            if (n >= array.length || pos < 0 || pos >= n) throw new RuntimeException("Erro!");
             for (int i = n; i > pos; i--) array[i] = array[i - 1];
             array[pos] = num;
             n++;
