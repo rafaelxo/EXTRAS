@@ -32,6 +32,7 @@ public class pilha {
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
             System.out.println("]");
         }
+        public void mostrarRecBase () { mostrarRec(n - 1); }
         public void mostrarRec(int i) {
             if (i == n - 1) System.out.print("[ ");
             if (i >= 0) {
@@ -39,14 +40,12 @@ public class pilha {
                 mostrarRec(i - 1);
             } else System.out.println("]");
         }
-        public void mostrarPares () {
+        public void mostrarImpPar () {
             System.out.print("[ ");
-            for (int i = n - 1; i >= 0; i--) if (array[i] % 2 == 0) System.out.print(array[i] + " ");
-            System.out.println("]");
-        }
-        public void mostrarImpares () {
-            System.out.print("[ ");
-            for (int i = n - 1; i >= 0; i--) if (array[i] % 2 != 0) System.out.print(array[i] + " ");
+            for (int i = n - 1; i >= 0; i--) {
+                if (array[i] % 2 == 0) System.out.print(array[i] + " ");
+                else System.out.print(array[i] + " ");
+            }
             System.out.println("]");
         }
         public int topo () {

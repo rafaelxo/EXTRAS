@@ -20,6 +20,13 @@ public class fila {
                 ultimo = (ultimo + 1) % array.length;
             } else throw new RuntimeException("Impar!");
         }
+        public void inserirImpar (int num) {
+            if ((ultimo + 1) % array.length == primeiro) throw new RuntimeException("Erro!");
+            if (num % 2 != 0) {
+                array[ultimo] = num;
+                ultimo = (ultimo + 1) % array.length;
+            } else throw new RuntimeException("Erro!");
+        }
         public int remover ()  {
             if (primeiro == ultimo) throw new RuntimeException ("Erro!");
             int resp = array[primeiro];
@@ -32,6 +39,7 @@ public class fila {
             for (int i = primeiro; i != ultimo; i = (i + 1) % array.length) System.out.print(array[i] + " ");
             System.out.println("]");
         }
+        public void mostrarRecBase () { mostrarRec(primeiro); }
         public void mostrarRec (int i) {
             if (i == primeiro) System.out.print("[ ");
             if (i != ultimo) {
