@@ -89,5 +89,16 @@ public class fila {
             if (ultimo >= primeiro) return ultimo - primeiro;
             else return ultimo - primeiro + array.length;
         }
+        public int removeMaiorQueDez () {
+            if (primeiro == ultimo) throw new RuntimeException("Erro!");
+            int n = contador();
+            int resp = -1;
+            for (int i = 0; i < n; i++) {
+                int x = this.remover();
+                if (x >= 10) resp = x;
+                else inserir(x);
+            }
+            return resp;
+        }
     }
 }
