@@ -12,6 +12,6 @@ void selecao (int vet[], int n) {
         for (int j = i + 1; j < n; j++) {
             if (vet[j] < vet[menor]) menor = j;
         }
-        swap(vet, i, menor);
+        if (menor != i) swap(vet, i, menor);
     }
 }
