@@ -1,9 +1,10 @@
 public class lista {
     public class Lista {
-        public int[] array;
-        public int n;
+        private int[] array;
+        private int n;
         public Lista () { this(6); }
         public Lista (int tam) {
+            if (tam <= 0) throw new IllegalArgumentException("Erro!");
             array = new int[tam];
             n = 0;
         }
@@ -48,7 +49,7 @@ public class lista {
             for (int i = pos; i < n; i++) array[i] = array[i + 1];
         }
         public boolean vazia () { return n == 0; }
-        public int[] contador () {
+        public int[] impPar () {
             int pares = 0, impares = 0;
             for (int i = 0; i < n; i++) {
                 if (array[i] % 2 == 0) pares++;
@@ -70,14 +71,14 @@ public class lista {
                 mostrarRec(i + 1);
             } else System.out.println("]");
         }
-        public void mostrarPares() {
+        public void mostrarPares () {
             System.out.print("[ ");
             for (int i = n - 1; i >= 0; i--) {
                 if (array[i] % 2 == 0) System.out.print(array[i] + " ");
             }
             System.out.println("]");
         }
-        public void mostrarImpares() {
+        public void mostrarImpares () {
             System.out.print("[ ");
             for (int i = n - 1; i >= 0; i--) {
                 if (array[i] % 2 != 0) System.out.print(array[i] + " ");

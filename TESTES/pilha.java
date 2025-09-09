@@ -16,27 +16,28 @@ public class pilha {
             return array[--n];
         }
         public boolean vazia () { return n == 0; }
-        public int[] contador() {
+        public int[] impPar () {
             int pares = 0, impares = 0;
             for (int i = 0; i < n; i++) {
                 if (array[i] % 2 == 0) pares++;
                 else impares++;
             }
-            int[] array = new int[2];
-            array[0] = pares; array[1] = impares;
-            return array;
+            int[] result = new int[2];
+            result[0] = pares; result[1] = impares;
+            return result;
         }
-        public void mostrar() {
+        public void mostrar () {
             System.out.print("[ ");
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
             System.out.println("]");
         }
-        public void mostrarRec(int i) {
+        public void mostrarRec (int i) {
             if (i == 0) System.out.print("[");
             if (i < n) {
                 System.out.print(array[i] + " ");
                 mostrarRec(i + 1);
-            } else System.out.println("]");
+            }
+            if (i == n) System.out.println("]");
         }
         public void mostrarPares () {
             System.out.print("[ ");
@@ -47,6 +48,10 @@ public class pilha {
             System.out.print("[ ");
             for (int i = n - 1; i >= 0; i--) if (array[i] % 2 != 0) System.out.print(array[i] + " ");
             System.out.println("]");
+        }
+        public int topo () {
+            if (n == 0) throw new RuntimeException("Erro!");
+            return array[n - 1];
         }
     }
 }
