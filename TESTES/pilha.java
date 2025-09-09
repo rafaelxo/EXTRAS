@@ -1,9 +1,10 @@
 public class pilha {
     public class Pilha {
-        public int[] array;
-        public int n;
+        private int[] array;
+        private int n;
         public Pilha () { this(6); }
         public Pilha (int tam) {
+            if (tam <= 0) throw new IllegalArgumentException("Erro!");
             array = new int[tam];
             n = 0;
         }
@@ -31,13 +32,13 @@ public class pilha {
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
             System.out.println("]");
         }
-        public void mostrarRec (int i) {
-            if (i == 0) System.out.print("[");
-            if (i < n) {
+
+        public void mostrarRec(int i) {
+            if (i == n - 1) System.out.print("[ ");
+            if (i >= 0) {
                 System.out.print(array[i] + " ");
-                mostrarRec(i + 1);
-            }
-            if (i == n) System.out.println("]");
+                mostrarRec(i - 1);
+            } else System.out.println("]");
         }
         public void mostrarPares () {
             System.out.print("[ ");
