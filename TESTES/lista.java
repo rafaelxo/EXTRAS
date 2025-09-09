@@ -8,13 +8,13 @@ public class lista {
             n = 0;
         }
         public void inserirInicio (int num) {
-            if (n >= array.length) throw new RuntimeException("Array cheio!");
+            if (n >= array.length) throw new RuntimeException("Erro");
             for (int i = n; i > 0; i--) array[i] = array[i - 1];
             array[0] = num;
             n++;
         }
         public void inserirFim (int num) {
-            if (n >= array.length) throw new RuntimeException("Array cheio!");
+            if (n >= array.length) throw new RuntimeException("Erro");
             array[n++] = num;
         }
         public void inserir (int num, int pos) {
@@ -23,13 +23,23 @@ public class lista {
             array[pos] = num;
             n++;
         }
+        public void inserirOrdenado (int num) {
+            if (n >= array.length) throw new RuntimeException("Erro");
+            int i = n - 1;
+            while (i >= 0 && array[i] > num) {
+                array[i + 1] = array[i];
+                i++;
+            }
+            array[i + 1] = num;
+            n++;
+        }
         public void removerInicio () {
-            if (n == 0) throw new RuntimeException("Array vazio!");
+            if (n == 0) throw new RuntimeException("Erro!");
             n--;
             for (int i = 0; i < n; i++) array[i] = array[i + 1];
         }
         public void removerFim () {
-            if (n == 0) throw new RuntimeException("Array vazio!");
+            if (n == 0) throw new RuntimeException("Erro!");
             n--;
         }
         public void remover (int pos) {
