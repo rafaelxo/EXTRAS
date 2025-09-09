@@ -32,7 +32,6 @@ public class pilha {
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
             System.out.println("]");
         }
-
         public void mostrarRec(int i) {
             if (i == n - 1) System.out.print("[ ");
             if (i >= 0) {
