@@ -32,19 +32,19 @@ public class pilha {
             System.out.println("]");
         }
         public void mostrarRec(int i) {
-            if (i == 0) System.out.println("[");
+            if (i == 0) System.out.print("[");
             if (i < n) {
                 System.out.print(array[i] + " ");
                 mostrarRec(i + 1);
-            } else System.out.print("]");
+            } else System.out.println("]");
         }
         public void mostrarPares () {
-            System.out.println("[ ");
+            System.out.print("[ ");
             for (int i = n - 1; i >= 0; i--) if (array[i] % 2 == 0) System.out.print(array[i] + " ");
             System.out.println("]");
         }
         public void mostrarImpares () {
-            System.out.println("[ ");
+            System.out.print("[ ");
             for (int i = n - 1; i >= 0; i--) if (array[i] % 2 != 0) System.out.print(array[i] + " ");
             System.out.println("]");
         }

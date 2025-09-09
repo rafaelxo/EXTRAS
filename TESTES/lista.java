@@ -28,7 +28,7 @@ public class lista {
             int i = n - 1;
             while (i >= 0 && array[i] > num) {
                 array[i + 1] = array[i];
-                i++;
+                i--;
             }
             array[i + 1] = num;
             n++;
@@ -54,9 +54,9 @@ public class lista {
                 if (array[i] % 2 == 0) pares++;
                 else impares++;
             }
-            int[] array = new int[2];
-            array[0] = pares; array[1] = impares;
-            return array;
+            int[] result = new int[2];
+            result[0] = pares; result[1] = impares;
+            return result;
         }
         public void mostrar () {
             System.out.print("[ ");
@@ -64,21 +64,21 @@ public class lista {
             System.out.println("]");
         }
         public void mostrarRec (int i) {
-            if (i == 0) System.out.println("[");
+            if (i == 0) System.out.print("[ ");
             if (i < n) {
                 System.out.print(array[i] + " ");
                 mostrarRec(i + 1);
-            } else System.out.print("]");
+            } else System.out.println("]");
         }
         public void mostrarPares() {
-            System.out.println("[ ");
+            System.out.print("[ ");
             for (int i = n - 1; i >= 0; i--) {
                 if (array[i] % 2 == 0) System.out.print(array[i] + " ");
             }
             System.out.println("]");
         }
         public void mostrarImpares() {
-            System.out.println("[ ");
+            System.out.print("[ ");
             for (int i = n - 1; i >= 0; i--) {
                 if (array[i] % 2 != 0) System.out.print(array[i] + " ");
             }
