@@ -25,8 +25,8 @@ public class lista {
         }
         public void removerInicio () {
             if (n == 0) throw new RuntimeException("Array vazio!");
-            for (int i = 0; i < n - 1; i++) array[i] = array[i + 1];
             n--;
+            for (int i = 0; i < n; i++) array[i] = array[i + 1];
         }
         public void removerFim () {
             if (n == 0) throw new RuntimeException("Array vazio!");
@@ -34,8 +34,8 @@ public class lista {
         }
         public void remover (int pos) {
             if (n == 0 || pos < 0 || pos >= n) throw new RuntimeException("Erro!");
-            for (int i = pos; i < n - 1; i++) array[i] = array[i + 1];
             n--;
+            for (int i = pos; i < n; i++) array[i] = array[i + 1];
         }
         public boolean vazia () { return n == 0; }
         public int[] contador () {
@@ -54,12 +54,11 @@ public class lista {
             System.out.println("]");
         }
         public void mostrarRec (int i) {
-            if (n == 0) System.out.println("[");
-            else {
+            if (i == 0) System.out.println("[");
+            if (i < n) {
                 System.out.print(array[i] + " ");
                 mostrarRec(i + 1);
-            }
-            if (i == n - 1) System.out.print("]");
+            } else System.out.print("]");
         }
     }
 }
