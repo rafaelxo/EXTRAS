@@ -27,6 +27,31 @@ public class fila {
                 ultimo = (ultimo + 1) % array.length;
             } else throw new RuntimeException("Erro!");
         }
+        public void inserirOrdenado (int num) {
+            if ((ultimo + 1) % array.length == primeiro) throw new RuntimeException("Erro!");
+            int i = (ultimo - 1 + array.length) % array.length;
+            while (i != primeiro && array[i] > num) {
+                array[(i + 1) % array.length] = array[i];
+                i = (i - 1 + array.length) % array.length;
+            }
+            if (i == primeiro && array[i] > num) {
+                array[(i + 1) % array.length] = array[i];
+                array[i] = num;
+            } else array[(i + 1) % array.length] = num;
+            ultimo = (ultimo + 1) % array.length;
+        }
+        public void ordenar () {
+            int quant = (ultimo - primeiro + array.length) % array.length;
+            for (int i = 1; i < quant; i++) {
+                int aux = array[(primeiro + i) % array.length];
+                int j = i - 1;
+                while (j >= 0 && array[(primeiro + j) % array.length] > aux) {
+                    array[(primeiro + j + 1) % array.length] = array[(primeiro + j)];
+                    j--;
+                }
+                array[(primeiro + j + 1) % array.length] = aux;
+            }
+        }
         public int remover ()  {
             if (primeiro == ultimo) throw new RuntimeException ("Erro!");
             int resp = array[primeiro];
