@@ -9,13 +9,13 @@ public class lista {
             n = 0;
         }
         public void inserirInicio (int num) {
-            if (n >= array.length) throw new RuntimeException("Erro");
+            if (n >= array.length) throw new RuntimeException("Erro!");
             for (int i = n; i > 0; i--) array[i] = array[i - 1];
             array[0] = num;
             n++;
         }
         public void inserirFim (int num) {
-            if (n >= array.length) throw new RuntimeException("Erro");
+            if (n >= array.length) throw new RuntimeException("Erro!");
             array[n++] = num;
         }
         public void inserir (int num, int pos) {
