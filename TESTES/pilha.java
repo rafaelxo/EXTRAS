@@ -42,7 +42,7 @@ public class pilha {
         }
         public void mostrarImpPar () {
             System.out.print("[ ");
-            for (int i = n - 1; i >= 0; i--) {
+            for (int i = 0; i < n; i++) {
                 if (array[i] % 2 == 0) System.out.print(array[i] + " ");
                 else System.out.print(array[i] + " ");
             }
