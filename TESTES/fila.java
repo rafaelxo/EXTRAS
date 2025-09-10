@@ -73,19 +73,19 @@ public class fila {
             }
             if (i == primeiro) System.out.println("]");
         }
+        public int contador () {
+            if (ultimo >= primeiro) return ultimo - primeiro;
+            else return ultimo - primeiro + array.length;
+        }
         public void mostrarInvertido () {
             if (primeiro == ultimo) throw new RuntimeException("Erro!");
             System.out.print("[ ");
-            int quant = (ultimo - primeiro + array.length) % array.length;
+            int quant = contador() % array.length;
             for (int i = quant - 1; i >= 0; i--) {
                 int j = (primeiro + i) % array.length;
                 System.out.print(array[j] + " ");
             }
             System.out.println("]");
-        }
-        public int contador () {
-            if (ultimo >= primeiro) return ultimo - primeiro;
-            else return ultimo - primeiro + array.length;
         }
         public int removeMaiorQueDez () {
             if (primeiro == ultimo) throw new RuntimeException("Erro!");
