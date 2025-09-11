@@ -15,25 +15,19 @@ public class jogadores {
             this.partidas = 0;
         }
         Jogador(String str, int g, int a, int p) {
-            setNome(str);
-            setGols(g);
-            setAssistencias(a);
-            setPartidas(p);
+            this.nome = str;
+            this.gols = g;
+            this.assistencias = a;
+            this.partidas = p;
         }
         public String getNome() { return nome; }
-        public void setNome (String str) { this.nome = str; }
         public int getGols() { return gols; }
-        public void setGols (int g) { this.gols = g; }
         public int getAssitencias() { return assistencias; }
-        public void setAssistencias (int a) { this.assistencias = a; }
         public int getPartidas() { return partidas; }
-        public void setPartidas(int p) { this.partidas = p; }
         public double getMedia() { return (getGols() + getAssitencias()) / (partidas * 1.0); }
     }
 
-    public static boolean isFim (String str) {
-        return (str.length() == 3 && str.charAt(0) == 'F' && str.charAt(1) == 'I' && str.charAt(2) == 'M');
-    }
+    public static boolean isFim (String str) { return (str.length() == 3 && str.charAt(0) == 'F' && str.charAt(1) == 'I' && str.charAt(2) == 'M'); }
 
     public static int comparaNomes (String a, String b) {
         int tam = (a.length() < b.length()) ? a.length() : b.length();
@@ -72,8 +66,8 @@ public class jogadores {
         int n = sc.nextInt();
         Jogador[] jog = new Jogador[n];
         for (int i = 0; i < n; i++) {
-            String nome; int gols = 0; int assistencias = 0; int partidas = 0;
-            nome = sc.next();
+            String nome = sc.next();
+            int gols = 0; int assistencias = 0; int partidas = 0;
             while (sc.hasNextInt() && !isFim(nome)) {
                 gols += sc.nextInt();
                 assistencias += sc.nextInt();
@@ -83,8 +77,6 @@ public class jogadores {
         }
         selecao(jog, n);
         System.out.println("Ranking de jogadores:");
-        for (int i = 0; i < n; i++) {
-            System.out.println((i + 1) + ". " + jog[i].getNome() + " - Média: " + jog[i].getMedia() + " - Gols: " + jog[i].getGols());
-        }
+        for (int i = 0; i < n; i++) System.out.println((i + 1) + ". " + jog[i].getNome() + " - Média: " + jog[i].getMedia() + " - Gols: " + jog[i].getGols());
     }
 }
