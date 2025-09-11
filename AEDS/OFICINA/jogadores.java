@@ -27,7 +27,9 @@ public class jogadores {
         public double getMedia() { return (getGols() + getAssitencias()) / (partidas * 1.0); }
     }
 
-    public static boolean isFim (String str) { return (str.length() == 3 && str.charAt(0) == 'F' && str.charAt(1) == 'I' && str.charAt(2) == 'M'); }
+    public static boolean isFim (String str) {
+        return (str.length() == 3 && str.charAt(0) == 'F' && str.charAt(1) == 'I' && str.charAt(2) == 'M');
+    }
 
     public static int comparaNomes (String a, String b) {
         int tam = (a.length() < b.length()) ? a.length() : b.length();
