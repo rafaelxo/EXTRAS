@@ -69,7 +69,7 @@ public class jogadores {
         Jogador[] jog = new Jogador[n];
         for (int i = 0; i < n; i++) {
             String nome = sc.next();
-            int gols = 0; int assistencias = 0; int partidas = 0;
+            int gols = 0, assistencias = 0, partidas = 0;
             while (sc.hasNextInt() && !isFim(nome)) {
                 gols += sc.nextInt();
                 assistencias += sc.nextInt();
