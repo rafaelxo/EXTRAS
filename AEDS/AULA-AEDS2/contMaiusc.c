@@ -9,10 +9,10 @@ int contMaiusc(char str[]) {
 }
 
 int main() {
-    char str[100];
-    scanf(" %[^\n]", str);
+    char str[100]; scanf(" %[^\n]", str);
     while (!(str[0] == 'F' && str[1] == 'I' && str[2] == 'M' && str[3] == '\0')) {
         printf("%d\n", contMaiusc(str));
         scanf(" %[^\n]", str);
     }
+    return 0;
 }
