@@ -1,4 +1,9 @@
 #include <stdio.h>
+#include <stdbool.h>
+
+bool isFim (char str[]) {
+    return (str[0] == 'F' && str[1] == 'I' && str[2] == 'M' && str[3] == '\0');
+}
 
 int contMaiusc(char str[]) {
     int quant = 0;
@@ -10,7 +15,7 @@ int contMaiusc(char str[]) {
 
 int main() {
     char str[100]; scanf(" %[^\n]", str);
-    while (!(str[0] == 'F' && str[1] == 'I' && str[2] == 'M' && str[3] == '\0')) {
+    while (!isFim(str)) {
         printf("%d\n", contMaiusc(str));
         scanf(" %[^\n]", str);
     }
