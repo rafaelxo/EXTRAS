@@ -10,8 +10,8 @@ public class tenis {
             if (c == 'V') vit++;
         }
         if (vit >= 5) System.out.println("1");
-        else if (vit >= 3 && vit <= 4) System.out.println("2");
-        else if (vit >= 1 && vit <= 6) System.out.println("3");
+        else if (vit >= 3) System.out.println("2");
+        else if (vit >= 1) System.out.println("3");
         else System.out.println("-1");
     }
 }
