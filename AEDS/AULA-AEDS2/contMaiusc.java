@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class contMaiusc {
     public static Scanner sc = new Scanner (System.in);
     public static boolean isFim(String str) {

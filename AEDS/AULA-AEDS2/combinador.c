@@ -7,11 +7,12 @@ int length (char str[]) {
 }
 
 void combinacao (char str1[], char str2[]) {
-    int maior = length(str1) > length(str2) ? length(str1) : length(str2);
+    int len1 = length(str1), len2 = length(str2);
+    int maior = len1 > len2 ? len1 : len2;
     int i = 0;
     while (i < maior) {
-        if (i < length(str1)) printf("%c", str1[i]);
-        if (i < length(str2)) printf("%c", str2[i]);
+        if (i < len1) printf("%c", str1[i]);
+        if (i < len2) printf("%c", str2[i]);
         i++;
     }
 }
