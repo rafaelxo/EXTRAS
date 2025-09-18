@@ -2,12 +2,13 @@
 
 int main () {
     int n, h;
-    scanf("%d%d", &n, &h);
-    int brinq[n];
-    int cont = 0;
-    for (int i = 0; i < n; i++) scanf("%d", &brinq[i]);
-    for (int i = 0; i < n; i++) {
-        if (h >= brinq[i]) cont++;
+    while (scanf("%d%d", &n, &h) != EOF) {
+        int quant = 0;
+        for (int i = 0; i < n; i++) {
+            int alt; scanf("%d", &alt);
+            if (h >= alt) quant++;
+        }
+        printf("%d\n", quant);
     }
-    printf("%d\n", cont);
+    return 0;
 }

@@ -17,4 +17,5 @@ int validacao (char str[]) {
 int main () {
     char placa[8];
     while (scanf("%s", placa) != EOF) printf("%d\n", validacao(placa));
+    return 0;
 }

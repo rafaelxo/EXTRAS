@@ -14,4 +14,5 @@ int main () {
         if (j == B) printf("S\n");
         else printf("N\n");
     }
+    return 0;
 }

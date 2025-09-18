@@ -28,4 +28,5 @@ int main () {
         else printf("T\n");
         scanf("%d", &n);
     }
+    return 0;
 }
