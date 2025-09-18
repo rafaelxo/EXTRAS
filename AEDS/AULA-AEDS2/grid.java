@@ -2,7 +2,6 @@ import java.util.*;
 
 public class grid {
     public static Scanner sc = new Scanner (System.in);
-
     public static int insercao (int[] vet, int n) {
         int mov = 0;
         for (int i = 1; i < n; i++) {
@@ -18,14 +17,12 @@ public class grid {
         }
         return mov;
     }
-
     public static int ultrapassagens (int[] largada, int[] chegada, int n) {
         int larg = insercao(largada, n);
         int cheg = insercao(chegada, n);
         if (larg > cheg) return larg - cheg;
         else return cheg - larg;
     }
-
     public static void main (String[] args) {
         while (sc.hasNext()) {
             int n = sc.nextInt();
