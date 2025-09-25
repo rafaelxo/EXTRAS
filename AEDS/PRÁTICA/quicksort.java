@@ -11,12 +11,6 @@ public class quicksort {
         for (int i = 0; i < arr.length; i++) arr[i] = ger.nextInt(limite + 1);
     }
 
-    public static void imprimirArray(String titulo, int[] arr) {
-        System.out.print(titulo + "\n[ ");
-        for (int i = 0; i < arr.length; i++) System.out.print(arr[i] + " ");
-        System.out.println("]");
-    }
-
     public static void swap (int[] array, int i, int j) {
         int tmp = array[i];
         array[i] = array[j];
@@ -101,10 +95,12 @@ public class quicksort {
         //System.out.println("QUICKSORT COM PIVO NO ULTIMO ELEMENTO:");
         //System.out.println("QUICKSORT COM PIVO ALEATORIO:");
         //System.out.println("QUICKSORT COM PIVO DE MEDIANA DE TRES:");
+        System.out.println();
 
         gerarArray(array, 1000);
-        imprimirArray("Array com 1000 inteiros desordenado:", array);
-
+        System.out.println("Array com 1000 inteiros desordenado:");
+        System.out.println("[ X X X X ]");
+        System.out.println();
         inicio = tempo();
 
         QuickSortFirstPivot(array, 0, array.length - 1);
@@ -114,8 +110,9 @@ public class quicksort {
 
         fim = tempo();
 
-        imprimirArray("Array com 1000 inteiros ordenado:", array);
-
+        System.out.println("Array com 1000 inteiros ordenado:");
+        System.out.println("[ A A A A ]");
+        System.out.println();
         System.out.println("Tempo para ordenar: " + (fim - inicio) + " ms");
     }
 }
