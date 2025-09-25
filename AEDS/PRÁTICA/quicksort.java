@@ -90,17 +90,17 @@ public class quicksort {
 
     public static void main (String[] args) {
         int[] cem = new int[100];
-        int[] mil = new int[1000];
-        int[] dmil = new int[10000];
+        //int[] mil = new int[1000];
+        //int[] dmil = new int[10000];
 
         gerarArray(cem, 100);
         imprimirArray("Array com 100 inteiros desordenado:", cem);
 
-        /*gerarArray(mil, 1000);
-        imprimirArray("Array com 1000 inteiros desordenado:", mil);
+        //gerarArray(mil, 1000);
+        //imprimirArray("Array com 1000 inteiros desordenado:", mil);
 
-        gerarArray(dmil, 10000);
-        imprimirArray("Array com 10000 inteiros desordenado:", dmil);*/
+        //gerarArray(dmil, 10000);
+        //imprimirArray("Array com 10000 inteiros desordenado:", dmil);
 
         System.out.println("QUICKSORT COM PIVO NO PRIMEIRO ELEMENTO:");
 
