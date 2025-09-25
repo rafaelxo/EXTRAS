@@ -93,60 +93,30 @@ public class quicksort {
         int[] cem = new int[100];
         int[] mil = new int[1000];
 
-        System.out.println("QUICKSORT COM PIVO NO PRIMEIRO ELEMENTO:");
-
         gerarArray(dez, 10); gerarArray(cem, 100); gerarArray(mil, 1000);
 
         imprimirArray("Array com 10 inteiros desordenado:", dez);
         imprimirArray("Array com 100 inteiros desordenado:", cem);
         imprimirArray("Array com 1000 inteiros desordenado:", mil);
 
+        System.out.println("QUICKSORT COM PIVO NO PRIMEIRO ELEMENTO:");
+
         QuickSortFirstPivot(dez, 0, dez.length - 1); QuickSortFirstPivot(cem, 0, cem.length - 1); QuickSortFirstPivot(mil, 0, mil.length - 1);
+
+        /* System.out.println("QUICKSORT COM PIVO NO ULTIMO ELEMENTO:");
+
+        QuickSortLastPivot(dez, 0, dez.length - 1); QuickSortLastPivot(cem, 0, cem.length - 1); QuickSortLastPivot(mil, 0, mil.length - 1);
+
+        /* System.out.println("QUICKSORT COM PIVO ALEATORIO:");
+
+        QuickSortRandomPivot(dez, 0, dez.length - 1); QuickSortRandomPivot(cem, 0, cem.length - 1); QuickSortRandomPivot(mil, 0, mil.length - 1);
+
+        /* System.out.println("QUICKSORT COM PIVO DE MEDIANA DE TRES:");
+
+        QuickSortMedianOfThree(dez, 0, dez.length - 1); QuickSortMedianOfThree(cem, 0, cem.length - 1); QuickSortMedianOfThree(mil, 0, mil.length - 1); */
 
         imprimirArray("Array com 10 inteiros ordenado:", dez);
         imprimirArray("Array com 100 inteiros ordenado:", cem);
         imprimirArray("Array com 1000 inteiros ordenado:", mil);
-
-        /* System.out.println("QUICKSORT COM PIVO NO ULTIMO ELEMENTO:");
-
-        gerarArray(dez, 10); gerarArray(cem, 100); gerarArray(mil, 1000);
-
-        imprimirArray("Array com 10 inteiros desordenado:", dez);
-        imprimirArray("Array com 100 inteiros desordenado:", cem);
-        imprimirArray("Array com 1000 inteiros desordenado:", mil);
-
-        QuickSortLastPivot(dez, 0, dez.length - 1); QuickSortLastPivot(cem, 0, cem.length - 1); QuickSortLastPivot(mil, 0, mil.length - 1);
-
-        imprimirArray("Array com 10 inteiros ordenado:", dez);
-        imprimirArray("Array com 100 inteiros ordenado:", cem);
-        imprimirArray("Array com 1000 inteiros ordenado:", mil); */
-
-        /* System.out.println("QUICKSORT COM PIVO ALEATORIO:");
-
-        gerarArray(dez, 10); gerarArray(cem, 100); gerarArray(mil, 1000);
-
-        imprimirArray("Array com 10 inteiros desordenado:", dez);
-        imprimirArray("Array com 100 inteiros desordenado:", cem);
-        imprimirArray("Array com 1000 inteiros desordenado:", mil);
-
-        QuickSortRandomPivot(dez, 0, dez.length - 1); QuickSortRandomPivot(cem, 0, cem.length - 1); QuickSortRandomPivot(mil, 0, mil.length - 1);
-
-        imprimirArray("Array com 10 inteiros ordenado:", dez);
-        imprimirArray("Array com 100 inteiros ordenado:", cem);
-        imprimirArray("Array com 1000 inteiros ordenado:", mil); */
-
-        /* System.out.println("QUICKSORT COM PIVO DE MEDIANA DE TRES:");
-
-        gerarArray(dez, 10); gerarArray(cem, 100); gerarArray(mil, 1000);
-
-        imprimirArray("Array com 10 inteiros desordenado:", dez);
-        imprimirArray("Array com 100 inteiros desordenado:", cem);
-        imprimirArray("Array com 1000 inteiros desordenado:", mil);
-
-        QuickSortMedianOfThree(dez, 0, dez.length - 1); QuickSortMedianOfThree(cem, 0, cem.length - 1); QuickSortMedianOfThree(mil, 0, mil.length - 1);
-
-        imprimirArray("Array com 10 inteiros ordenado:", dez);
-        imprimirArray("Array com 100 inteiros ordenado:", cem);
-        imprimirArray("Array com 1000 inteiros ordenado:", mil); */
     }
 }
