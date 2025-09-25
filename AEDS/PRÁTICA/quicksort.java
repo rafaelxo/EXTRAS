@@ -93,15 +93,20 @@ public class quicksort {
         int[] mil = new int[1000];
         int[] dmil = new int[10000];
 
-        gerarArray(cem, 100); gerarArray(mil, 1000); gerarArray(dmil, 10000);
-
+        gerarArray(cem, 100);
         imprimirArray("Array com 100 inteiros desordenado:", cem);
+
+        /*gerarArray(mil, 1000);
         imprimirArray("Array com 1000 inteiros desordenado:", mil);
-        imprimirArray("Array com 10000 inteiros desordenado:", dmil);
+
+        gerarArray(dmil, 10000);
+        imprimirArray("Array com 10000 inteiros desordenado:", dmil);*/
 
         System.out.println("QUICKSORT COM PIVO NO PRIMEIRO ELEMENTO:");
 
-        QuickSortFirstPivot(cem, 0, cem.length - 1); QuickSortFirstPivot(mil, 0, mil.length - 1); QuickSortFirstPivot(dmil, 0, dmil.length - 1);
+        QuickSortFirstPivot(cem, 0, cem.length - 1);
+        //QuickSortFirstPivot(mil, 0, mil.length - 1);
+        //QuickSortFirstPivot(dmil, 0, dmil.length - 1);
 
         /* System.out.println("QUICKSORT COM PIVO NO ULTIMO ELEMENTO:");
 
@@ -116,7 +121,7 @@ public class quicksort {
         QuickSortMedianOfThree(cem, 0, cem.length - 1); QuickSortMedianOfThree(mil, 0, mil.length - 1); QuickSortMedianOfThree(dmil, 0, dmil.length - 1); */
 
         imprimirArray("Array com 100 inteiros ordenado:", cem);
-        imprimirArray("Array com 1000 inteiros ordenado:", mil);
-        imprimirArray("Array com 10000 inteiros ordenado:", dmil);
+        //imprimirArray("Array com 1000 inteiros ordenado:", mil);
+        //imprimirArray("Array com 10000 inteiros ordenado:", dmil);
     }
 }
