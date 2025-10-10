@@ -3,7 +3,7 @@
 
 typedef struct CelulaDupla {
     int elemento;
-    CelulaDupla *ant, *prox;
+    struct CelulaDupla *ant, *prox;
 } CelulaDupla;
 
 CelulaDupla *newCelula (int x) {
@@ -28,7 +28,6 @@ void inserirInicio (int x) {
     primeiro->prox = tmp;
     if (primeiro == ultimo) ultimo = tmp;
     else tmp->prox->ant = tmp;
-    tmp = NULL;
 }
 
 void inserirFim (int x) {
@@ -49,7 +48,6 @@ void inserirPos (int x, int pos) {
         tmp->prox = i->prox;
         i->prox->ant = tmp;
         i->prox = tmp;
-        tmp = i = NULL;
     }
 }
 
@@ -62,7 +60,6 @@ int removerInicio () {
     else ultimo = primeiro;
     tmp->prox = tmp->ant = NULL;
     free(tmp);
-    tmp = NULL;
     return resp;
 }
 
@@ -88,12 +85,11 @@ int removerPos (int pos) {
         i->prox->ant = i->ant;
         i->prox = i->ant = NULL;
         free(i);
-        i = NULL;
         return resp;
     }
 }
 
-int inserirOrd (int x) {
+void inserirOrd (int x) {
     if (primeiro == ultimo || x >= ultimo->elemento) inserirFim(x);
     else if (x <= primeiro->prox->elemento) inserirInicio(x);
     else {
@@ -102,22 +98,19 @@ int inserirOrd (int x) {
         CelulaDupla *tmp = newCelula(x);
         tmp->ant = i;
         tmp->prox = i->prox;
-        i->prox->ant = tmp;
+        if (i->prox != NULL) i->prox->ant = tmp;
         i->prox = tmp;
-        tmp = i = NULL;
     }
 }
 
 int tamanho () {
     int tamanho = 0;
-    CelulaDupla *i;
-    for (i = primeiro; i != NULL; i = i->prox, tamanho++);
+    for (CelulaDupla *i = primeiro->prox; i != NULL; i = i->prox, tamanho++);
     return tamanho;
 }
 
 void mostrar () {
-    CelulaDupla *i;
     printf("[ ");
-    for (i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
+    for (CelulaDupla *i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
     printf("]\n");
 }

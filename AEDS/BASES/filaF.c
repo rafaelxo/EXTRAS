@@ -3,8 +3,8 @@
 
 typedef struct Celula {
     int elemento;
-    Celula *prox;
-} Celulua;
+    struct Celula *prox;
+} Celula;
 
 Celula *newCelula (int x) {
     Celula *nova = (Celula *) malloc (sizeof(Celula));
@@ -54,6 +54,7 @@ void inverter () {
 }
 
 int maior () {
+    if (primeiro == ultimo) exit(1);
     int maior = primeiro->prox->elemento;
     for (Celula *i = primeiro->prox->prox; i != NULL; i = i->prox) {
         if (i->elemento > maior) maior = i->elemento;

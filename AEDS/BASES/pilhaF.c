@@ -3,7 +3,7 @@
 
 typedef struct Celula {
     int elemento;
-    Celula* prox;
+    struct Celula *prox;
 } Celula;
 
 Celula *newCelula (int x) {
@@ -23,8 +23,6 @@ void inserir (int x) {
     Celula *tmp = newCelula(x);
     tmp->prox = topo;
     topo = tmp;
-    free(tmp);
-    tmp = NULL;
 }
 
 int remover () {

@@ -3,8 +3,8 @@
 
 typedef struct Celula {
     int elemento;
-    Celula *prox;
-} Celulua;
+    struct Celula *prox;
+} Celula;
 
 Celula *newCelula(int x) {
     Celula *nova = (Celula *)malloc(sizeof(Celula));
@@ -26,8 +26,6 @@ void inserirInicio (int x) {
     tmp->prox = primeiro->prox;
     primeiro->prox = tmp;
     if (primeiro == ultimo) ultimo = tmp;
-    free(tmp);
-    tmp = NULL;
 }
 
 void inserirFim (int x) {
@@ -45,8 +43,6 @@ void inserirPos (int x, int pos) {
         Celula *tmp = newCelula(x);
         tmp->prox = i->prox;
         i->prox = tmp;
-        free(tmp); free(i);
-        tmp = i = NULL;
     }
 }
 
@@ -64,12 +60,12 @@ int removerInicio () {
 
 int removerFim () {
     if (primeiro == ultimo) exit(1);
-    Celula *i;
-    for (i = primeiro; i->prox != ultimo; i = i->prox);
+    Celula *i = primeiro;
+    while (i->prox != ultimo) i = i->prox;
     int resp = ultimo->elemento;
+    free(ultimo);
     ultimo = i;
-    free(ultimo->prox); free (i);
-    i = ultimo->prox = NULL;
+    ultimo->prox = NULL;
     return resp;
 }
 
@@ -84,13 +80,12 @@ int removerPos (int pos) {
         int resp = tmp->elemento;
         i->prox = tmp->prox;
         tmp->prox = NULL;
-        free(tmp); free(i);
-        tmp = i = NULL;
+        free(tmp);
         return resp;
     }
 }
 
-int inserirOrd (int x) {
+void inserirOrd (int x) {
     if (primeiro == ultimo || x >= ultimo->elemento) inserirFim(x);
     else if (x <= primeiro->prox->elemento) inserirInicio(x);
     else {
@@ -99,21 +94,18 @@ int inserirOrd (int x) {
         Celula *tmp = newCelula(x);
         tmp->prox = i->prox;
         i->prox = tmp;
-        free(tmp); free(i);
-        tmp = i = NULL;
+        if (tmp->prox == NULL) ultimo = tmp;
     }
 }
 
-int tamanho() {
+int tamanho () {
     int tamanho = 0;
-    Celula *i;
-    for (i = primeiro; i != NULL; i = i->prox, tamanho++);
+    for (Celula *i = primeiro; i != NULL; i = i->prox, tamanho++);
     return tamanho;
 }
 
 void mostrar() {
-    Celula *i;
     printf("[ ");
-    for (i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
+    for (Celula *i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
     printf("]\n");
 }
