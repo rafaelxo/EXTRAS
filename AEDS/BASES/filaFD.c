@@ -45,9 +45,10 @@ void inserirPos (int x, int pos) {
         CelulaDupla *i = primeiro;
         for (int j = 0; j < pos; j++, i = i->prox) ;
         CelulaDupla *tmp = newCelula(x);
+        tmp->ant = i;
         tmp->prox = i->prox;
+        i->prox->ant = tmp;
         i->prox = tmp;
-        free(tmp); free(i);
         tmp = i = NULL;
     }
 }
@@ -80,14 +81,14 @@ int removerPos (int pos) {
     if (pos == 0) return removerInicio();
     else if (pos == tamanho() - 1) return removerFim();
     else {
-        CelulaDupla *i = primeiro;
+        CelulaDupla *i = primeiro->prox;
         for (int j = 0; j < pos; j++, i = i->prox) ;
-        CelulaDupla *tmp = i->prox;
-        int resp = tmp->elemento;
-        i->prox = tmp->prox;
-        tmp->prox = NULL;
-        free(tmp); free(i);
-        tmp = i = NULL;
+        int resp = i->elemento;
+        i->ant->prox = i->prox;
+        i->prox->ant = i->ant;
+        i->prox = i->ant = NULL;
+        free(i);
+        i = NULL;
         return resp;
     }
 }
@@ -99,9 +100,10 @@ int inserirOrd (int x) {
         CelulaDupla *i = primeiro;
         while (i->prox != NULL && i->prox->elemento < x) i = i->prox;
         CelulaDupla *tmp = newCelula(x);
+        tmp->ant = i;
         tmp->prox = i->prox;
+        i->prox->ant = tmp;
         i->prox = tmp;
-        free(tmp); free(i);
         tmp = i = NULL;
     }
 }
@@ -110,8 +112,6 @@ int tamanho () {
     int tamanho = 0;
     CelulaDupla *i;
     for (i = primeiro; i != NULL; i = i->prox, tamanho++);
-    free(i);
-    i = NULL;
     return tamanho;
 }
 
@@ -120,6 +120,4 @@ void mostrar () {
     printf("[ ");
     for (i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
     printf("]\n");
-    free(i);
-    i = NULL;
 }
