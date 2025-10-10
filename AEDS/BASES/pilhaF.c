@@ -7,10 +7,10 @@ typedef struct Celula {
 } Celula;
 
 Celula *newCelula (int x) {
-    Celula *tmp = (Celula *) malloc (sizeof(Celula));
-    tmp->elemento = x;
-    tmp->prox = NULL;
-    return tmp;
+    Celula *x = (Celula *) malloc (sizeof(Celula));
+    x->elemento = x;
+    x->prox = NULL;
+    return x;
 }
 
 typedef struct Pilha {
@@ -18,9 +18,9 @@ typedef struct Pilha {
 } Pilha;
 
 Pilha *newPilha () {
-    Pilha *tmp = (Pilha *) malloc (sizeof(Pilha));
-    tmp->topo = NULL;
-    return tmp;
+    Pilha *x = (Pilha *) malloc (sizeof(Pilha));
+    x->topo = NULL;
+    return x;
 }
 
 void inserir (int x) {
