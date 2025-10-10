@@ -13,29 +13,25 @@ Celula *newCelula (int x) {
     return x;
 }
 
-typedef struct Pilha {
-    Celula* topo;
-} Pilha;
+Celula *topo;
 
-Pilha *newPilha () {
-    Pilha *x = (Pilha *) malloc (sizeof(Pilha));
-    x->topo = NULL;
-    return x;
+void Pilha () {
+    topo = NULL;
 }
 
 void inserir (int x) {
-    Celula *nova = newCelula(x);
-    nova->prox = pilha->topo;
-    pilha->topo = nova;
-    free(nova);
-    nova = NULL;
+    Celula *tmp = newCelula(x);
+    tmp->prox = topo;
+    topo = tmp;
+    free(tmp);
+    tmp = NULL;
 }
 
 int remover () {
-    if (pilha-> topo == NULL) exit(1);
-    Celula *tmp = pilha->topo;
-    int resp = tmp->elemento;
-    pilha->topo = tmp->prox;
+    if (topo == NULL) exit(1);
+    int resp = topo->elemento;
+    Celula *tmp = topo;
+    topo = topo->prox;
     tmp->prox = NULL;
     free(tmp);
     tmp = NULL;
@@ -43,8 +39,7 @@ int remover () {
 }
 
 void mostrar () {
-    Celula *i;
     printf("[ ");
-    for (i = pilha->topo; i != NULL; i = i->prox) printf("%d ", i->elemento);
+    for (Celula *i = topo; i != NULL; i = i->prox) printf("%d ", i->elemento);
     printf("]\n");
 }

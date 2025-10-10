@@ -13,31 +13,27 @@ Celula *newCelula (int x) {
     return x;
 }
 
-typedef struct Fila {
-    Celula *primeiro;
-    Celula *ultimo;
-} Fila;
+Celula *primeiro;
+Celula *ultimo;
 
-Fila *newFila () {
-    Fila *x = (Fila *) malloc (sizeof(Fila));
-    x->primeiro = NULL;
-    x->ultimo = NULL;
-    return x;
+void Fila() {
+    primeiro = newCelula(-1);
+    ultimo = primeiro;
 }
 
 void inserir (int x) {
-    Celula *nova = newCelula(x);
-    ultimo->prox = nova;
-    ultimo = nova;
+    ultimo->prox = newCelula(x);
+    ultimo = ultimo->prox;
 }
 
 int remover () {
-    if (Fila->primeiro == Fila->ultimo) exit(1);
-    Celula *tmp = Fila->primeiro->prox;
+    if (primeiro == ultimo) exit(1);
+    Celula *tmp = primeiro->prox;
     int resp = tmp->elemento;
-    Fila->primeiro->prox = tmp->prox;
+    primeiro->prox = tmp->prox;
     tmp->prox = NULL;
     free(tmp);
     tmp = NULL;
+    if (primeiro->prox == NULL) ultimo = primeiro;
     return resp;
 }
