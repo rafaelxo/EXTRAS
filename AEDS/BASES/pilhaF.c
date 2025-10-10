@@ -38,6 +38,18 @@ int remover () {
     return resp;
 }
 
+int tamanho () {
+    int tamanho = 0;
+    for (Celula *i = topo; i != NULL; i = i->prox, tamanho++);
+    return tamanho;
+}
+
+int soma () {
+    int soma = 0;
+    for (Celula *i = topo; i != NULL; i = i->prox) soma += i->elemento;
+    return soma;
+}
+
 void mostrar () {
     printf("[ ");
     for (Celula *i = topo; i != NULL; i = i->prox) printf("%d ", i->elemento);
