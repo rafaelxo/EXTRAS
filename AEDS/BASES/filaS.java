@@ -1,4 +1,4 @@
-public class fila {
+public class filaS {
     public class Fila {
         private int[] array;
         private int primeiro, ultimo;

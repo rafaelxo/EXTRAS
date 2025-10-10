@@ -1,4 +1,4 @@
-public class lista {
+public class listaS {
     public class Lista {
         private int[] array;
         private int n;

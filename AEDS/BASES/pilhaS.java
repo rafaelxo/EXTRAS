@@ -1,4 +1,4 @@
-public class pilha {
+public class pilhaS {
     public class Pilha {
         private int[] array;
         private int n;
