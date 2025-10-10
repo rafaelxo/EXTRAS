@@ -3,14 +3,14 @@
 
 typedef struct CelulaDupla {
     int elemento;
-    CelulaDupla *ant;
+    CelulaDupla *ant, *prox;
 } CelulaDupla;
 
-CelulaDupla *newCelula(int x) {
-    CelulaDupla *x = (CelulaDupla *)malloc(sizeof(CelulaDupla));
-    x->elemento = x;
-    x->ant = x->prox = NULL;
-    return x;
+CelulaDupla *newCelula (int x) {
+    CelulaDupla *nova = (CelulaDupla *)malloc(sizeof(CelulaDupla));
+    nova->elemento = x;
+    nova->ant = nova->prox = NULL;
+    return nova;
 }
 
 CelulaDupla *primeiro;
@@ -21,17 +21,19 @@ void Lista() {
     ultimo = primeiro;
 }
 
-void inserirInicio(int x) {
+void inserirInicio (int x) {
     CelulaDupla *tmp = newCelula(x);
+    tmp->ant = primeiro;
     tmp->prox = primeiro->prox;
     primeiro->prox = tmp;
     if (primeiro == ultimo) ultimo = tmp;
-    free(tmp);
+    else tmp->prox->ant = tmp;
     tmp = NULL;
 }
 
-void inserirFim(int x) {
+void inserirFim (int x) {
     ultimo->prox = newCelula(x);
+    ultimo->prox->ant = ultimo;
     ultimo = ultimo->prox;
 }
 
@@ -55,21 +57,21 @@ int removerInicio () {
     CelulaDupla *tmp = primeiro->prox;
     int resp = tmp->elemento;
     primeiro->prox = tmp->prox;
-    tmp->prox = NULL;
+    if (tmp->prox != NULL) tmp->prox->ant = primeiro;
+    else ultimo = primeiro;
+    tmp->prox = tmp->ant = NULL;
     free(tmp);
     tmp = NULL;
-    if (primeiro->prox == NULL) ultimo = primeiro;
     return resp;
 }
 
 int removerFim () {
     if (primeiro == ultimo) exit(1);
-    CelulaDupla *i;
-    for (i = primeiro; i->prox != ultimo; i = i->prox) ;
     int resp = ultimo->elemento;
-    ultimo = i;
-    free(ultimo->prox); free(i);
-    i = ultimo->prox = NULL;
+    ultimo = ultimo->ant;
+    ultimo->prox->ant = NULL;
+    free(ultimo->prox);
+    ultimo->prox = NULL;
     return resp;
 }
 
