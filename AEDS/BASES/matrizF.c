@@ -19,6 +19,7 @@ typedef struct Matriz {
 } Matriz;
 
 Matriz *newMatriz (int l, int c) {
+    if (l <= 0 || c <= 0) exit(1);
     Matriz *m = (Matriz *)malloc(sizeof(Matriz));
     m->linhas = l;
     m->colunas = c;
@@ -33,19 +34,23 @@ Matriz *newMatriz (int l, int c) {
     Celula *base = m->inicio;
     for (int i = 1; i < l; i++) {
         Celula *prevLin = base;
-        Celula *prox = newCelula(0);
-        prox->cima = prevLin;
-        prevLin->baixo = prox;
-        atual = prox;
+        Celula *primLin = newCelula(0);
+        prevLin->baixo = primLin;
+        primLin->cima = prevLin;
+        atual = primLin;
         Celula *aux = prevLin->dir;
         for (int j = 1; j < c; j++) {
             Celula *nova = newCelula(0);
             atual->dir = nova;
             nova->esq = atual;
-            nova->cima = aux;
-            aux->baixo = nova;
+            if (aux != NULL) {
+                nova->cima = aux;
+                aux->baixo = nova;
+                aux = aux->dir;
+            }
             atual = nova;
-            aux = aux->dir;
         }
+        base = base->baixo;
     }
+    return m;
 }
