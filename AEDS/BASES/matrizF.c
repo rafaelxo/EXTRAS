@@ -3,13 +3,13 @@
 
 typedef struct Celula {
     int elemento;
-    struct Celula *esq, *dir, *cima, *baixo;
+    struct Celula *esq, *dir, *sup, *inf;
 } Celula;
 
 Celula *newCelula(int x) {
     Celula *nova = (Celula *)malloc(sizeof(Celula));
     nova->elemento = x;
-    nova->esq = nova->dir = nova->cima = nova->baixo = NULL;
+    nova->esq = nova->dir = nova->sup = nova->inf = NULL;
     return nova;
 }
 
@@ -35,8 +35,8 @@ Matriz *newMatriz (int l, int c) {
     for (int i = 1; i < l; i++) {
         Celula *prevLin = base;
         Celula *primLin = newCelula(0);
-        prevLin->baixo = primLin;
-        primLin->cima = prevLin;
+        prevLin->inf = primLin;
+        primLin->sup = prevLin;
         atual = primLin;
         Celula *aux = prevLin->dir;
         for (int j = 1; j < c; j++) {
@@ -44,13 +44,13 @@ Matriz *newMatriz (int l, int c) {
             atual->dir = nova;
             nova->esq = atual;
             if (aux != NULL) {
-                nova->cima = aux;
-                aux->baixo = nova;
+                nova->sup = aux;
+                aux->inf = nova;
                 aux = aux->dir;
             }
             atual = nova;
         }
-        base = base->baixo;
+        base = base->inf;
     }
     return m;
 }
@@ -65,6 +65,6 @@ void mostrar (Matriz *m) {
             atual = atual->dir;
         }
         printf("]\n");
-        tmp = tmp->baixo;
+        tmp = tmp->inf;
     }
 }
