@@ -54,3 +54,17 @@ Matriz *newMatriz (int l, int c) {
     }
     return m;
 }
+
+void mostrar (Matriz *m) {
+    Celula *tmp = m->inicio;
+    for (int i = 0; i < m->linhas && tmp != NULL; i++) {
+        printf("[ ");
+        Celula *atual = tmp;
+        for (int j = 0; j < m->colunas && atual != NULL; j++) {
+            printf("%d ", atual->elemento);
+            atual = atual->dir;
+        }
+        printf("]\n");
+        tmp = tmp->baixo;
+    }
+}
