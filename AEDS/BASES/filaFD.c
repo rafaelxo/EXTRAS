@@ -16,7 +16,7 @@ CelulaDupla *newCelula (int x) {
 CelulaDupla *primeiro;
 CelulaDupla *ultimo;
 
-void Lista() {
+void Lista () {
     primeiro = newCelula(-1);
     ultimo = primeiro;
 }
@@ -42,7 +42,7 @@ void inserirPos (int x, int pos) {
     else if (pos == tamanho()) inserirFim(x);
     else {
         CelulaDupla *i = primeiro;
-        for (int j = 0; j < pos; j++, i = i->prox) ;
+        for (int j = 0; j < pos; i = i->prox) j++;
         CelulaDupla *tmp = newCelula(x);
         tmp->ant = i;
         tmp->prox = i->prox;
@@ -79,7 +79,7 @@ int removerPos (int pos) {
     else if (pos == tamanho() - 1) return removerFim();
     else {
         CelulaDupla *i = primeiro->prox;
-        for (int j = 0; j < pos; j++, i = i->prox) ;
+        for (int j = 0; j <= pos; i = i->prox) j++;
         int resp = i->elemento;
         i->ant->prox = i->prox;
         i->prox->ant = i->ant;
@@ -101,6 +101,21 @@ void inserirOrd (int x) {
         if (i->prox != NULL) i->prox->ant = tmp;
         i->prox = tmp;
     }
+}
+
+void inverter () {
+    if (primeiro == ultimo) return;
+    CelulaDupla *atual = primeiro->prox;
+    CelulaDupla *tmp = NULL;
+    while (atual != NULL) {
+        tmp = atual->ant;
+        atual->prox = atual->ant;
+        atual->ant = tmp;
+        atual = tmp;
+    }
+    CelulaDupla *aux = primeiro->prox;
+    primeiro->prox = ultimo;
+    ultimo = aux;
 }
 
 int tamanho () {

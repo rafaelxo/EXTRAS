@@ -39,7 +39,7 @@ void inserirPos (int x, int pos) {
     else if (pos == tamanho()) inserirFim(x);
     else {
         Celula *i = primeiro;
-        for (int j = 0; j < pos; j++, i = i->prox);
+        for (int j = 0; j < pos; i = i->prox) j++;
         Celula *tmp = newCelula(x);
         tmp->prox = i->prox;
         i->prox = tmp;
@@ -75,7 +75,7 @@ int removerPos (int pos) {
     else if (pos == tamanho() - 1) return removerFim();
     else {
         Celula *i = primeiro;
-        for (int j = 0; j < pos; j++, i = i->prox);
+        for (int j = 0; j < pos; i = i->prox) j++;
         Celula *tmp = i->prox;
         int resp = tmp->elemento;
         i->prox = tmp->prox;
@@ -100,11 +100,11 @@ void inserirOrd (int x) {
 
 int tamanho () {
     int tamanho = 0;
-    for (Celula *i = primeiro; i != NULL; i = i->prox, tamanho++);
+    for (Celula *i = primeiro.prox; i != NULL; i = i->prox) tamanho++;
     return tamanho;
 }
 
-void mostrar() {
+void mostrar () {
     printf("[ ");
     for (Celula *i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
     printf("]\n");
