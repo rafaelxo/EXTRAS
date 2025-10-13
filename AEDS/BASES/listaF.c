@@ -7,7 +7,7 @@ typedef struct Celula {
 } Celula;
 
 Celula *newCelula(int x) {
-    Celula *nova = (Celula *)malloc(sizeof(Celula));
+    Celula *nova = (Celula*)malloc(sizeof(Celula));
     nova->elemento = x;
     nova->prox = NULL;
     return nova;
@@ -26,6 +26,8 @@ void inserirInicio (int x) {
     tmp->prox = primeiro->prox;
     primeiro->prox = tmp;
     if (primeiro == ultimo) ultimo = tmp;
+    free(tmp);
+    tmp = NULL;
 }
 
 void inserirFim (int x) {
@@ -43,6 +45,8 @@ void inserirPos (int x, int pos) {
         Celula *tmp = newCelula(x);
         tmp->prox = i->prox;
         i->prox = tmp;
+        free(i); free(tmp);
+        i = tmp = NULL;
     }
 }
 
@@ -66,6 +70,8 @@ int removerFim () {
     free(ultimo);
     ultimo = i;
     ultimo->prox = NULL;
+    free(i);
+    i = NULL;
     return resp;
 }
 
@@ -80,7 +86,8 @@ int removerPos (int pos) {
         int resp = tmp->elemento;
         i->prox = tmp->prox;
         tmp->prox = NULL;
-        free(tmp);
+        free(tmp); free(i);
+        i = tmp = NULL;
         return resp;
     }
 }
@@ -95,6 +102,8 @@ void inserirOrd (int x) {
         tmp->prox = i->prox;
         i->prox = tmp;
         if (tmp->prox == NULL) ultimo = tmp;
+        free(i); free(tmp);
+        i = tmp = NULL;
     }
 }
 

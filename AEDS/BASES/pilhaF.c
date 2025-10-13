@@ -7,7 +7,7 @@ typedef struct Celula {
 } Celula;
 
 Celula *newCelula (int x) {
-    Celula *nova = (Celula *) malloc (sizeof(Celula));
+    Celula *nova = (Celula*)malloc(sizeof(Celula));
     nova->elemento = x;
     nova->prox = NULL;
     return nova;
@@ -23,6 +23,8 @@ void inserir (int x) {
     Celula *tmp = newCelula(x);
     tmp->prox = topo;
     topo = tmp;
+    free(tmp);
+    tmp = NULL;
 }
 
 int remover () {

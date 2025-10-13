@@ -7,7 +7,7 @@ typedef struct Celula {
 } Celula;
 
 Celula *newCelula (int x) {
-    Celula *nova = (Celula *) malloc (sizeof(Celula));
+    Celula *nova = (Celula*)malloc(sizeof(Celula));
     nova->elemento = x;
     nova->prox = NULL;
     return nova;
