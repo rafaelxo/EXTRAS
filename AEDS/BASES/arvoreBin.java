@@ -40,7 +40,6 @@ public class arvoreBin {
             else if (x < i.elemento) inserirPai(x, i.esq, i);
             else if (x > i.elemento) inserirPai(x, i.dir, i);
             else throw new RuntimeException ("Erro!");
-            }
         }
         boolean pesquisar (int x) {
 
