@@ -83,6 +83,27 @@ public class arvoreBin {
         }
 
         public void remover (int x) {
+            raiz = remover(x, raiz);
+        }
+        private No remover (int x, No i) {
+            if (i == null) throw new RuntimeException ("Erro!");
+            else if (x < i.elemento) i.esq = remover(x, i.esq);
+            else if (x > i.elemento) i.dir = remover(x, i.dir);
+            else if (i.dir == null) i = i.esq;
+            else if (i.esq == null) i = i.dir;
+            else i.esq = maiorEsq(i, i.esq);
+            return i;
+        }
+
+        private No maiorEsq (No i, No j) {
+            if (j.dir == null) {
+                i.elemento = j.elemento;
+                j = j.esq;
+            }
+            else j.dir = maiorEsq(i, j.dir);
+            return j;
+        }
+        private No menorDir (No i, No j) {
 
         }
 
@@ -92,7 +113,6 @@ public class arvoreBin {
             for (No i = raiz; i != null; i = i.dir) j++;
             return (h > j) ? h : j;
         }
-
         public int getAlturaRec (No i) {
             if (i == null) return -1;
             else {
@@ -108,10 +128,24 @@ public class arvoreBin {
             for (No i = raiz; i != null; i = i.dir) soma += i.elemento;
             return soma;
         }
-
         public int somarRec (No i) {
             if (i == null) return 0;
             else return i.elemento + somarRec(i.esq) + somarRec(i.dir);
+        }
+
+        public boolean igual (Arvore a, Arvore b) {
+            return igual(a.raiz, b.raiz);
+        }
+        private boolean igual (No a, No b) {
+            boolean resp;
+            if (a == null && b == null) resp = true;
+            else if (a == null || b == null) resp = false;
+            else if (a.elemento != b.elemento) resp = false;
+            else {
+                resp = igual(a.esq, b.esq);
+                if (resp) resp = igual(a.dir, b.dir);
+            }
+            return resp;
         }
     }
 }
