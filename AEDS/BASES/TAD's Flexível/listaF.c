@@ -29,12 +29,10 @@ void inserirInicio (int x) {
     free(tmp);
     tmp = NULL;
 }
-
 void inserirFim (int x) {
     ultimo->prox = newCelula(x);
     ultimo = ultimo->prox;
 }
-
 void inserirPos (int x, int pos) {
     if (pos < 0 || pos > tamanho()) exit(1);
     if (pos == 0) inserirInicio(x);
@@ -61,7 +59,6 @@ int removerInicio () {
     if (primeiro->prox == NULL) ultimo = primeiro;
     return resp;
 }
-
 int removerFim () {
     if (primeiro == ultimo) exit(1);
     Celula *i = primeiro;
@@ -74,7 +71,6 @@ int removerFim () {
     i = NULL;
     return resp;
 }
-
 int removerPos (int pos) {
     if (primeiro == ultimo) exit(1);
     if (pos == 0) return removerInicio();

@@ -24,35 +24,38 @@ Matriz *newMatriz (int l, int c) {
     m->linhas = l;
     m->colunas = c;
     m->inicio = newCelula(0);
-    Celula *atual = m->inicio;
+    Celula lin = m->inicio, col = m->inicio;
     for (int j = 1; j < c; j++) {
-        Celula *col = newCelula(0);
-        atual->dir = col;
-        col->esq = atual;
-        atual = col;
+        col->dir = newCelula(0);
+        col->dir->esq = col;
+        col = col->dir;
     }
-    Celula *base = m->inicio;
     for (int i = 1; i < l; i++) {
-        Celula *prevLin = base;
-        Celula *primLin = newCelula(0);
-        prevLin->inf = primLin;
-        primLin->sup = prevLin;
-        atual = primLin;
-        Celula *aux = prevLin->dir;
+        lin->inf = newCelula(0);
+        lin->inf->sup = lin;
+        lin = lin->inf;
+        col = lin;
         for (int j = 1; j < c; j++) {
-            Celula *nova = newCelula(0);
-            atual->dir = nova;
-            nova->esq = atual;
-            if (aux != NULL) {
-                nova->sup = aux;
-                aux->inf = nova;
-                aux = aux->dir;
-            }
-            atual = nova;
+            col->dir = newCelula(0);
+            col->dir->esq = col;
+            col = col->dir;
+            col->sup = col->esq->sup->dir;
+            col->sup->inf = col;
         }
-        base = base->inf;
     }
     return m;
+}
+
+int somaDiaPrinc () {
+    if (m->linha != m->coluna || m->inicio == NULL) exit(1);
+    Celula *i = m->inicio;
+    int soma = 0; soma += i->elemento;
+    while (i->dir != NULL) {
+        i = i->dir->inf;
+        soma += i->elemento;
+    }
+    free(i); i = NULL;
+    return soma;
 }
 
 void mostrar (Matriz *m) {
