@@ -104,7 +104,12 @@ public class arvoreBin {
             return j;
         }
         private No menorDir (No i, No j) {
-
+            if (j.esq == null) {
+                i.elemento = j.elemento;
+                j =j.dir;
+            }
+            else j.esq = menorDir(i, j.esq);
+            return j;
         }
 
         public int getAltura () {
