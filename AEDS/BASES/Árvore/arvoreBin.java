@@ -127,6 +127,19 @@ public class arvoreBin {
             }
         }
 
+        public int getMaior () {
+            if (raiz == null) throw new RuntimeException ("Erro!");
+            No i;
+            for (i = raiz; i.dir != null; i = i.dir);
+            return i.elemento;
+        }
+        public int getMenor () {
+            if (raiz == null) throw new RuntimeException ("Erro!");
+            No i;
+            for (i = raiz; i.esq != null; i = i.esq);
+            return i.elemento;
+        }
+
         public int somar () {
             int soma = 0;
             for (No i = raiz; i != null; i = i.esq) soma += i.elemento;
