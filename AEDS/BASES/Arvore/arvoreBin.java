@@ -1,4 +1,3 @@
-package EXTRAS.AEDS.BASES.Arvore;
 public class arvoreBin {
     public class No {
         private int elemento;
