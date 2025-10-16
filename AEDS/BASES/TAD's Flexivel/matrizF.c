@@ -58,6 +58,28 @@ int somaDiaPrinc (Matriz *m) {
     return soma;
 }
 
+void circular (Matriz *m) {
+    Celula *ini = m->inicio;
+    Celula *fim;
+    for (fim = ini; fim->inf != NULL; fim = fim->inf);
+    while (ini->dir != NULL) {
+        fim->inf = ini;
+        ini->sup = fim;
+        ini = ini->dir;
+        fim = fim->dir;
+    }
+    ini = m->inicio;
+    for (fim = ini; fim->dir != NULL; fim = fim->dir);
+    while (ini->inf != NULL) {
+        fim->dir = ini;
+        ini->esq = fim;
+        ini = ini->inf;
+        fim = fim->inf;
+    }
+    fim->dir = ini;
+    ini->esq = fim;
+}
+
 void mostrar (Matriz *m) {
     Celula *tmp = m->inicio;
     for (int i = 0; i < m->linhas && tmp != NULL; i++) {
