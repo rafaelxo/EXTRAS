@@ -24,7 +24,7 @@ Matriz *newMatriz (int l, int c) {
     m->linhas = l;
     m->colunas = c;
     m->inicio = newCelula(0);
-    Celula lin = m->inicio, col = m->inicio;
+    Celula *lin = m->inicio, *col = m->inicio;
     for (int j = 1; j < c; j++) {
         col->dir = newCelula(0);
         col->dir->esq = col;
@@ -46,15 +46,15 @@ Matriz *newMatriz (int l, int c) {
     return m;
 }
 
-int somaDiaPrinc () {
-    if (m->linha != m->coluna || m->inicio == NULL) exit(1);
+int somaDiaPrinc (Matriz *m) {
+    if (m->linhas != m->colunas || m->inicio == NULL) exit(1);
     Celula *i = m->inicio;
     int soma = 0; soma += i->elemento;
-    while (i->dir != NULL) {
+    while (i->dir != NULL && i->inf != NULL) {
         i = i->dir->inf;
         soma += i->elemento;
     }
-    free(i); i = NULL;
+    i = NULL;
     return soma;
 }
 
