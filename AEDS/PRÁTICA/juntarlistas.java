@@ -26,7 +26,8 @@ public class juntarlistas {
             Celula tmp = new Celula(x);
             tmp.prox = this.primeiro.prox;
             this.primeiro.prox = tmp;
-            if (this.primeiro == this.ultimo) this.ultimo = tmp;
+            if (this.primeiro == this.ultimo)
+                this.ultimo = tmp;
             tmp = null;
         }
 
@@ -36,12 +37,16 @@ public class juntarlistas {
         }
 
         public void inserirPos(int x, int pos) {
-            if (pos < 0 || pos > tamanho()) throw new RuntimeException("Erro!");
-            else if (pos == 0) inserirInicio(x);
-            else if (pos == tamanho()) inserirFim(x);
+            if (pos < 0 || pos > tamanho())
+                throw new RuntimeException("Erro!");
+            else if (pos == 0)
+                inserirInicio(x);
+            else if (pos == tamanho())
+                inserirFim(x);
             else {
                 Celula i = this.primeiro;
-                for (int j = 0; j < pos - 1; i = i.prox) j++;
+                for (int j = 0; j < pos - 1; i = i.prox)
+                    j++;
                 Celula tmp = new Celula(x);
                 tmp.prox = i.prox;
                 i.prox = tmp;
@@ -50,7 +55,8 @@ public class juntarlistas {
         }
 
         public int removerInicio() {
-            if (this.primeiro == this.ultimo) throw new RuntimeException("Erro!");
+            if (this.primeiro == this.ultimo)
+                throw new RuntimeException("Erro!");
             Celula tmp = this.primeiro;
             this.primeiro = this.primeiro.prox;
             int elemento = this.primeiro.elemento;
@@ -59,9 +65,11 @@ public class juntarlistas {
         }
 
         public int removerFim() {
-            if (this.primeiro == this.ultimo) throw new RuntimeException("Erro!");
+            if (this.primeiro == this.ultimo)
+                throw new RuntimeException("Erro!");
             Celula i;
-            for (i = this.primeiro; i.prox != this.ultimo; i = i.prox);
+            for (i = this.primeiro; i.prox != this.ultimo; i = i.prox)
+                ;
             int elemento = this.ultimo.elemento;
             this.ultimo = i;
             i = this.ultimo.prox = null;
@@ -69,12 +77,16 @@ public class juntarlistas {
         }
 
         public int removerPos(int pos) {
-            if (this.primeiro == this.ultimo || pos < 0 || pos >= tamanho()) throw new RuntimeException("Erro!");
-            else if (pos == 0) return removerInicio();
-            else if (pos == tamanho() - 1) return removerFim();
+            if (this.primeiro == this.ultimo || pos < 0 || pos >= tamanho())
+                throw new RuntimeException("Erro!");
+            else if (pos == 0)
+                return removerInicio();
+            else if (pos == tamanho() - 1)
+                return removerFim();
             else {
                 Celula i = this.primeiro;
-                for (int j = 0; j < pos - 1; i = i.prox) j++;
+                for (int j = 0; j < pos - 1; i = i.prox)
+                    j++;
                 Celula tmp = i.prox;
                 int elemento = tmp.elemento;
                 i.prox = tmp.prox;
@@ -85,41 +97,41 @@ public class juntarlistas {
 
         int tamanho() {
             int tamanho = 0;
-            for (Celula i = this.primeiro; i != null; i = i.prox) tamanho++;
+            for (Celula i = this.primeiro; i != null; i = i.prox)
+                tamanho++;
             return tamanho;
         }
 
         public void juntar(Lista l1, Lista l2) {
             Celula i = l1.primeiro.prox;
             Celula j = l2.primeiro.prox;
+
             while (i != null || j != null) {
                 if (i != null && (j == null || i.elemento < j.elemento)) {
                     int pos = 0;
-                    for (Celula k = l1.primeiro; k != null && k.elemento < i.elemento; k = k.prox) pos++;
-                    this.inserirPos(i.elemento, pos);
+                    for (Celula k = this.primeiro.prox; k != null && k.elemento < i.elemento; k = k.prox) pos++;
+                    this.inserirPos(i.elemento, pos + 1);
                     i = i.prox;
-                } else {
-                    int pos = 0;
-                    for (Celula k = l2.primeiro; k != null && k.elemento < j.elemento; k = k.prox) pos++;
-                    this.inserirPos(j.elemento, pos);
-                    j = j.prox;
-                }
+                } else if (j != null) j = j.prox;
             }
         }
 
         public void mostrar() {
             System.out.print("[ ");
-            for (Celula i = this.primeiro.prox; i != null; i = i.prox) System.out.print(i.elemento + " ");
+            for (Celula i = this.primeiro.prox; i != null; i = i.prox)
+                System.out.print(i.elemento + " ");
             System.out.println("]");
         }
     }
+
     public static void main(String[] args) {
         Lista l1 = new Lista();
         Lista l2 = new Lista();
-        for (int i = 0; i < 5; i++) {
-            l1.inserirFim(i);
-            l2.inserirFim(i + 4);
-        }
+        l1.inserirFim(1);
+        l1.inserirFim(2);
+        l1.inserirFim(8);
+        l2.inserirFim(5);
+        l2.inserirFim(14);
         l1.mostrar();
         l2.mostrar();
         l2.juntar(l1, l2);
