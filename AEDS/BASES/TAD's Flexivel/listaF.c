@@ -105,7 +105,7 @@ void inserirOrd (int x) {
 
 int tamanho () {
     int tamanho = 0;
-    for (Celula *i = primeiro.prox; i != NULL; i = i->prox) tamanho++;
+    for (Celula *i = primeiro->prox; i != NULL; i = i->prox) tamanho++;
     return tamanho;
 }
 
