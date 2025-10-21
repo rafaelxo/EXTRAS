@@ -19,13 +19,13 @@ public class arvoreBin {
             this.raiz = null;
         }
 
-        public void inserir (int x) {
-            raiz = inserir (x, raiz);
+        public void inserirRef (int x) {
+            raiz = inserirRef (x, raiz);
         }
-        private No inserir (int x, No i) {
+        private No inserirRef (int x, No i) {
             if (i == null) i = new No(x);
-            else if (x < i.elemento) i.esq = inserir(x, i.esq);
-            else if (x > i.elemento) i.dir = inserir(x, i.dir);
+            else if (x < i.elemento) i.esq = inserirRef(x, i.esq);
+            else if (x > i.elemento) i.dir = inserirRef(x, i.dir);
             else throw new RuntimeException ("Erro!");
             return i;
         }
