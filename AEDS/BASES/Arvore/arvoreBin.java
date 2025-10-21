@@ -32,8 +32,8 @@ public class arvoreBin {
 
         public void inserirPai (int x) {
             if (raiz == null) raiz = new No (x);
-            else if (x < raiz.elemento) raiz.esq = inserir(x, raiz.esq);
-            else if (x > raiz.elemento) raiz.dir = inserir(x, raiz.dir);
+            else if (x < raiz.elemento) inserirPai(x, raiz.esq, raiz);
+            else if (x > raiz.elemento) inserirPai(x, raiz.dir, raiz);
             else throw new RuntimeException ("Erro!");
         }
         private void inserirPai (int x, No i, No pai) {
@@ -112,14 +112,8 @@ public class arvoreBin {
             return j;
         }
 
-        public int getAltura () {
-            int h = 0, j =0;
-            for (No i = raiz; i != null; i = i.esq) h++;
-            for (No i = raiz; i != null; i = i.dir) j++;
-            return (h > j) ? h : j;
-        }
         public int getAlturaRec (No i) {
-            if (i == null) return -1;
+            if (i == null) return 0;
             else {
                 int altEsq = getAlturaRec(i.esq);
                 int altDir = getAlturaRec(i.dir);
@@ -140,12 +134,6 @@ public class arvoreBin {
             return i.elemento;
         }
 
-        public int somar () {
-            int soma = 0;
-            for (No i = raiz; i != null; i = i.esq) soma += i.elemento;
-            for (No i = raiz; i != null; i = i.dir) soma += i.elemento;
-            return soma;
-        }
         public int somarRec (No i) {
             if (i == null) return 0;
             else return i.elemento + somarRec(i.esq) + somarRec(i.dir);

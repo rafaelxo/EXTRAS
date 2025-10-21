@@ -80,6 +80,22 @@ void circular (Matriz *m) {
     ini->esq = fim;
 }
 
+void freeMatriz (Matriz *m) {
+    if (m == NULL) return;
+    Celula *linhaAtual = m->inicio;
+    while (linhaAtual != NULL) {
+        Celula *proxLinha = linhaAtual->inf;
+        Celula *celulaAtual = linhaAtual;
+        while (celulaAtual != NULL) {
+            Celula *proxCelula = celulaAtual->dir;
+            free(celulaAtual);
+            celulaAtual = proxCelula;
+        }
+        linhaAtual = proxLinha;
+    }
+    free(m);
+}
+
 void mostrar (Matriz *m) {
     Celula *tmp = m->inicio;
     for (int i = 0; i < m->linhas && tmp != NULL; i++) {

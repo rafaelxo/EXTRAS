@@ -17,7 +17,7 @@ CelulaDupla *primeiro;
 CelulaDupla *ultimo;
 
 void Lista () {
-    primeiro = newCelula(-1);
+    primeiro = newCelula(0);
     ultimo = primeiro;
 }
 
@@ -28,8 +28,6 @@ void inserirInicio (int x) {
     primeiro->prox = tmp;
     if (primeiro == ultimo) ultimo = tmp;
     else tmp->prox->ant = tmp;
-    free(tmp);
-    tmp = NULL;
 }
 void inserirFim (int x) {
     ultimo->prox = newCelula(x);
@@ -48,8 +46,6 @@ void inserirPos (int x, int pos) {
         tmp->prox = i->prox;
         i->prox->ant = tmp;
         i->prox = tmp;
-        free(i); free(tmp);
-        i = tmp = NULL;
     }
 }
 

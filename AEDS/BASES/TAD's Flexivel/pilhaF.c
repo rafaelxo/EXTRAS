@@ -23,8 +23,6 @@ void inserir (int x) {
     Celula *tmp = newCelula(x);
     tmp->prox = topo;
     topo = tmp;
-    free(tmp);
-    tmp = NULL;
 }
 
 int remover () {
@@ -62,8 +60,9 @@ int somarRec (Celula *i) {
 }
 
 int maior () {
-    int resp = topo.elemento;
-    for (Celula *i = topo.prox; i != NULL; i = i->prox) {
+    if (topo == NULL) exit(1);
+    int resp = topo->elemento;
+    for (Celula *i = topo->prox; i != NULL; i = i->prox) {
         if (i->elemento > resp) resp = i->elemento;
     }
     return resp;
