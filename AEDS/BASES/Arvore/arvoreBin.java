@@ -50,12 +50,10 @@ public class arvoreBin {
             return pesquisar(x, raiz);
         }
         private boolean pesquisar (int x, No i) {
-            boolean resp;
-            if (i == null) resp = false;
-            else if (x == i.elemento) resp = true;
-            else if (x < i.elemento) resp = pesquisar(x, i.esq);
-            else resp = pesquisar(x, i.dir);
-            return resp;
+            if (i == null) return false;
+            else if (x == i.elemento) return true;
+            else if (x < i.elemento) return pesquisar(x, i.esq);
+            else return pesquisar(x, i.dir);
         }
 
         public void caminharCentral (No i) {
@@ -143,15 +141,10 @@ public class arvoreBin {
             return igual(a.raiz, b.raiz);
         }
         private boolean igual (No a, No b) {
-            boolean resp;
-            if (a == null && b == null) resp = true;
-            else if (a == null || b == null) resp = false;
-            else if (a.elemento != b.elemento) resp = false;
-            else {
-                resp = igual(a.esq, b.esq);
-                if (resp) resp = igual(a.dir, b.dir);
-            }
-            return resp;
+            if (a == null && b == null) return true;
+            else if (a == null || b == null) return false;
+            else if (a.elemento != b.elemento) return false;
+            else return igual(a.esq, b.esq) && igual(a.dir, b.dir);
         }
     }
 }
