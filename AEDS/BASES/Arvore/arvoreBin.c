@@ -28,10 +28,7 @@ No* inserirRef (int x, No *i) {
     if (i == NULL) i = newNo(x);
     else if (x < i->elemento) i->esq = inserirRef(x, i->esq);
     else if (x > i->elemento) i->dir = inserirRef(x, i->dir);
-    else {
-        fprintf(stderr, "Erro: elemento duplicado!\n");
-        exit(1);
-    }
+    else exit(1);
     return i;
 }
 void inserirRefArvore (Arvore *a, int x) {
@@ -44,19 +41,13 @@ void inserirPai (Arvore *a, int x, No *i, No *pai) {
         else pai->dir = newNo(x);
     } else if (x < i->elemento) inserirPai(a, x, i->esq, i);
     else if (x > i->elemento) inserirPai(a, x, i->dir, i);
-    else {
-        fprintf(stderr, "Erro: elemento duplicado!\n");
-        exit(1);
-    }
+    else exit(1);
 }
 void inserirPaiArvore (Arvore *a, int x) {
     if (a->raiz == NULL) a->raiz = newNo(x);
     else if (x < a->raiz->elemento) inserirPai(a, x, a->raiz->esq, a->raiz);
     else if (x > a->raiz->elemento) inserirPai(a, x, a->raiz->dir, a->raiz);
-    else {
-        fprintf(stderr, "Erro: elemento duplicado!\n");
-        exit(1);
-    }
+    else exit(1);
 }
 
 bool pesquisar (Arvore *a, int x) {
