@@ -2,7 +2,6 @@ public class listaS {
     public class Lista {
         private int[] array;
         private int n;
-        public Lista () { this(1); }
         public Lista (int tam) {
             if (tam <= 0) throw new IllegalArgumentException("Erro!");
             array = new int[tam];

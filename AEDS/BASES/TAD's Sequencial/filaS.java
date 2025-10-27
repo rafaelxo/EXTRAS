@@ -2,7 +2,6 @@ public class filaS {
     public class Fila {
         private int[] array;
         private int primeiro, ultimo;
-        public Fila () { this(1); }
         public Fila (int tam) {
             if (tam <= 0) throw new RuntimeException("Erro!");
             array = new int[tam + 1];

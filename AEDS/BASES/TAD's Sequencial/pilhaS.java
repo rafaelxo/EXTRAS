@@ -2,7 +2,6 @@ public class pilhaS {
     public class Pilha {
         private int[] array;
         private int n;
-        public Pilha () { this(1); }
         public Pilha (int tam) {
             if (tam <= 0) throw new IllegalArgumentException("Erro!");
             array = new int[tam];
