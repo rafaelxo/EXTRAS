@@ -46,7 +46,7 @@ Matriz *newMatriz (int l, int c) {
     return m;
 }
 
-int somaDiaPrinc (Matriz *m) {
+int somaDiagPrinc (Matriz *m) {
     if (m->linhas != m->colunas || m->inicio == NULL) exit(1);
     Celula *i = m->inicio;
     int soma = 0; soma += i->elemento;
