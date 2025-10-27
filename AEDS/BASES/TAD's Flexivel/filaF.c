@@ -49,28 +49,24 @@ int somar () {
     for (Celula *i = primeiro->prox; i != NULL; i = i->prox) soma += i->elemento;
     return soma;
 }
-
 int somarRec (Celula *i) {
     if (i == NULL) return 0;
     else return i->elemento + somarRec(i->prox);
 }
 
 int maior () {
-    if (primeiro == ultimo) exit(1);
     int maior = primeiro->prox->elemento;
     for (Celula *i = primeiro->prox->prox; i != NULL; i = i->prox) {
         if (i->elemento > maior) maior = i->elemento;
     }
     return maior;
 }
-
 int maiorRec (Celula *i) {
     if (i == NULL) return 0;
     else return (i->elemento > maiorRec(i->prox)) ? i->elemento : maiorRec(i->prox);
 }
 
 void inverter () {
-    if (primeiro == ultimo) exit(1);
     Celula *prev = NULL;
     Celula *next = NULL;
     Celula *atual = primeiro->prox;
