@@ -9,8 +9,8 @@ public class listaF {
     }
     static class Lista {
         private Celula primeiro, ultimo;
-        public Lista (int x) {
-            primeiro = new Celula(x);
+        public Lista () {
+            primeiro = new Celula(0);
             ultimo = primeiro;
         }
 
@@ -22,7 +22,8 @@ public class listaF {
             tmp = null;
         }
         public void inserirPos (int x, int pos) {
-            if (pos == 0) inserirIni(x);
+            if (pos < 0 || pos > tamanho()) throw new RuntimeException("Erro!");
+            else if (pos == 0) inserirIni(x);
             else if (pos == tamanho()) inserirFim(x);
             else {
                 Celula i = primeiro;
@@ -47,7 +48,8 @@ public class listaF {
             return resp;
         }
         public int removerPos (int pos) {
-            if (pos == 0) return removerIni();
+            if (primeiro == ultimo || pos < 0 || pos >= tamanho()) throw new RuntimeException("Erro!");
+            else if (pos == 0) return removerIni();
             else if (pos == tamanho() - 1) return removerFim();
             else {
                 Celula i = primeiro;
@@ -55,24 +57,43 @@ public class listaF {
                 Celula tmp = i.prox;
                 int resp = tmp.elemento;
                 i.prox = tmp.prox;
-                tmp = tmp.prox = null;
+                tmp = tmp.prox = i = null;
                 return resp;
             }
         }
         public int removerFim () {
             if (primeiro == ultimo) throw new RuntimeException("Erro!");
-            Celula i;
-            for (i = primeiro; i.prox != ultimo; i = i.prox);
+            Celula i = primeiro;
+            while (i.prox != ultimo) i = i.prox;
             int resp = ultimo.elemento;
             ultimo = i;
-            i = i.prox = null;
+            i = ultimo.prox = null;
             return resp;
+        }
+
+        public void inserirOrd (int x) {
+            if (primeiro == ultimo || x >= ultimo.elemento) inserirFim(x);
+            else if (x <= primeiro.prox.elemento) inserirIni(x);
+            else {
+                Celula i = primeiro;
+                while (i.prox != null && i.prox.elemento < x) i = i.prox;
+                Celula tmp = new Celula(x);
+                tmp.prox = i.prox;
+                i.prox = tmp;
+                tmp = i = null;
+            }
         }
 
         public int tamanho () {
             int tamanho = 0;
-            for (Celula i = primeiro; i != null; i = i.prox, tamanho++);
+            for (Celula i = primeiro; i != null; i = i.prox) tamanho++;
             return tamanho;
+        }
+
+        public void mostrar () {
+            System.out.print("[ ");
+            for (Celula i = primeiro.prox; i != null; i = i.prox) System.out.print(i.elemento + " ");
+            System.out.println("]");
         }
     }
 }
