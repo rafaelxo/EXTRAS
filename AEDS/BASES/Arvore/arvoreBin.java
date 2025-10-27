@@ -19,9 +19,6 @@ public class arvoreBin {
             this.raiz = null;
         }
 
-        public void inserirRef (int x) {
-            raiz = inserirRef (x, raiz);
-        }
         private No inserirRef (int x, No i) {
             if (i == null) i = new No(x);
             else if (x < i.elemento) i.esq = inserirRef(x, i.esq);
@@ -46,9 +43,6 @@ public class arvoreBin {
             else throw new RuntimeException ("Erro!");
         }
 
-        public boolean pesquisar (int x) {
-            return pesquisar(x, raiz);
-        }
         private boolean pesquisar (int x, No i) {
             if (i == null) return false;
             else if (x == i.elemento) return true;
@@ -80,9 +74,6 @@ public class arvoreBin {
             }
         }
 
-        public void remover (int x) {
-            raiz = remover(x, raiz);
-        }
         private No remover (int x, No i) {
             if (i == null) throw new RuntimeException ("Erro!");
             else if (x < i.elemento) i.esq = remover(x, i.esq);
@@ -115,7 +106,7 @@ public class arvoreBin {
             else {
                 int altEsq = getAlturaRec(i.esq);
                 int altDir = getAlturaRec(i.dir);
-                return (altEsq > altDir) ? altEsq + 1 : altDir + 1;
+                return (altEsq > altDir ? altEsq : altDir) + 1;
             }
         }
 
@@ -137,9 +128,6 @@ public class arvoreBin {
             else return i.elemento + somarRec(i.esq) + somarRec(i.dir);
         }
 
-        public boolean igual (Arvore a, Arvore b) {
-            return igual(a.raiz, b.raiz);
-        }
         private boolean igual (No a, No b) {
             if (a == null && b == null) return true;
             else if (a == null || b == null) return false;
