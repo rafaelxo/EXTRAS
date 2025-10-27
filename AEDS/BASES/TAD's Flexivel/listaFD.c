@@ -29,11 +29,6 @@ void inserirInicio (int x) {
     if (primeiro == ultimo) ultimo = tmp;
     else tmp->prox->ant = tmp;
 }
-void inserirFim (int x) {
-    ultimo->prox = newCelula(x);
-    ultimo->prox->ant = ultimo;
-    ultimo = ultimo->prox;
-}
 void inserirPos (int x, int pos) {
     if (pos < 0 || pos > tamanho()) exit(1);
     if (pos == 0) inserirInicio(x);
@@ -44,9 +39,13 @@ void inserirPos (int x, int pos) {
         CelulaDupla *tmp = newCelula(x);
         tmp->ant = i;
         tmp->prox = i->prox;
-        i->prox->ant = tmp;
-        i->prox = tmp;
+        i->prox = i->prox->ant = tmp;
     }
+}
+void inserirFim (int x) {
+    ultimo->prox = newCelula(x);
+    ultimo->prox->ant = ultimo;
+    ultimo = ultimo->prox;
 }
 
 int removerInicio () {
@@ -54,25 +53,16 @@ int removerInicio () {
     CelulaDupla *tmp = primeiro->prox;
     int resp = tmp->elemento;
     primeiro->prox = tmp->prox;
-    if (tmp->prox != NULL) tmp->prox->ant = primeiro;
+    if (primeiro->prox != NULL) primeiro->prox->ant = primeiro;
     else ultimo = primeiro;
     tmp->prox = tmp->ant = NULL;
     free(tmp);
     tmp = NULL;
     return resp;
 }
-int removerFim () {
-    if (primeiro == ultimo) exit(1);
-    int resp = ultimo->elemento;
-    ultimo = ultimo->ant;
-    ultimo->prox->ant = NULL;
-    free(ultimo->prox);
-    ultimo->prox = NULL;
-    return resp;
-}
 int removerPos (int pos) {
-    if (primeiro == ultimo) exit(1);
-    if (pos == 0) return removerInicio();
+    if (primeiro == ultimo || pos < 0 || pos >= tamanho()) exit(1);
+    else if (pos == 0) return removerInicio();
     else if (pos == tamanho() - 1) return removerFim();
     else {
         CelulaDupla *i = primeiro->prox;
@@ -85,6 +75,15 @@ int removerPos (int pos) {
         i = NULL;
         return resp;
     }
+}
+int removerFim () {
+    if (primeiro == ultimo) exit(1);
+    int resp = ultimo->elemento;
+    ultimo = ultimo->ant;
+    ultimo->prox->ant = NULL;
+    free(ultimo->prox);
+    ultimo->prox = NULL;
+    return resp;
 }
 
 void inserirOrd (int x) {
@@ -133,7 +132,7 @@ void removerPares () {
 
 int tamanho () {
     int tamanho = 0;
-    for (CelulaDupla *i = primeiro->prox; i != NULL; i = i->prox, tamanho++);
+    for (CelulaDupla *i = primeiro->prox; i != NULL; i = i->prox) tamanho++;
     return tamanho;
 }
 
