@@ -7,6 +7,7 @@ public class listaF {
             this.prox = null;
         }
     }
+    
     static class Lista {
         private Celula primeiro, ultimo;
         public Lista () {

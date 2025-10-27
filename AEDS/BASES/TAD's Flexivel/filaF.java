@@ -7,6 +7,7 @@ public class filaF {
             this.prox = null;
         }
     }
+    
     static class Fila {
         private Celula primeiro, ultimo;
         public Fila () {
