@@ -36,17 +36,17 @@ public class pilhaF {
             return tamanho;
         }
 
-        int somar () {
+        public int somar () {
             int soma = 0;
             for (Celula i = topo; i != null; i = i.prox) soma += i.elemento;
             return soma;
         }
-        int somarRec (Celula i) {
+        public int somarRec (Celula i) {
             if (i == null) return 0;
             else return i.elemento + somarRec(i.prox);
         }
 
-        int maior () {
+        public int maior () {
             if (topo == null) throw new RuntimeException("Erro!");
             int maior = topo.elemento;
             for (Celula i = topo.prox; i != null; i = i.prox) {
@@ -54,7 +54,7 @@ public class pilhaF {
             }
             return maior;
         }
-        int maiorRec (Celula i) {
+        public int maiorRec (Celula i) {
             if (i == null) return 0;
             else return (i.elemento > maiorRec(i.prox) ? i.elemento : maiorRec(i.prox));
         }

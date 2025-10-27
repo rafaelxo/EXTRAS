@@ -7,7 +7,7 @@ public class listaFD {
             this.ant = this.prox = null;
         }
     }
-    
+
     static class Lista {
         private Celula primeiro, ultimo;
         public Lista () {
@@ -59,11 +59,11 @@ public class listaFD {
             else if (pos == tamanho() - 1) return removerFim();
             else {
                 Celula i = primeiro.prox;
-                for (int j = 0; j < pos; j++, i = i.prox);
+                for (int j = 0; j < pos; j++) i = i.prox;
                 int resp = i.elemento;
                 i.ant.prox = i.prox;
                 i.prox.ant = i.ant;
-                i = i.prox = i.ant = null;
+                i = i.ant = i.prox = null;
                 return resp;
             }
         }

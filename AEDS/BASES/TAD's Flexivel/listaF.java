@@ -7,7 +7,7 @@ public class listaF {
             this.prox = null;
         }
     }
-    
+
     static class Lista {
         private Celula primeiro, ultimo;
         public Lista () {
@@ -20,7 +20,6 @@ public class listaF {
             Celula tmp = new Celula(0);
             tmp.prox = primeiro;
             primeiro = tmp;
-            tmp = null;
         }
         public void inserirPos (int x, int pos) {
             if (pos < 0 || pos > tamanho()) throw new RuntimeException("Erro!");
@@ -32,7 +31,6 @@ public class listaF {
                 Celula tmp = new Celula(x);
                 tmp.prox = i.prox;
                 i.prox = tmp;
-                tmp = null;
             }
         }
         public void inserirFim (int x) {
@@ -45,6 +43,7 @@ public class listaF {
             Celula tmp = primeiro.prox;
             int resp = tmp.elemento;
             primeiro.prox = tmp.prox;
+            if (primeiro.prox == null) ultimo = primeiro;
             tmp = tmp.prox = null;
             return resp;
         }
@@ -58,7 +57,7 @@ public class listaF {
                 Celula tmp = i.prox;
                 int resp = tmp.elemento;
                 i.prox = tmp.prox;
-                tmp = tmp.prox = i = null;
+                tmp = tmp.prox = null;
                 return resp;
             }
         }
@@ -68,7 +67,7 @@ public class listaF {
             while (i.prox != ultimo) i = i.prox;
             int resp = ultimo.elemento;
             ultimo = i;
-            i = ultimo.prox = null;
+            ultimo.prox = null;
             return resp;
         }
 
@@ -81,13 +80,13 @@ public class listaF {
                 Celula tmp = new Celula(x);
                 tmp.prox = i.prox;
                 i.prox = tmp;
-                tmp = i = null;
+                if (tmp.prox == null) ultimo = tmp;
             }
         }
 
         public int tamanho () {
             int tamanho = 0;
-            for (Celula i = primeiro; i != null; i = i.prox) tamanho++;
+            for (Celula i = primeiro.prox; i != null; i = i.prox) tamanho++;
             return tamanho;
         }
 

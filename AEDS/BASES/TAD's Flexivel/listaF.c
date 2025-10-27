@@ -37,7 +37,7 @@ void inserirPos (int x, int pos) {
     else if (pos == tamanho()) inserirFim(x);
     else {
         Celula *i = primeiro;
-        for (int j = 0; j < pos; i = i->prox) j++;
+        for (int j = 0; j < pos; j++) i = i->prox;
         Celula *tmp = newCelula(x);
         tmp->prox = i->prox;
         i->prox = tmp;
