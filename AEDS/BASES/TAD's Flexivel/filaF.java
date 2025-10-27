@@ -8,7 +8,7 @@ public class filaF {
         }
     }
     static class Fila {
-        Celula primeiro, ultimo;
+        private Celula primeiro, ultimo;
         public Fila () {
             primeiro = new Celula(0);
             ultimo = primeiro;

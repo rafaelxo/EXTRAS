@@ -22,10 +22,10 @@ void Lista () {
 }
 
 void inserirInicio (int x) {
-    Celula *tmp = newCelula(x);
-    tmp->prox = primeiro->prox;
-    primeiro->prox = tmp;
-    if (primeiro == ultimo) ultimo = tmp;
+    primeiro->elemento = x;
+    Celula *tmp = newCelula(0);
+    tmp->prox = primeiro;
+    primeiro = tmp;
 }
 void inserirFim (int x) {
     ultimo->prox = newCelula(x);
