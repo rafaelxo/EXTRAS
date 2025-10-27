@@ -11,7 +11,7 @@ public class matrizF {
         Celula inicio;
         int linhas, colunas;
         public Matriz construir (int l, int c) {
-            if (l <= 0 || c <= 0) return null;
+            if (l <= 0 || c <= 0) throw new IllegalArgumentException("Erro!");
             Matriz m = new Matriz();
             m.linhas = l;
             m.colunas = c;
@@ -40,7 +40,7 @@ public class matrizF {
         }
 
         public int somaDiagPrinc () {
-            if (this.linhas != this.colunas || this.inicio == null) return 0;
+            if (this.linhas != this.colunas || this.inicio == null) throw new IllegalArgumentException("Erro!");
             Celula i = this.inicio;
             int soma = 0; soma += i.elemento;
             while (i.dir != null && i.inf != null) {
@@ -71,6 +71,20 @@ public class matrizF {
             }
             fim.dir = ini;
             ini.esq = fim;
+        }
+
+        public void mostrar () {
+            Celula tmp = this.inicio;
+            for (int i = 0; i < this.linhas; i++) {
+                System.out.print("[ ");
+                Celula atual = tmp;
+                for (int j = 0; j < this.colunas && atual != null; j++) {
+                    System.out.print(atual.elemento + " ");
+                    atual = atual.dir;
+                }
+                System.out.println("]");
+                tmp = tmp.inf;
+            }
         }
     }
 }
