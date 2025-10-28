@@ -46,6 +46,19 @@ void inserirPai (int x) {
     else exit(1);
 }
 
+/*
+void inserirRefArvorePD (int x, No **i) {
+    if (*i == NULL) *i = newNo(x);
+    else if (x < (*i)->elemento) inserirRefArvorePD(x, &((*i)->esq));
+    else if (x > (*i)->elemento) inserirRefArvorePD(x, &((*i)->dir));
+    else exit(1);
+}
+
+void inserirRefPD (int x) {
+    raiz = inserirRefArvorePD(x, &raiz);
+}
+*/
+
 bool pesquisarNo (No *i, int x) {
     if (i == NULL) return false;
     else if (x == i->elemento) return true;
