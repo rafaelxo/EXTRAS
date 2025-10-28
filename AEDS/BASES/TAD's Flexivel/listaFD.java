@@ -1,23 +1,23 @@
 public class listaFD {
-    static class Celula {
+    static class CelulaDupla {
         int elemento;
-        Celula ant, prox;
-        public Celula (int x) {
+        CelulaDupla ant, prox;
+        public CelulaDupla (int x) {
             this.elemento = x;
             this.ant = this.prox = null;
         }
     }
 
     static class Lista {
-        private Celula primeiro, ultimo;
+        private CelulaDupla primeiro, ultimo;
         public Lista () {
-            primeiro = new Celula(0);
+            primeiro = new CelulaDupla(0);
             ultimo = primeiro;
         }
 
         public void inserirIni (int x) {
             primeiro.elemento = x;
-            Celula tmp = new Celula(0);
+            CelulaDupla tmp = new CelulaDupla(0);
             tmp.prox = primeiro;
             primeiro.ant = tmp;
             primeiro = tmp;
@@ -28,24 +28,24 @@ public class listaFD {
             else if (pos == 0) inserirIni(x);
             else if (pos == tamanho()) inserirFim(x);
             else {
-                Celula i = primeiro;
-                for (int j = 0; j < pos; j++, i = i.prox);
-                Celula tmp = new Celula(x);
+                CelulaDupla i = primeiro;
+                for (int j = 0; j < pos; j++) i = i.prox;
+                CelulaDupla tmp = new CelulaDupla(x);
                 tmp.ant = i;
                 tmp.prox = i.prox;
                 i.prox = tmp.prox.ant = tmp;
-                tmp = i = null;
+                i = tmp = null;
             }
         }
         public void inserirFim (int x) {
-            ultimo.prox = new Celula(x);
+            ultimo.prox = new CelulaDupla(x);
             ultimo.prox.ant = ultimo;
             ultimo = ultimo.prox;
         }
 
         public int removerIni () {
             if (primeiro == ultimo) throw new RuntimeException("Erro!");
-            Celula tmp = primeiro.prox;
+            CelulaDupla tmp = primeiro.prox;
             int resp = tmp.elemento;
             primeiro.prox = tmp.prox;
             if (primeiro.prox != null) primeiro.prox.ant = primeiro;
@@ -58,7 +58,7 @@ public class listaFD {
             else if (pos == 0) return removerIni();
             else if (pos == tamanho() - 1) return removerFim();
             else {
-                Celula i = primeiro.prox;
+                CelulaDupla i = primeiro.prox;
                 for (int j = 0; j < pos; j++) i = i.prox;
                 int resp = i.elemento;
                 i.ant.prox = i.prox;
@@ -75,15 +75,45 @@ public class listaFD {
             return resp;
         }
 
+        public void inserirOrd (int x) {
+            if (primeiro == ultimo || x >= ultimo.elemento) inserirFim(x);
+            else if (x <= primeiro.prox.elemento) inserirIni(x);
+            else {
+                CelulaDupla i = primeiro;
+                while (i.prox != null && i.prox.elemento < x) i = i.prox;
+                CelulaDupla tmp = new CelulaDupla(x);
+                tmp.ant = i;
+                tmp.prox = i.prox;
+                if (i.prox != null) i.prox.ant = tmp;
+                i.prox = tmp;
+                i = tmp = null;
+            }
+        }
+
+        public void inverter () {
+            if (primeiro == ultimo) return;
+            CelulaDupla atual = primeiro.prox;
+            CelulaDupla tmp = null;
+            while (atual != null) {
+                tmp = atual.prox;
+                atual.prox = atual.ant;
+                atual.ant = tmp;
+                atual = tmp;
+            }
+            CelulaDupla aux = primeiro.prox;
+            primeiro.prox = ultimo;
+            ultimo = aux;
+        }
+
         public int tamanho () {
             int tamanho = 0;
-            for (Celula i = primeiro.prox; i != null; i = i.prox) tamanho++;
+            for (CelulaDupla i = primeiro.prox; i != null; i = i.prox) tamanho++;
             return tamanho;
         }
 
         public void mostrar () {
             System.out.print("[ ");
-            for (Celula i = primeiro.prox; i != null; i = i.prox) System.out.print(i.elemento + " ");
+            for (CelulaDupla i = primeiro.prox; i != null; i = i.prox) System.out.print(i.elemento + " ");
             System.out.println("]");
         }
     }

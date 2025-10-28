@@ -27,10 +27,11 @@ public class listaF {
             else if (pos == tamanho()) inserirFim(x);
             else {
                 Celula i = primeiro;
-                for (int j = 0; j < pos; j++, i = i.prox);
+                for (int j = 0; j < pos; j++) i = i.prox;
                 Celula tmp = new Celula(x);
                 tmp.prox = i.prox;
                 i.prox = tmp;
+                i = tmp = null;
             }
         }
         public void inserirFim (int x) {
@@ -53,11 +54,11 @@ public class listaF {
             else if (pos == tamanho() - 1) return removerFim();
             else {
                 Celula i = primeiro;
-                for (int j = 0; j < pos; j++, i = i.prox);
+                for (int j = 0; j < pos; j++) i = i.prox;
                 Celula tmp = i.prox;
                 int resp = tmp.elemento;
                 i.prox = tmp.prox;
-                tmp = tmp.prox = null;
+                i = tmp = tmp.prox = null;
                 return resp;
             }
         }
@@ -67,7 +68,7 @@ public class listaF {
             while (i.prox != ultimo) i = i.prox;
             int resp = ultimo.elemento;
             ultimo = i;
-            ultimo.prox = null;
+            i = ultimo.prox = null;
             return resp;
         }
 

@@ -20,7 +20,7 @@ void Lista () {
     ultimo = primeiro;
 }
 
-void inserirInicio (int x) {
+void inserirIni (int x) {
     primeiro->elemento = x;
     Celula *tmp = newCelula(0);
     tmp->prox = primeiro;
@@ -29,7 +29,7 @@ void inserirInicio (int x) {
 }
 void inserirPos (int x, int pos) {
     if (pos < 0 || pos > tamanho()) exit(1);
-    else if (pos == 0) inserirInicio(x);
+    else if (pos == 0) inserirIni(x);
     else if (pos == tamanho()) inserirFim(x);
     else {
         Celula *i = primeiro;
@@ -45,7 +45,7 @@ void inserirFim (int x) {
     ultimo = ultimo->prox;
 }
 
-int removerInicio () {
+int removerIni () {
     if (primeiro == ultimo) exit(1);
     Celula *tmp = primeiro->prox;
     int resp = tmp->elemento;
@@ -58,7 +58,7 @@ int removerInicio () {
 }
 int removerPos (int pos) {
     if (primeiro == ultimo || pos < 0 || pos >= tamanho()) exit(1);
-    else if (pos == 0) return removerInicio();
+    else if (pos == 0) return removerIni();
     else if (pos == tamanho() - 1) return removerFim();
     else {
         Celula *i = primeiro;
@@ -85,7 +85,7 @@ int removerFim () {
 
 void inserirOrd (int x) {
     if (primeiro == ultimo || x >= ultimo->elemento) inserirFim(x);
-    else if (x <= primeiro->prox->elemento) inserirInicio(x);
+    else if (x <= primeiro->prox->elemento) inserirIni(x);
     else {
         Celula *i = primeiro;
         while (i->prox != NULL && i->prox->elemento < x) i = i->prox;

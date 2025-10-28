@@ -37,12 +37,6 @@ int remover () {
     return resp;
 }
 
-void mostrar () {
-    printf("[ ");
-    for (Celula *i = topo; i != NULL; i = i->prox) printf("%d ", i->elemento);
-    printf("]\n");
-}
-
 int tamanho () {
     int tamanho = 0;
     for (Celula *i = topo; i != NULL; i = i->prox) tamanho++;
@@ -54,7 +48,6 @@ int somar () {
     for (Celula *i = topo; i != NULL; i = i->prox) soma += i->elemento;
     return soma;
 }
-
 int somarRec (Celula *i) {
     if (i == NULL) return 0;
     else return i->elemento + somarRec(i->prox);
@@ -68,12 +61,16 @@ int maior () {
     }
     return resp;
 }
-
 int maiorRec (Celula *i) {
     if (i == NULL) return 0;
     else return (i->elemento > maiorRec(i->prox)) ? i->elemento : maiorRec(i->prox);
 }
 
+void mostrar () {
+    printf("[ ");
+    for (Celula *i = topo; i != NULL; i = i->prox) printf("%d ", i->elemento);
+    printf("]\n");
+}
 void mostrarInv (Celula *i) {
     if (i != NULL) {
         mostrarInv(i->prox);
