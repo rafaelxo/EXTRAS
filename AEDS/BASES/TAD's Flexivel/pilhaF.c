@@ -23,6 +23,7 @@ void inserir (int x) {
     Celula *tmp = newCelula(x);
     tmp->prox = topo;
     topo = tmp;
+    tmp = NULL;
 }
 
 int remover () {

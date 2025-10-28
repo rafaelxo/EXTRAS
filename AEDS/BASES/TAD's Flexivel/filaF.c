@@ -13,8 +13,7 @@ Celula *newCelula (int x) {
     return nova;
 }
 
-Celula *primeiro;
-Celula *ultimo;
+Celula *primeiro, *ultimo;
 
 void Fila () {
     primeiro = newCelula(0);
