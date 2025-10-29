@@ -8,46 +8,32 @@ public class listaS {
             n = 0;
         }
 
-        public void inserirInicio (int num) {
+        public void inserirInicio (int x) {
             if (n >= array.length) throw new RuntimeException("Erro!");
             for (int i = n; i > 0; i--) array[i] = array[i - 1];
-            array[0] = num;
+            array[0] = x;
             n++;
         }
-
-        public void inserirFim (int num) {
-            if (n >= array.length) throw new RuntimeException("Erro!");
-            array[n++] = num;
-        }
-
-        public void inserirPos (int num, int pos) {
+        public void inserirPos (int x, int pos) {
             if (n >= array.length || pos < 0 || pos > n) throw new RuntimeException("Erro!");
             for (int i = n; i > pos; i--) array[i] = array[i - 1];
-            array[pos] = num;
+            array[pos] = x;
             n++;
         }
+        public void inserirFim (int x) {
+            if (n >= array.length) throw new RuntimeException("Erro!");
+            array[n++] = x;
+        }
 
-        public void inserirOrdenado (int num) {
+        public void inserirOrdenado (int x) {
             if (n >= array.length) throw new RuntimeException("Erro");
             int i = n - 1;
-            while (i >= 0 && array[i] > num) {
+            while (i >= 0 && array[i] > x) {
                 array[i + 1] = array[i];
                 i--;
             }
-            array[i + 1] = num;
+            array[i + 1] = x;
             n++;
-        }
-
-        public void ordenar() {
-            for (int i = 1; i < n; i++) {
-                int aux = array[i];
-                int j = i - 1;
-                while (j >= 0 && array[j] > aux) {
-                    array[j + 1] = array[j];
-                    j--;
-                }
-                array[j + 1] = aux;
-            }
         }
 
         public int removerInicio () {
@@ -57,18 +43,16 @@ public class listaS {
             for (int i = 0; i < n; i++) array[i] = array[i + 1];
             return resp;
         }
-
-        public int removerFim () {
-            if (n == 0) throw new RuntimeException("Erro!");
-            return array[--n];
-        }
-
         public int removerPos (int pos) {
             if (n == 0 || pos < 0 || pos >= n) throw new RuntimeException("Erro!");
             int resp = array[pos];
             n--;
             for (int i = pos; i < n; i++) array[i] = array[i + 1];
             return resp;
+        }
+        public int removerFim () {
+            if (n == 0) throw new RuntimeException("Erro!");
+            return array[--n];
         }
 
         public boolean vazia () { return n == 0; }
@@ -89,7 +73,6 @@ public class listaS {
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
             System.out.println("]");
         }
-
         public void mostrarRec (int i) {
             if (i == 0) System.out.print("[ ");
             if (i < n) {
