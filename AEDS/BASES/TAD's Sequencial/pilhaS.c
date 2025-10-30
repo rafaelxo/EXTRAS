@@ -1,6 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
-typedef struct Pilha {
-    int dados[100];
-    int topo;
-} Pilha;
+#define MAX_TAM 100
+
+int array[MAX_TAM];
+int n = 0;
+
+void inserir (int x) {
+    if (n >= MAX_TAM) exit(1);
+    array[n++] = x;
+}
+
+int remover () {
+    if (n == 0) exit(1);
+    return array[--n];
+}
+
+bool vazia () { return n == 0; }
+
+int topo () {
+    if (n == 0) exit(1);
+    return array[n - 1];
+}
+
+int *impPar () {
+    int pares = 0, impares = 0;
+    for (int i = 0; i < n; i++) {
+        if (array[i] % 2 == 0) pares++;
+        else impares++;
+    }
+    int *resultado = (int*)malloc(2*sizeof(int));
+    resultado[0] = pares;
+    resultado[1] = impares;
+    return resultado;
+}
+
+void mostrar () {
+    printf("[ ");
+    for (int i = 0; i < n; i++) printf("%d ", array[i]);
+    printf("]\n");
+}
+void mostrarRec (int i) {
+    if (i == n - 1) printf("[ ");
+    if (i >= 0) {
+        printf("%d ", array[i]);
+        mostrarRec(i - 1);
+    } else printf("]\n");
+}

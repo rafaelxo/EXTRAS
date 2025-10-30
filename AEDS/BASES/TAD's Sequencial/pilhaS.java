@@ -20,6 +20,11 @@ public class pilhaS {
 
         public boolean vazia () { return n == 0; }
 
+        public int topo () {
+            if (n == 0) throw new RuntimeException("Erro!");
+            return array[n - 1];
+        }
+
         public int[] impPar () {
             int pares = 0, impares = 0;
             for (int i = 0; i < n; i++) {
@@ -36,7 +41,6 @@ public class pilhaS {
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
             System.out.println("]");
         }
-
         public void mostrarRec(int i) {
             if (i == n - 1) System.out.print("[ ");
             if (i >= 0) {
@@ -44,12 +48,5 @@ public class pilhaS {
                 mostrarRec(i - 1);
             } else System.out.println("]");
         }
-
-        public int topo () {
-            if (n == 0) throw new RuntimeException("Erro!");
-            return array[n - 1];
-        }
-
-        public int tamanho () { return n; }
     }
 }
