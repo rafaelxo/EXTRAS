@@ -26,6 +26,9 @@ public class arvoreBin {
             else throw new RuntimeException ("Erro!");
             return i;
         }
+        public void inserir (int x) {
+            raiz = inserirRef(x, raiz);
+        }
 
         public void inserirPai (int x) {
             if (raiz == null) raiz = new No (x);
