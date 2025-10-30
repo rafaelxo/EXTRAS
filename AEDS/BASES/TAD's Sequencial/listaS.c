@@ -93,3 +93,8 @@ void mostrarRec (int i) {
         mostrarRec(i + 1);
     } else printf("]\n");
 }
+void mostrarInv () {
+    printf("[ ");
+    for (int i = n - 1; i >= 0; i--) printf("%d ", array[i]);
+    printf("]\n");
+}

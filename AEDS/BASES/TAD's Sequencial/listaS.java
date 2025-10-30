@@ -94,5 +94,10 @@ public class listaS {
                 mostrarRec(i + 1);
             } else System.out.println("]");
         }
+        public void mostrarInv () {
+            System.out.print("[ ");
+            for (int i = n - 1; i >= 0; i--) System.out.print(array[i] + " ");
+            System.out.println("]\n");
+        }
     }
 }
