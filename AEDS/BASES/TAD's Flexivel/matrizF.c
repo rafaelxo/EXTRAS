@@ -76,8 +76,6 @@ void circular (Matriz *m) {
         ini = ini->inf;
         fim = fim->inf;
     }
-    fim->dir = ini;
-    ini->esq = fim;
 }
 
 void freeMatriz (Matriz *m) {

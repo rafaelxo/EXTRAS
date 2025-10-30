@@ -69,8 +69,6 @@ public class matrizF {
                 ini = ini.inf;
                 fim = fim.inf;
             }
-            fim.dir = ini;
-            ini.esq = fim;
         }
 
         public void mostrar () {
