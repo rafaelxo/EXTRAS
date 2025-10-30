@@ -81,6 +81,15 @@ int impPar () {
     return result;
 }
 
+bool palindromo () {
+    int i = 0, j = n - 1;
+    while (i <= j) {
+        if (array[i] != array[j]) return false;
+        i++; j--;
+    }
+    return true;
+}
+
 void mostrar () {
     printf("[ ");
     for (int i = 0; i < n; i++) printf("%d ", array[i]);

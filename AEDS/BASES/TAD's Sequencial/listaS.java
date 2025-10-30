@@ -82,6 +82,15 @@ public class listaS {
             return result;
         }
 
+        public boolean palindromo () {
+            int i = 0, j = n - 1;
+            while (i <= j) {
+                if (array[i] != array[j]) return false;
+                i++; j--;
+            }
+            return true;
+        }
+
         public void mostrar () {
             System.out.print("[ ");
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
