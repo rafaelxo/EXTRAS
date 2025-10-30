@@ -57,6 +57,20 @@ public class listaS {
 
         public boolean vazia () { return n == 0; }
 
+        public boolean pesquisarElem (int x) {
+            for (int i = 0; i < n; i++) {
+                if (array[i] == x) return true;
+            }
+            return false;
+        }
+
+        public boolean pesquisarPos (int pos) {
+            for (int i = 0; i < n; i++) {
+                if (array[i] == array[pos]) return true;
+            }
+            return false;
+        }
+
         public int[] impPar () {
             int pares = 0, impares = 0;
             for (int i = 0; i < n; i++) {

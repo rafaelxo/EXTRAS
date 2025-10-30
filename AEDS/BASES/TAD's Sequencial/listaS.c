@@ -56,6 +56,20 @@ int removerFim () {
 
 bool vazia () { return n == 0; }
 
+bool pesquisarElem (int x) {
+    for (int i = 0; i < n; i++) {
+        if (array[i] == x) return true;
+    }
+    return false;
+}
+
+bool pesquisarPos (int pos) {
+    for (int i = 0; i < n; i++) {
+        if (array[i] == array[pos]) return true;
+    }
+    return false;
+}
+
 int impPar () {
     int pares = 0, impares = 0;
     for (int i = 0; i < n; i++) {
