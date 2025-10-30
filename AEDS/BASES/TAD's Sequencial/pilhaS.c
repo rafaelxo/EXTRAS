@@ -54,11 +54,3 @@ void mostrarInv () {
     for (int i = 0; i < n; i++) printf("%d ", array[i]);
     printf("]\n");
 }
-void mostrarRecInv (int i) {
-    if (i == n - 1) printf("[ ");
-    if (i >= 0) {
-        printf("%d ", array[i]);
-        mostrarRecInv(i - 1);
-    }
-    else printf("]\n");
-}

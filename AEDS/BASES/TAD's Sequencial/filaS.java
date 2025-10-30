@@ -14,6 +14,13 @@ public class filaS {
             ultimo = (ultimo + 1) % array.length;
         }
 
+        public int remover ()  {
+            if (primeiro == ultimo) throw new RuntimeException ("Erro!");
+            int resp = array[primeiro];
+            primeiro = (primeiro + 1) % array.length;
+            return resp;
+        }
+
         public void ordenar () {
             int quant = (ultimo - primeiro + array.length) % array.length;
             for (int i = 1; i < quant; i++) {
@@ -27,13 +34,6 @@ public class filaS {
             }
         }
 
-        public int remover ()  {
-            if (primeiro == ultimo) throw new RuntimeException ("Erro!");
-            int resp = array[primeiro];
-            primeiro = (primeiro + 1) % array.length;
-            return resp;
-        }
-
         public boolean vazia () { return primeiro == ultimo; }
 
         public int tamanho () {
@@ -41,12 +41,30 @@ public class filaS {
             else return ultimo - primeiro + array.length;
         }
 
+        public boolean pesquisar (int x) {
+            for (int i = primeiro; i != ultimo; i = (i + 1) % array.length) {
+                if (array[i] == x) return true;
+            }
+            return false;
+        }
+
+        public boolean palindromo () {
+            int ini = primeiro, fim = (ultimo - 1 + array.length) % array.length;
+            int i = 0;
+            while (i < tamanho() / 2) {
+                if (array[ini] != array[fim]) return false;
+                ini = (ini + 1) % array.length;
+                fim = (fim - 1 + array.length) % array.length;
+                i++;
+            }
+            return true;
+        }
+
         public void mostrar () {
             System.out.print("[ ");
             for (int i = primeiro; i != ultimo; i = (i + 1) % array.length) System.out.print(array[i] + " ");
             System.out.println("]");
         }
-
         public void mostrarRec (int i) {
             if (i == primeiro) System.out.print("[ ");
             if (i != ultimo) {
