@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void swap (int vet[], int i, int j) {
     int aux = vet[i];
