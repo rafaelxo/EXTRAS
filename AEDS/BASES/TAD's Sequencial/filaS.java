@@ -14,20 +14,6 @@ public class filaS {
             ultimo = (ultimo + 1) % array.length;
         }
 
-        public void inserirOrdenado (int num) {
-            if ((ultimo + 1) % array.length == primeiro) throw new RuntimeException("Erro!");
-            int i = (ultimo - 1 + array.length) % array.length;
-            while (i != primeiro && array[i] > num) {
-                array[(i + 1) % array.length] = array[i];
-                i = (i - 1 + array.length) % array.length;
-            }
-            if (i == primeiro && array[i] > num) {
-                array[(i + 1) % array.length] = array[i];
-                array[i] = num;
-            } else array[(i + 1) % array.length] = num;
-            ultimo = (ultimo + 1) % array.length;
-        }
-
         public void ordenar () {
             int quant = (ultimo - primeiro + array.length) % array.length;
             for (int i = 1; i < quant; i++) {
@@ -50,6 +36,11 @@ public class filaS {
 
         public boolean vazia () { return primeiro == ultimo; }
 
+        public int tamanho () {
+            if (ultimo >= primeiro) return ultimo - primeiro;
+            else return ultimo - primeiro + array.length;
+        }
+
         public void mostrar () {
             System.out.print("[ ");
             for (int i = primeiro; i != ultimo; i = (i + 1) % array.length) System.out.print(array[i] + " ");
@@ -63,12 +54,6 @@ public class filaS {
                 mostrarRec((i + 1) % array.length);
             } else System.out.println("]");
         }
-
-        public int tamanho () {
-            if (ultimo >= primeiro) return ultimo - primeiro;
-            else return ultimo - primeiro + array.length;
-        }
-
         public void mostrarInvertido () {
             if (primeiro == ultimo) throw new RuntimeException("Erro!");
             System.out.print("[ ");

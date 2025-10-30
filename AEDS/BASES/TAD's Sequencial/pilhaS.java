@@ -38,14 +38,26 @@ public class pilhaS {
 
         public void mostrar () {
             System.out.print("[ ");
+            for (int i = n - 1; i >= 0; i--) System.out.print(array[i] + " ");
+            System.out.println("]");
+        }
+        public void mostrarRec (int i) {
+            if (i == n) System.out.print("[ ");
+            if (i < n) {
+                System.out.print(array[n - 1 - i] + " ");
+                mostrarRec(i + 1);
+            } else System.out.println("]");
+        }
+        public void mostrarInv () {
+            System.out.print("[ ");
             for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
             System.out.println("]");
         }
-        public void mostrarRec(int i) {
+        public void mostrarRecInv (int i) {
             if (i == n - 1) System.out.print("[ ");
             if (i >= 0) {
                 System.out.print(array[i] + " ");
-                mostrarRec(i - 1);
+                mostrarRecInv(i - 1);
             } else System.out.println("]");
         }
     }

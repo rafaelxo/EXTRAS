@@ -38,13 +38,27 @@ int *impPar () {
 
 void mostrar () {
     printf("[ ");
-    for (int i = 0; i < n; i++) printf("%d ", array[i]);
+    for (int i = n - 1; i >= 0; i--) printf("%d ", array[i]);
     printf("]\n");
 }
 void mostrarRec (int i) {
+    if (i == n) printf("[ ");
+    if (i < n) {
+        printf("%d ", array[n - 1 - i]);
+        mostrarRec(i + 1);
+    }
+    else printf("]\n");
+}
+void mostrarInv () {
+    printf("[ ");
+    for (int i = 0; i < n; i++) printf("%d ", array[i]);
+    printf("]\n");
+}
+void mostrarRecInv (int i) {
     if (i == n - 1) printf("[ ");
     if (i >= 0) {
         printf("%d ", array[i]);
-        mostrarRec(i - 1);
-    } else printf("]\n");
+        mostrarRecInv(i - 1);
+    }
+    else printf("]\n");
 }
