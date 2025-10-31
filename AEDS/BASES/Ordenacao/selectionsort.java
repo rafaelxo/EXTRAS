@@ -4,6 +4,7 @@ public class selectionsort {
         array[i] = array[j];
         array[j] = aux;
     }
+
     public static void selection (int array[], int n) {
         for (int i = 0; i < n - 1; i++) {
             int menor = i;

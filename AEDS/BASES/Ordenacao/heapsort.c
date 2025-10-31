@@ -23,7 +23,7 @@ void reconstruir (int vet[], int tam) {
     }
 }
 
-void heapsort (int vet[], int n) {
+void heap (int vet[], int n) {
     int tmp[n + 1];
     for (int i = 0; i < n; i++) tmp[i + 1] = vet[i];
     for (int tam = 2; tam <= n; tam++) construir(tmp, tam);

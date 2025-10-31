@@ -10,6 +10,7 @@ public class shellsort {
             array[j + alt] = aux;
         }
     }
+    
     public static void shell (int array[], int n) {
         int alt = 1;
         do {

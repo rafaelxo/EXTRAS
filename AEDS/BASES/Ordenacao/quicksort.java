@@ -4,6 +4,7 @@ public class quicksort {
         array[i] = array[j];
         array[j] = temp;
     }
+
     public static void quick (int array[], int esq, int dir) {
         int i = esq, j = dir;
         int pivo = array[esq + (dir - esq) / 2];
