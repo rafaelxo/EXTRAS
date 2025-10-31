@@ -1,5 +1,5 @@
-public class insertion {
-    public static void insercao (int array[], int n) {
+public class insertionsort {
+    public static void insertion (int array[], int n) {
         for (int i = 1; i < n; i++) {
             int aux = array[i];
             int j = i - 1;

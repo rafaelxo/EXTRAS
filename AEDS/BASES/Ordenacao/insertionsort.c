@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void insercao (int vet[], int n) {
+void insertion (int vet[], int n) {
     for (int i = 1; i < n; i++) {
         int aux = vet[i];
         int j = i - 1;
