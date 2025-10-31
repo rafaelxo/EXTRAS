@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void insertion (int vet[], int n) {
     for (int i = 1; i < n; i++) {

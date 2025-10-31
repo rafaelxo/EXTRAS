@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void intercalar (int vet[], int esq, int meio, int dir) {
     int n1 = meio - esq + 1, n2 = dir - meio;

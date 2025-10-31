@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void insercao (int vet[], int n, int gap, int alt) {
     for (int i = (alt + gap); i < n; i += alt) {
