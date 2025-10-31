@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void insercao (int vet[], int n, int gap, int alt) {
-    for (int i = (alt + gap); i < n; i += gap) {
+    for (int i = (alt + gap); i < n; i += alt) {
         int aux = vet[i];
         int j = i - alt;
         while (j >= 0 && vet[j] > aux) {
