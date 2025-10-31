@@ -4,9 +4,11 @@ public class heapsort {
         array[i] = array[j];
         array[j] = aux;
     }
+    
     public static void construir (int array[], int tam) {
         for (int i = tam; i > 1 && array[i] > array[i / 2]; i /= 2) swap(array, i, i / 2);
     }
+
     public static void reconstruir (int array[], int tam) {
         int i = 1;
         while (i <= tam / 2) {

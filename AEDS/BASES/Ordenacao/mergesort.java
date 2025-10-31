@@ -11,6 +11,7 @@ public class mergesort {
             else vet[i] = vetDir[k++];
         }
     }
+
     public static void merge (int vet[], int esq, int dir) {
         if (esq < dir) {
             int meio = (esq + dir) / 2;
