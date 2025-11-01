@@ -71,6 +71,13 @@ void mostrar () {
     for (Celula *i = topo; i != NULL; i = i->prox) printf("%d ", i->elemento);
     printf("]\n");
 }
+void mostrarRec (Celula *i) {
+    if (i == topo) printf("[ ");
+    if (i != NULL) {
+        printf("%d ", i->elemento);
+        mostrarRec(i->prox);
+    } else printf("]\n");
+}
 void mostrarInv (Celula *i) {
     if (i != NULL) {
         mostrarInv(i->prox);

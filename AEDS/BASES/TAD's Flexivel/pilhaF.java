@@ -64,9 +64,16 @@ public class pilhaF {
             for (Celula i = topo; i != null; i = i.prox) System.out.print(i.elemento + " ");
             System.out.println("]");
         }
-        public void mostrarInv (Celula i) {
+        public void mostrarRec (Celula i) {
+            if (i == topo) System.out.print("[ ");
             if (i != null) {
-                mostrarInv(i.prox);
+                System.out.print(i.elemento + " ");
+                mostrarRec(i.prox);
+            } else System.out.println("]");
+        }
+        public void mostrarInvRec (Celula i) {
+            if (i != null) {
+                mostrarInvRec(i.prox);
                 System.out.print(i.elemento + " ");
             }
         }
