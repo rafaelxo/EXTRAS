@@ -7,7 +7,7 @@ public class filaF {
             this.prox = null;
         }
     }
-    
+
     static class Fila {
         private Celula primeiro, ultimo;
         public Fila () {
@@ -30,12 +30,6 @@ public class filaF {
             return resp;
         }
 
-        public void mostrar () {
-            System.out.print("[ ");
-            for (Celula i = primeiro.prox; i != null; i = i.prox) System.out.print(i.elemento + " ");
-            System.out.println("]");
-        }
-
         public int somar () {
             int soma = 0;
             for (Celula i = primeiro.prox; i != null; i = i.prox) soma += i.elemento;
@@ -52,6 +46,42 @@ public class filaF {
                 if (i.elemento > maior) maior = i.elemento;
             }
             return maior;
+        }
+        public int maiorRec (Celula i) {
+            if (i == null) return 0;
+            else return (i.elemento > maiorRec(i.prox) ? i.elemento : maiorRec(i.prox));
+        }
+
+        public void inverter () {
+            Celula prev = null, next = null, atual = primeiro.prox;
+            while (atual != null) {
+                next = atual.prox;
+                atual.prox = prev;
+                prev = atual;
+                atual = next;
+            }
+            ultimo = primeiro.prox;
+            primeiro.prox = prev;
+        }
+
+        public void mostrar () {
+            System.out.print("[ ");
+            for (Celula i = primeiro.prox; i != null; i = i.prox) System.out.print(i.elemento + " ");
+            System.out.println("]");
+        }
+        public void mostrarRec (Celula i) {
+            if (i == primeiro.prox) System.out.print("[ ");
+            if (i != null) {
+                System.out.print(i.elemento + " ");
+                mostrarRec(i.prox);
+            } else System.out.println("]");
+        }
+        public void mostrarInvRec (Celula i) {
+            if (i != null) {
+                mostrarInvRec(i.prox);
+                System.out.print(i.elemento + " ");
+            } else System.out.print("[ ");
+            if (i == primeiro.prox) System.out.println("]");
         }
     }
 }

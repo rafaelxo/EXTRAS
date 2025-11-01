@@ -75,7 +75,8 @@ public class pilhaF {
             if (i != null) {
                 mostrarInvRec(i.prox);
                 System.out.print(i.elemento + " ");
-            }
+            } else System.out.print("[ ");
+            if (i == topo) System.out.println("]");
         }
     }
 }

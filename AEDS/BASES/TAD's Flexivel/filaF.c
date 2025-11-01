@@ -37,12 +37,6 @@ int remover () {
     return resp;
 }
 
-void mostrar () {
-    printf("[ ");
-    for (Celula *i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
-    printf("]\n");
-}
-
 int somar () {
     int soma = 0;
     for (Celula *i = primeiro->prox; i != NULL; i = i->prox) soma += i->elemento;
@@ -66,9 +60,7 @@ int maiorRec (Celula *i) {
 }
 
 void inverter () {
-    Celula *prev = NULL;
-    Celula *next = NULL;
-    Celula *atual = primeiro->prox;
+    Celula *prev = NULL, *next = NULL, *atual = primeiro->prox;
     while (atual != NULL) {
         next = atual->prox;
         atual->prox = prev;
@@ -77,4 +69,24 @@ void inverter () {
     }
     ultimo = primeiro->prox;
     primeiro->prox = prev;
+}
+
+void mostrar () {
+    printf("[ ");
+    for (Celula *i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
+    printf("]\n");
+}
+void mostrarRec (Celula *i) {
+    if (i == primeiro->prox) printf("[ ");
+    if (i != NULL) {
+        printf("%d ", i->elemento);
+        mostrarRec(i->prox);
+    } else printf("]\n");
+}
+void mostrarRecInv (Celula *i) {
+    if (i != NULL) {
+        mostrarRecInv(i->prox);
+        printf("%d ", i->elemento);
+    } else printf("[ ");
+    if (i == primeiro->prox) printf("]\n");
 }

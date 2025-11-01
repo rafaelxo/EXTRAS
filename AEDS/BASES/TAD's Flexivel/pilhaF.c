@@ -82,5 +82,6 @@ void mostrarInv (Celula *i) {
     if (i != NULL) {
         mostrarInv(i->prox);
         printf("%d ", i->elemento);
-    }
+    } else printf("[ ");
+    if (i == topo) printf("]\n");
 }
