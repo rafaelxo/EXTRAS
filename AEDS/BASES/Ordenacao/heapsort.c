@@ -8,14 +8,18 @@ void swap (int vet[], int i, int j) {
 }
 
 void construir (int vet[], int tam) {
-    for (int i = tam; i > 1 && vet[i] > vet[i / 2]; i /= 2) swap(vet, i, i / 2);
+    int i = tam - 1;
+    while (i > 0 && vet[i] > vet[(i - 1) / 2]) {
+        swap(vet, i, (i - 1) / 2);
+        i = (i - 1) / 2;
+    }
 }
 
 void reconstruir (int vet[], int tam) {
-    int i = 1;
-    while (i <= tam / 2) {
-        int filho = 2 * i;
-        if (filho < tam && vet[filho] < vet[filho + 1]) filho++;
+    int i = 0;
+    while (2 * i + 1 < tam) {
+        int filho = 2 * i + 1;
+        if (filho + 1 < tam && vet[filho] < vet[filho + 1]) filho++;
         if (vet[i] < vet[filho]) {
             swap(vet, i, filho);
             i = filho;
@@ -24,13 +28,11 @@ void reconstruir (int vet[], int tam) {
 }
 
 void heap (int vet[], int n) {
-    int tmp[n + 1];
-    for (int i = 0; i < n; i++) tmp[i + 1] = vet[i];
-    for (int tam = 2; tam <= n; tam++) construir(tmp, tam);
+    for (int tam = 2; tam <= n; tam++) construir(vet, tam);
     int tam = n;
     while (tam > 1) {
-        swap(tmp, 1, tam--);
-        reconstruir(tmp, tam);
+        swap(vet, 0, tam - 1);
+        tam--;
+        reconstruir(vet, tam);
     }
-    for (int i = 0; i < n; i++) vet[i] = tmp[i + 1];
 }
