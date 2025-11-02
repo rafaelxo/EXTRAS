@@ -42,7 +42,7 @@ public class matrizF {
         public int somaDiagPrinc () {
             if (this.linhas != this.colunas || this.inicio == null) throw new IllegalArgumentException("Erro!");
             Celula i = this.inicio;
-            int soma = 0; soma += i.elemento;
+            int soma =  i.elemento;
             while (i.dir != null && i.inf != null) {
                 i = i.dir.inf;
                 soma += i.elemento;

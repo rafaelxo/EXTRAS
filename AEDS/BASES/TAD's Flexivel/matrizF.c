@@ -49,7 +49,7 @@ Matriz *newMatriz (int l, int c) {
 int somaDiagPrinc (Matriz *m) {
     if (m->linhas != m->colunas || m->inicio == NULL) exit(1);
     Celula *i = m->inicio;
-    int soma = 0; soma += i->elemento;
+    int soma = i->elemento;
     while (i->dir != NULL && i->inf != NULL) {
         i = i->dir->inf;
         soma += i->elemento;
