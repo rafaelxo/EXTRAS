@@ -116,5 +116,19 @@ public class listaFD {
             for (CelulaDupla i = primeiro.prox; i != null; i = i.prox) System.out.print(i.elemento + " ");
             System.out.println("]");
         }
+        public void mostrarRec (CelulaDupla i) {
+            if (i == primeiro.prox) System.out.print("[ ");
+            if (i != null) {
+                System.out.print(i.elemento + " ");
+                mostrarRec(i.prox);
+            } else System.out.println("]");
+        }
+        public void mostrarInvRec (CelulaDupla i) {
+            if (i != null) {
+                mostrarInvRec(i.ant);
+                System.out.print(i.elemento + " ");
+            } else System.out.println("[ ");
+            if (i == primeiro.prox) System.out.println("]");
+        }
     }
 }

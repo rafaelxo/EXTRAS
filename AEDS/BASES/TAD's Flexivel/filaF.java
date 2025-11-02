@@ -25,8 +25,8 @@ public class filaF {
             Celula tmp = primeiro.prox;
             int resp = tmp.elemento;
             primeiro.prox = tmp.prox;
-            if (primeiro.prox == null) ultimo = primeiro;
             tmp = tmp.prox = null;
+            if (primeiro.prox == null) ultimo = primeiro;
             return resp;
         }
 

@@ -142,3 +142,17 @@ void mostrar () {
     for (CelulaDupla *i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
     printf("]\n");
 }
+void mostrarRec (CelulaDupla *i) {
+    if (i == primeiro->prox) printf("[ ");
+    if (i != NULL) {
+        printf("%d ", i->elemento);
+        mostrarRec(i->prox);
+    } else printf("]");
+}
+void mostrarInvRec (CelulaDupla *i) {
+    if (i != NULL) {
+        mostrarInvRec(i->prox);
+        printf("%d ", i->elemento);
+    } else printf("[ ");
+    if (i == primeiro->prox) printf("]\n");
+}

@@ -96,5 +96,19 @@ public class listaF {
             for (Celula i = primeiro.prox; i != null; i = i.prox) System.out.print(i.elemento + " ");
             System.out.println("]");
         }
+        public void mostrarRec (Celula i) {
+            if (i == primeiro.prox) System.out.print("[ ");
+            if (i != null) {
+                System.out.print(i.elemento + " ");
+                mostrarRec(i.prox);
+            } else System.out.print("]");
+        }
+        public void mostrarInvRec (Celula i) {
+            if (i != null) {
+                mostrarInvRec(i.prox);
+                System.out.print(i.elemento + " ");
+            } else System.out.print("[ ");
+            if (i == primeiro.prox) System.out.println("]");
+        }
     }
 }

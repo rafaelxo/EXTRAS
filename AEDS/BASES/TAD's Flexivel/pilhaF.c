@@ -54,7 +54,6 @@ int somarRec (Celula *i) {
 }
 
 int maior () {
-    if (topo == NULL) exit(1);
     int resp = topo->elemento;
     for (Celula *i = topo->prox; i != NULL; i = i->prox) {
         if (i->elemento > resp) resp = i->elemento;
