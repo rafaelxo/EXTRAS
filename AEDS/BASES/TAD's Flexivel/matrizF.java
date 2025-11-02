@@ -16,8 +16,7 @@ public class matrizF {
             m.linhas = l;
             m.colunas = c;
             m.inicio = new Celula(0);
-            Celula lin = m.inicio;
-            Celula col = m.inicio;
+            Celula lin = m.inicio, col = m.inicio;
             for (int j = 1; j < c; j++) {
                 col.dir = new Celula(0);
                 col.dir.esq = col;
