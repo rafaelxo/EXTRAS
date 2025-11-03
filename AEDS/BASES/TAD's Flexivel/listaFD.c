@@ -104,16 +104,18 @@ void inserirOrd (int x) {
 void inverter () {
     if (primeiro == ultimo) return;
     CelulaDupla *atual = primeiro->prox;
-    CelulaDupla *tmp = NULL;
+    CelulaDupla *next = NULL;
     while (atual != NULL) {
-        tmp = atual->prox;
+        next = atual->prox;
         atual->prox = atual->ant;
-        atual->ant = tmp;
-        atual = tmp;
+        atual->ant = next;
+        atual = next;
     }
     CelulaDupla *aux = primeiro->prox;
     primeiro->prox = ultimo;
     ultimo = aux;
+    if (primeiro->prox != NULL) primeiro->prox->ant = primeiro;
+    if (ultimo != NULL) ultimo->prox = NULL;
 }
 
 void removerPares () {

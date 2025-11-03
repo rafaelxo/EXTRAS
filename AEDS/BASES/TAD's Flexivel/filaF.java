@@ -62,6 +62,7 @@ public class filaF {
             }
             ultimo = primeiro.prox;
             primeiro.prox = prev;
+            if (ultimo != null) ultimo.prox = null;
         }
 
         public void mostrar () {

@@ -91,18 +91,19 @@ public class listaFD {
         }
 
         public void inverter () {
-            if (primeiro == ultimo) return;
             CelulaDupla atual = primeiro.prox;
-            CelulaDupla tmp = null;
+            CelulaDupla next = null;
             while (atual != null) {
-                tmp = atual.prox;
+                next = atual.prox;
                 atual.prox = atual.ant;
-                atual.ant = tmp;
-                atual = tmp;
+                atual.ant = next;
+                atual = next;
             }
             CelulaDupla aux = primeiro.prox;
             primeiro.prox = ultimo;
             ultimo = aux;
+            if (primeiro.prox != null) primeiro.prox.ant = primeiro;
+            if (ultimo != null) ultimo.prox = null;
         }
 
         public int tamanho () {
