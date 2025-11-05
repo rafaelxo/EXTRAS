@@ -16,7 +16,6 @@ void insercao (int vet[], int n) {
 int main () {
     int n;
     scanf("%d", &n);
-
     for (int i = 0; i < n; i++) {
         int aln;
         scanf("%d", &aln);
@@ -25,9 +24,7 @@ int main () {
             scanf("%d", &fila[i]);
             final[i] = fila[i];
         }
-
         insercao(final, aln);
-
         int diff = 0;
         for (int i = 0; i < aln; i++) {
             if (fila[i] == final[i]) diff++;

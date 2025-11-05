@@ -10,12 +10,10 @@ int main () {
         while (str[i] != ' ') n = n * 10 + (str[i++] - '0');
         i++;
         while (str[i] != '\0') m = m * 10 + (str[i++] - '0');
-
         int mat[n][m];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) scanf("%d", &mat[i][j]);
         }
-
         int result[n][m];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -30,12 +28,10 @@ int main () {
                 else result[i][j] = 0;
             }
         }
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) printf("%d", result[i][j]);
             printf("\n");
         }
-
         scanf(" %[^\n]", str);
     }
     return 0;

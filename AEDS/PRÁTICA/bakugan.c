@@ -2,7 +2,8 @@
 #include <stdbool.h>
 
 int main () {
-    int n; scanf("%d", &n);
+    int n;
+    scanf("%d", &n);
     while (n != 0) {
         int mark[n], leti[n];
         int sMark = 0, sLeti = 0;

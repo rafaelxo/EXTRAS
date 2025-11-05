@@ -2,6 +2,7 @@ import java.util.*;
 
 public class medalhas {
     public static Scanner sc = new Scanner(System.in);
+    
     public static class Pais {
         private String nome;
         private int ouro, prata, bronze;
