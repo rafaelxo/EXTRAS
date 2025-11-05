@@ -38,7 +38,7 @@ public class dicionario {
         public void caminharCentral (No i) {
             if (i != null) {
                 caminharCentral(i.esq);
-                System.out.println(i.elemento + " ");
+                System.out.println(i.elemento);
                 caminharCentral(i.dir);
             }
         }
