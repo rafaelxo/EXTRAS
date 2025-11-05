@@ -2,6 +2,7 @@ import java.util.*;
 
 public class sort {
     public static Scanner sc = new Scanner (System.in);
+
     public static void insercao (int[] vet, int n) {
         for (int i = 1; i < n; i++) {
             int aux = vet[i];
@@ -13,9 +14,10 @@ public class sort {
             vet[j + 1] = aux;
         }
     }
+
     public static void esquematizacao (int[] vet, int n, int m) {
         insercao(vet, n);
-        for (int mod = -m + 1; mod < m; mod++) {
+        for (int mod = -(m - 1); mod < m; mod++) {
             for (int i = n - 1; i >= 0; i--) {
                 if (vet[i] % m == mod && vet[i] % 2 != 0) System.out.println(vet[i]);
             }
@@ -24,6 +26,7 @@ public class sort {
             }
         }
     }
+    
     public static void main (String[] args) {
         int n = sc.nextInt(); int m = sc.nextInt();
         while (n != 0 && m != 0) {
