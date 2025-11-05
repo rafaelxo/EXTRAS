@@ -30,12 +30,6 @@ public class arvoreBin {
             raiz = inserirRef(x, raiz);
         }
 
-        public void inserirPai (int x) {
-            if (raiz == null) raiz = new No (x);
-            else if (x < raiz.elemento) inserirPai(x, raiz.esq, raiz);
-            else if (x > raiz.elemento) inserirPai(x, raiz.dir, raiz);
-            else throw new RuntimeException ("Erro!");
-        }
         private void inserirPai (int x, No i, No pai) {
             if (i == null) {
                 if (x < pai.elemento) pai.esq = new No (x);
@@ -45,12 +39,21 @@ public class arvoreBin {
             else if (x > i.elemento) inserirPai(x, i.dir, i);
             else throw new RuntimeException ("Erro!");
         }
+        public void inserirPai (int x) {
+            if (raiz == null) raiz = new No (x);
+            else if (x < raiz.elemento) inserirPai(x, raiz.esq, raiz);
+            else if (x > raiz.elemento) inserirPai(x, raiz.dir, raiz);
+            else throw new RuntimeException ("Erro!");
+        }
 
         private boolean pesquisar (int x, No i) {
             if (i == null) return false;
             else if (x == i.elemento) return true;
             else if (x < i.elemento) return pesquisar(x, i.esq);
             else return pesquisar(x, i.dir);
+        }
+        public boolean pesquisar (int x) {
+            return pesquisar(x, raiz);
         }
 
         public void caminharCentral (No i) {
@@ -85,6 +88,9 @@ public class arvoreBin {
             else if (i.esq == null) i = i.dir;
             else i.esq = maiorEsq(i, i.esq);
             return i;
+        }
+        public void remover (int x) {
+            raiz = remover(x, raiz);
         }
 
         private No maiorEsq (No i, No j) {
@@ -136,6 +142,9 @@ public class arvoreBin {
             else if (a == null || b == null) return false;
             else if (a.elemento != b.elemento) return false;
             else return igual(a.esq, b.esq) && igual(a.dir, b.dir);
+        }
+        public boolean igual (Arvore b) {
+            return igual(this.raiz, b.raiz);
         }
     }
 }
