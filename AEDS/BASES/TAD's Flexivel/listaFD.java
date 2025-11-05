@@ -91,8 +91,7 @@ public class listaFD {
         }
 
         public void inverter () {
-            CelulaDupla atual = primeiro.prox;
-            CelulaDupla next = null;
+            CelulaDupla atual = primeiro.prox, next = null;
             while (atual != null) {
                 next = atual.prox;
                 atual.prox = atual.ant;
