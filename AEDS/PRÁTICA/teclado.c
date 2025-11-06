@@ -2,12 +2,12 @@
 #include <string.h>
 
 int main() {
-    char str[1001];
+    char str[1000];
 
     while (scanf("%s", str) != EOF) {
         int abriu = 0;
-        char dentro[1001] = "";
-        char normal[1001] = "";
+        char dentro[1000] = "";
+        char normal[1000] = "";
         int iDentro = 0;
         int iNormal = 0;
 
