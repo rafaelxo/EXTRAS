@@ -2,22 +2,22 @@
 #include <string.h>
 
 int main() {
-    char linha[1001];
+    char str[1001];
 
-    while (fgets(linha, sizeof(linha), stdin) != NULL) {
+    while (scanf("%s", str) != EOF) {
         int abriu = 0;
         char dentro[1001] = "";
         char normal[1001] = "";
         int iDentro = 0;
         int iNormal = 0;
 
-        linha[strcspn(linha, "\n")] = 0;
+        str[strcspn(str, "\n")] = 0;
 
-        for (int i = 0; i < strlen(linha); i++) {
-            if (linha[i] == '[') abriu++;
-            if (linha[i] == ']') abriu--;
-            if (abriu > 0 && linha[i] != '[') dentro[iDentro++] = linha[i];
-            if (abriu == 0 && (linha[i] != '[' && linha[i] != ']')) normal[iNormal++] = linha[i];
+        for (int i = 0; i < strlen(str); i++) {
+            if (str[i] == '[') abriu++;
+            if (str[i] == ']') abriu--;
+            if (abriu > 0 && str[i] != '[') dentro[iDentro++] = str[i];
+            if (abriu == 0 && (str[i] != '[' && str[i] != ']')) normal[iNormal++] = str[i];
         }
         dentro[iDentro] = '\0';
         normal[iNormal] = '\0';
