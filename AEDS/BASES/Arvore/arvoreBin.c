@@ -3,13 +3,14 @@
 #include <stdbool.h>
 
 typedef struct No {
-    int elemento;
+    int elemento, peso;
     struct No *esq, *dir;
 } No;
 
 No *newNo (int x) {
     No *novo = (No*)malloc(sizeof(No));
     novo->elemento = x;
+    novo->peso = 0;
     novo->esq = novo->dir = NULL;
     return novo;
 }
@@ -146,6 +147,16 @@ int getMenor () {
 int somarRec (No *i) {
     if (i == NULL) return 0;
     return i->elemento + somarRec(i->esq) + somarRec(i->dir);
+}
+
+int setPeso (No *i) {
+    if (i == NULL) return 0;
+    else {
+        int altEsq = setPeso(i->esq);
+        int altDir = setPeso(i->dir);
+        i->peso = altDir - altEsq;
+        return altEsq + altDir + 1;
+    }
 }
 
 bool igual (No *a, No *b) {
