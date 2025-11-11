@@ -1,13 +1,15 @@
-public class arvoreBin {
+public class AVL {
     public class No {
-        private int elemento;
+        private int elemento, peso;
         private No esq, dir;
         public No (int x) {
             this.elemento = x;
+            this.peso = 0;
             this.esq = this.dir = null;
         }
         public No (int x, No esq, No dir) {
             this.elemento = x;
+            this.peso = 0;
             this.esq = esq;
             this.dir = dir;
         }
@@ -135,6 +137,16 @@ public class arvoreBin {
         public int somarRec (No i) {
             if (i == null) return 0;
             else return i.elemento + somarRec(i.esq) + somarRec(i.dir);
+        }
+
+        public int setPeso (No i) {
+            if (i == null) return 0;
+            else {
+                int altEsq = setPeso(i.esq);
+                int altDir = setPeso(i.dir);
+                i.peso = altDir - altEsq;
+                return altEsq + altDir + 1;
+            }
         }
 
         private boolean igual (No a, No b) {
