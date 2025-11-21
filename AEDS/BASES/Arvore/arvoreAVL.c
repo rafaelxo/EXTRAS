@@ -55,7 +55,7 @@ No* balancear (No *i) {
         if (abs(fator) <= 1) setNivel(i);
         else if (fator == 2) {
             int fatorFilhoDir = getNivel(i->dir->dir) - getNivel(i->dir->esq);
-            if (fatorFilhoDir == -1) rotacionarDir(i->dir);
+            if (fatorFilhoDir == -1) i->dir = rotacionarDir(i->dir);
             i = rotacionarEsq(i);
         }
         else if (fator == -2) {
