@@ -46,19 +46,6 @@ void inserirPai (int x) {
     else exit(1);
 }
 
-/*
-void inserirRefArvorePD (int x, No **i) {
-    if (*i == NULL) *i = newNo(x);
-    else if (x < (*i)->elemento) inserirRefArvorePD(x, &((*i)->esq));
-    else if (x > (*i)->elemento) inserirRefArvorePD(x, &((*i)->dir));
-    else exit(1);
-}
-
-void inserirRefPD (int x) {
-    raiz = inserirRefArvorePD(x, &raiz);
-}
-*/
-
 bool pesquisarNo (No *i, int x) {
     if (i == NULL) return false;
     else if (x == i->elemento) return true;
@@ -68,8 +55,6 @@ bool pesquisarNo (No *i, int x) {
 bool pesquisar (int x) {
     return pesquisarNo(raiz, x);
 }
-
-
 
 No* removerNo (int x, No *i) {
     if (i == NULL) exit(1);
@@ -155,4 +140,16 @@ bool igual (No *a, No *b) {
     else if (a == NULL || b == NULL) return false;
     else if (a->elemento != b->elemento) return false;
     else return igual(a->esq, b->esq) && igual(a->dir, b->dir);
+}
+bool igualArvore (No *a, No *b) {
+    return igual(a, b);
+}
+bool espelho (No *a, No *b) {
+    if (a == NULL && b == NULL) return true;
+    else if (a == NULL || b == NULL) return false;
+    else if (a->elemento != b->elemento) return false;
+    else return espelho(a->esq, b->dir) && espelho(a->dir, b->esq);
+}
+bool espelhoArvore (No *a, No *b) {
+    return espelho(a, b);
 }

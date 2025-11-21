@@ -3,14 +3,23 @@
 #include <stdbool.h>
 
 typedef struct No {
-    int elemento, peso;
+    int elemento, nivel;
     struct No *esq, *dir;
 } No;
+
+int getNivel (No *i) {
+    return (i == NULL) ? 0 : i->nivel;
+}
+void setNivel (No *i) {
+    if (i != NULL) {
+        i->nivel = 1 + ((getNivel(i->esq) > getNivel(i->dir)) ? getNivel(i->esq) : getNivel(i->dir));
+    }
+}
 
 No *newNo (int x) {
     No *novo = (No*)malloc(sizeof(No));
     novo->elemento = x;
-    novo->peso = 0;
+    novo->nivel = 0;
     novo->esq = novo->dir = NULL;
     return novo;
 }
@@ -21,15 +30,52 @@ void Arvore () {
     raiz = NULL;
 }
 
-No* inserirRefArvore (int x, No *i) {
-    if (i == NULL) i = newNo(x);
-    else if (x < i->elemento) i->esq = inserirRefArvore(x, i->esq);
-    else if (x > i->elemento) i->dir = inserirRefArvore(x, i->dir);
-    else exit(1);
-    return i;
+No* rotacionarDir (No *i) {
+    No *noEsq = i->esq;
+    No *noEsqDir = noEsq->dir;
+    noEsq->dir = i;
+    i->esq = noEsqDir;
+    setNivel(i);
+    setNivel(noEsq);
+    return noEsq;
 }
-void inserirRef (int x) {
-    raiz = inserirRefArvore(x, raiz);
+No* rotacionarEsq (No *i) {
+    No *noDir = i->dir;
+    No *noDirEsq = noDir->esq;
+    noDir->esq = i;
+    i->dir = noDirEsq;
+    setNivel(i);
+    setNivel(noDir);
+    return noDir;
+}
+
+No* balancear (No *i) {
+    if (i != NULL) {
+        int fator = getNivel(i->dir) - getNivel(i->esq);
+        if (abs(fator) <= 1) setNivel(i);
+        else if (fator == 2) {
+            int fatorFilhoDir = getNivel(i->dir->dir) - getNivel(i->dir->esq);
+            if (fatorFilhoDir == -1) rotacionarDir(i->dir);
+            i = rotacionarEsq(i);
+        }
+        else if (fator == -2) {
+            int fatorFilhoEsq = getNivel(i->esq->dir) - getNivel(i->esq->esq);
+            if (fatorFilhoEsq == 1) rotacionarEsq(i->esq);
+            i = rotacionarDir(i);
+        } else exit(1);
+        return i;
+    }
+}
+
+No* inserirRec (int x, No *i) {
+    if (i == NULL) i = newNo(x);
+    else if (x < i->elemento) i->esq = inserirRec(x, i->esq);
+    else if (x > i->elemento) i->dir = inserirRec(x, i->dir);
+    else exit(1);
+    return balancear(i);
+}
+void inserir (int x) {
+    raiz = inserirRec(x, raiz);
 }
 
 void inserirPaiArvore (int x, No *i, No *pai) {
@@ -46,19 +92,6 @@ void inserirPai (int x) {
     else if (x > raiz->elemento) inserirPaiArvore(x, raiz->dir, raiz);
     else exit(1);
 }
-
-/*
-void inserirRefArvorePD (int x, No **i) {
-    if (*i == NULL) *i = newNo(x);
-    else if (x < (*i)->elemento) inserirRefArvorePD(x, &((*i)->esq));
-    else if (x > (*i)->elemento) inserirRefArvorePD(x, &((*i)->dir));
-    else exit(1);
-}
-
-void inserirRefPD (int x) {
-    raiz = inserirRefArvorePD(x, &raiz);
-}
-*/
 
 bool pesquisarNo (No *i, int x) {
     if (i == NULL) return false;
@@ -149,19 +182,21 @@ int somarRec (No *i) {
     return i->elemento + somarRec(i->esq) + somarRec(i->dir);
 }
 
-int setPeso (No *i) {
-    if (i == NULL) return 0;
-    else {
-        int altEsq = setPeso(i->esq);
-        int altDir = setPeso(i->dir);
-        i->peso = altDir - altEsq;
-        return altEsq + altDir + 1;
-    }
-}
-
 bool igual (No *a, No *b) {
     if (a == NULL && b == NULL) return true;
     else if (a == NULL || b == NULL) return false;
     else if (a->elemento != b->elemento) return false;
     else return igual(a->esq, b->esq) && igual(a->dir, b->dir);
+}
+bool igualArvore (No *outraRaiz) {
+    return igual(raiz, outraRaiz);
+}
+bool espelho (No *a, No *b) {
+    if (a == NULL && b == NULL) return true;
+    else if (a == NULL || b == NULL) return false;
+    else if (a->elemento != b->elemento) return false;
+    else return espelho(a->esq, b->dir) && espelho(a->dir, b->esq);
+}
+bool espelhoArvore (No *outraRaiz) {
+    return espelho(raiz, outraRaiz);
 }

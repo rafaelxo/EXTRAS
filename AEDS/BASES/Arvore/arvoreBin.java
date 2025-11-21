@@ -63,7 +63,6 @@ public class arvoreBin {
                 caminharCentral(i.dir);
             }
         }
-
         public void caminharPre (No i) {
             if (i != null) {
                 System.out.print(i.elemento + " ");
@@ -71,7 +70,6 @@ public class arvoreBin {
                 caminharPre(i.dir);
             }
         }
-
         public void caminharPos (No i) {
             if (i != null) {
                 caminharPos(i.esq);
@@ -145,6 +143,15 @@ public class arvoreBin {
         }
         public boolean igual (Arvore b) {
             return igual(this.raiz, b.raiz);
+        }
+        private boolean espelho (No a, No b) {
+            if (a == null && b == null) return true;
+            else if (a == null || b == null) return false;
+            else if (a.elemento != b.elemento) return false;
+            else return espelho(a.esq, b.dir) && espelho(a.dir, b.esq);
+        }
+        public boolean espelho (Arvore b) {
+            return espelho(this.raiz, b.raiz);
         }
     }
 }
