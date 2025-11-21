@@ -110,7 +110,7 @@ No* removerNo (int x, No *i) {
     else if (i->dir == NULL) i = i->esq;
     else if (i->esq == NULL) i = i->dir;
     else i->esq = maiorEsq(i, i->esq);
-    return i;
+    return balancear(i);
 }
 void remover (int x) {
     raiz = removerNo(x, raiz);
