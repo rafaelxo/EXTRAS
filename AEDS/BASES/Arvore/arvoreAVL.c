@@ -63,8 +63,8 @@ No* balancear (No *i) {
             if (fatorFilhoEsq == 1) rotacionarEsq(i->esq);
             i = rotacionarDir(i);
         } else exit(1);
-        return i;
     }
+    return i;
 }
 
 No* inserirRec (int x, No *i) {
