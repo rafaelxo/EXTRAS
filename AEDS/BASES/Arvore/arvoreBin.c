@@ -16,7 +16,7 @@ No *newNo (int x) {
 
 No *raiz;
 
-void Arvore () {
+void ArvoreBIN () {
     raiz = NULL;
 }
 

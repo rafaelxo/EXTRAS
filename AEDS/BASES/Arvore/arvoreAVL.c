@@ -26,7 +26,7 @@ No *newNo (int x) {
 
 No *raiz;
 
-void Arvore () {
+void ArvoreAVL () {
     raiz = NULL;
 }
 
