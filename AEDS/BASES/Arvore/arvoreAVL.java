@@ -7,12 +7,6 @@ public class arvoreAVL {
             this.nivel = 0;
             this.esq = this.dir = null;
         }
-        public No (int x, No esq, No dir) {
-            this.elemento = x;
-            this.nivel = 0;
-            this.esq = esq;
-            this.dir = dir;
-        }
         public int getNivel (No i) {
             return (i == null) ? 0 : i.nivel;
         }
@@ -73,22 +67,6 @@ public class arvoreAVL {
             i.setNivel();
             noEsq.setNivel();
             return noEsq;
-        }
-
-        private void inserirPai (int x, No i, No pai) {
-            if (i == null) {
-                if (x < pai.elemento) pai.esq = new No (x);
-                else pai.dir = new No (x);
-            }
-            else if (x < i.elemento) inserirPai(x, i.esq, i);
-            else if (x > i.elemento) inserirPai(x, i.dir, i);
-            else throw new RuntimeException ("Erro!");
-        }
-        public void inserirPai (int x) {
-            if (raiz == null) raiz = new No (x);
-            else if (x < raiz.elemento) inserirPai(x, raiz.esq, raiz);
-            else if (x > raiz.elemento) inserirPai(x, raiz.dir, raiz);
-            else throw new RuntimeException ("Erro!");
         }
 
         private boolean pesquisar (int x, No i) {

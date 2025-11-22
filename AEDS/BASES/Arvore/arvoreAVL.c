@@ -78,21 +78,6 @@ void inserir (int x) {
     raiz = inserirRec(x, raiz);
 }
 
-void inserirPaiArvore (int x, No *i, No *pai) {
-    if (i == NULL) {
-        if (x < pai->elemento) pai->esq = newNo(x);
-        else pai->dir = newNo(x);
-    } else if (x < i->elemento) inserirPaiArvore(x, i->esq, i);
-    else if (x > i->elemento) inserirPaiArvore(x, i->dir, i);
-    else exit(1);
-}
-void inserirPai (int x) {
-    if (raiz == NULL) raiz = newNo(x);
-    else if (x < raiz->elemento) inserirPaiArvore(x, raiz->esq, raiz);
-    else if (x > raiz->elemento) inserirPaiArvore(x, raiz->dir, raiz);
-    else exit(1);
-}
-
 bool pesquisarNo (No *i, int x) {
     if (i == NULL) return false;
     else if (x == i->elemento) return true;

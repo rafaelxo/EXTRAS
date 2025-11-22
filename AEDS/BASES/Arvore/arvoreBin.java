@@ -6,11 +6,6 @@ public class arvoreBin {
             this.elemento = x;
             this.esq = this.dir = null;
         }
-        public No (int x, No esq, No dir) {
-            this.elemento = x;
-            this.esq = esq;
-            this.dir = dir;
-        }
     }
 
     public class Arvore {

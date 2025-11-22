@@ -8,12 +8,6 @@ public class arvoreAN {
             this.cor = false;
             this.esq = this.dir = null;
         }
-        public No (int x, No esq, No dir) {
-            this.elemento = x;
-            this.cor = false;
-            this.esq = esq;
-            this.dir = dir;
-        }
     }
 
     public class Arvore {
@@ -70,22 +64,6 @@ public class arvoreAN {
             return noEsq;
         }
 
-        private void inserirPai (int x, No i, No pai) {
-            if (i == null) {
-                if (x < pai.elemento) pai.esq = new No (x);
-                else pai.dir = new No (x);
-            }
-            else if (x < i.elemento) inserirPai(x, i.esq, i);
-            else if (x > i.elemento) inserirPai(x, i.dir, i);
-            else throw new RuntimeException ("Erro!");
-        }
-        public void inserirPai (int x) {
-            if (raiz == null) raiz = new No (x);
-            else if (x < raiz.elemento) inserirPai(x, raiz.esq, raiz);
-            else if (x > raiz.elemento) inserirPai(x, raiz.dir, raiz);
-            else throw new RuntimeException ("Erro!");
-        }
-
         private boolean pesquisar (int x, No i) {
             if (i == null) return false;
             else if (x == i.elemento) return true;
@@ -99,13 +77,13 @@ public class arvoreAN {
         public void caminharCentral (No i) {
             if (i != null) {
                 caminharCentral(i.esq);
-                System.out.print(i.elemento + " ");
+                System.out.print(i.elemento + ((i.cor) ? "(P) " : "(B) "));
                 caminharCentral(i.dir);
             }
         }
         public void caminharPre (No i) {
             if (i != null) {
-                System.out.print(i.elemento + " ");
+                System.out.print(i.elemento + ((i.cor) ? "(P) " : "(B) "));
                 caminharPre(i.esq);
                 caminharPre(i.dir);
             }
@@ -114,7 +92,7 @@ public class arvoreAN {
             if (i != null) {
                 caminharPos(i.esq);
                 caminharPos(i.dir);
-                System.out.print(i.elemento + " ");
+                System.out.print(i.elemento + ((i.cor) ? "(P) " : "(B) "));
             }
         }
 
