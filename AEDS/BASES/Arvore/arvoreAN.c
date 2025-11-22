@@ -2,46 +2,50 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct No {
+typedef struct NoAN {
     int elemento;
     bool cor;
-    struct No *esq, *dir;
-} No;
+    struct NoAN *esq, *dir;
+} NoAN;
 
-No *newNo (int x) {
-    No *novo = (No*)malloc(sizeof(No));
+NoAN *newNo (int x) {
+    NoAN *novo = (NoAN*)malloc(sizeof(NoAN));
     novo->elemento = x;
     novo->cor = false;
     novo->esq = novo->dir = NULL;
     return novo;
 }
 
-No *raiz;
+NoAN *raiz;
 
 void ArvoreAN () {
     raiz = NULL;
 }
 
-No* rotacionarDir (No *i) {
+NoAN* rotacionarDir (NoAN *i) {
     No *noEsq = i->esq;
     No *noEsqDir = noEsq->dir;
     noEsq->dir = i;
     i->esq = noEsqDir;
-    setNivel(i);
-    setNivel(noEsq);
     return noEsq;
 }
-No* rotacionarEsq (No *i) {
+NoAN* rotacionarEsq (NoAN *i) {
     No *noDir = i->dir;
     No *noDirEsq = noDir->esq;
     noDir->esq = i;
     i->dir = noDirEsq;
-    setNivel(i);
-    setNivel(noDir);
     return noDir;
 }
+NoAN* rotacionarDirEsq (NoAN *i) {
+    i->dir = rotacionarDir(i->dir);
+    return rotacionarEsq(i);
+}
+NoAN* rotacionarEsqDir (NoAN *i) {
+    i->esq = rotacionarEsq(i->esq);
+    return rotacionarDir(i);
+}
 
-No* balancear (No *i) {
+NoAN* balancear (NoAN *i) {
     if (i != NULL) {
         int fator = getNivel(i->dir) - getNivel(i->esq);
         if (abs(fator) <= 1) setNivel(i);
@@ -59,7 +63,7 @@ No* balancear (No *i) {
     return i;
 }
 
-No* inserirRec (int x, No *i) {
+void inserirRec (int x, NoAN *i) {
     if (i == NULL) i = newNo(x);
     else if (x < i->elemento) i->esq = inserirRec(x, i->esq);
     else if (x > i->elemento) i->dir = inserirRec(x, i->dir);
@@ -70,7 +74,7 @@ void inserir (int x) {
     raiz = inserirRec(x, raiz);
 }
 
-bool pesquisarNo (No *i, int x) {
+bool pesquisarNo (NoAN *i, int x) {
     if (i == NULL) return false;
     else if (x == i->elemento) return true;
     else if (x < i->elemento) return pesquisarNo(i->esq, x);
@@ -80,20 +84,20 @@ bool pesquisar (int x) {
     return pesquisarNo(raiz, x);
 }
 
-No* removerNo (int x, No *i) {
+NoAN* removerNo (int x, NoAN *i) {
     if (i == NULL) exit(1);
     else if (x < i->elemento) i->esq = removerNo(x, i->esq);
     else if (x > i->elemento) i->dir = removerNo(x, i->dir);
     else if (i->dir == NULL) i = i->esq;
     else if (i->esq == NULL) i = i->dir;
     else i->esq = maiorEsq(i, i->esq);
-    return balancear(i);
+    return i
 }
 void remover (int x) {
     raiz = removerNo(x, raiz);
 }
 
-No* maiorEsq (No *i, No *j) {
+NoAN* maiorEsq (NoAN *i, NoAN *j) {
     if (j->dir == NULL) {
         i->elemento = j->elemento;
         j = j->esq;
@@ -101,7 +105,7 @@ No* maiorEsq (No *i, No *j) {
     else j->dir = maiorEsq(i, j->dir);
     return j;
 }
-No* menorDir (No *i, No *j) {
+NoAN* menorDir (NoAN *i, NoAN *j) {
     if (j->esq == NULL) {
         i->elemento = j->elemento;
         j = j->dir;
@@ -110,21 +114,21 @@ No* menorDir (No *i, No *j) {
     return j;
 }
 
-void caminharCentral (No *i) {
+void caminharCentral (NoAN *i) {
     if (i != NULL) {
         caminharCentral(i->esq);
         printf("%d %s ", i->elemento, (i->cor ? "(P)" : "(B)"));
         caminharCentral(i->dir);
     }
 }
-void caminharPre (No *i) {
+void caminharPre (NoAN *i) {
     if (i != NULL) {
         printf("%d %s ", i->elemento, (i->cor ? "(P)" : "(B)"));
         caminharPre(i->esq);
         caminharPre(i->dir);
     }
 }
-void caminharPos (No *i) {
+void caminharPos (NoAN *i) {
     if (i != NULL) {
         caminharPos(i->esq);
         caminharPos(i->dir);
@@ -132,7 +136,7 @@ void caminharPos (No *i) {
     }
 }
 
-int getAlturaRec (No *i) {
+int getAlturaRec (NoAN *i) {
     if (i == NULL) return 0;
     else {
         int altEsq = getAlturaRec(i->esq);
@@ -143,37 +147,37 @@ int getAlturaRec (No *i) {
 
 int getMaior () {
     if (raiz == NULL) exit(1);
-    No *i;
+    NoAN *i;
     for (i = raiz; i->dir != NULL; i = i->dir);
     return i->elemento;
 }
 int getMenor () {
     if (raiz == NULL) exit(1);
-    No *i;
+    NoAN *i;
     for (i = raiz; i->esq != NULL; i = i->esq);
     return i->elemento;
 }
 
-int somarRec (No *i) {
+int somarRec (NoAN *i) {
     if (i == NULL) return 0;
     return i->elemento + somarRec(i->esq) + somarRec(i->dir);
 }
 
-bool igual (No *a, No *b) {
+bool igual (NoAN *a, NoAN *b) {
     if (a == NULL && b == NULL) return true;
     else if (a == NULL || b == NULL) return false;
     else if (a->elemento != b->elemento) return false;
     else return igual(a->esq, b->esq) && igual(a->dir, b->dir);
 }
-bool igualArvore (No *outraRaiz) {
+bool igualArvore (NoAN *outraRaiz) {
     return igual(raiz, outraRaiz);
 }
-bool espelho (No *a, No *b) {
+bool espelho (NoAN *a, NoAN *b) {
     if (a == NULL && b == NULL) return true;
     else if (a == NULL || b == NULL) return false;
     else if (a->elemento != b->elemento) return false;
     else return espelho(a->esq, b->dir) && espelho(a->dir, b->esq);
 }
-bool espelhoArvore (No *outraRaiz) {
+bool espelhoArvore (NoAN *outraRaiz) {
     return espelho(raiz, outraRaiz);
 }

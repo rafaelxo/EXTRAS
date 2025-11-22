@@ -1,9 +1,9 @@
 public class arvoreAN {
-    public class No {
+    public class NoAN {
         private int elemento;
         private boolean cor;
-        private No esq, dir;
-        public No (int x) {
+        private NoAN esq, dir;
+        public NoAN (int x) {
             this.elemento = x;
             this.cor = false;
             this.esq = this.dir = null;
@@ -11,60 +11,101 @@ public class arvoreAN {
     }
 
     public class Arvore {
-        private No raiz;
+        private NoAN raiz;
         public Arvore () {
             this.raiz = null;
         }
 
-        private No inserirRef (int x, No i) {
-            if (i == null) i = new No(x);
-            else if (x < i.elemento) i.esq = inserirRef(x, i.esq);
-            else if (x > i.elemento) i.dir = inserirRef(x, i.dir);
-            else throw new RuntimeException ("Erro!");
-            return balancear(i);
+        private void inserirRef (int x, NoAN bis, NoAN avo, NoAN pai, NoAN i) {
+            if (i == null) {
+                if (x < pai.elemento) i = pai.esq = new NoAN(x);
+                else i = pai.dir = new NoAN(x);
+                if (pai.cor == true) balancear(bis, avo, pai, i);
+            } else {
+                if (i.esq != null && i.dir != null && i.esq.cor == true && i.dir.cor == true) {
+                    i.cor = true;
+                    i.esq.cor = i.dir.cor = false;
+                    if (i == raiz) i.cor = false;
+                    else if (pai.cor == true) balancear(bis, avo, pai, i);
+                }
+                if (x < i.elemento) inserirRef(x, avo, pai, i, i.esq);
+                else if (x > i.elemento) inserirRef(x, avo, pai, i, i.dir);
+                else throw new RuntimeException ("Erro!");
+            }
+
         }
         public void inserir (int x) {
-            raiz = inserirRef(x, raiz);
-        }
-
-        private No balancear (No i) {
-            if (i != null) {
-                int fator = i.getNivel(i.dir) - i.getNivel(i.esq);
-                if (Math.abs(fator) <= 1) i.setNivel();
-                else if (fator == 2) {
-                    int fatorFilhoDir = i.dir.getNivel(i.dir.dir) - i.dir.getNivel(i.dir.esq);
-                    if (fatorFilhoDir == -1) i.dir = rotacionarDir(i.dir);
-                    i = rotacionarEsq(i);
+            if (raiz == null) raiz = new NoAN(x);
+            else if (raiz.esq == null && raiz.dir == null) {
+                if (x < raiz.elemento) raiz.esq = new NoAN(x);
+                else raiz.dir = new NoAN(x);
+            } else if (raiz.esq == null) {
+                if (x < raiz.elemento) raiz.esq = new NoAN(x);
+                else if (x < raiz.dir.elemento) {
+                    raiz.esq = new NoAN(raiz.elemento);
+                    raiz.elemento = x;
+                } else {
+                    raiz.esq = new NoAN(raiz.elemento);
+                    raiz.elemento = raiz.dir.elemento;
+                    raiz.dir.elemento = x;
                 }
-                else if (fator == -2) {
-                    int fatorFilhoEsq = i.esq.getNivel(i.esq.dir) - i.esq.getNivel(i.esq.esq);
-                    if (fatorFilhoEsq == 1) i.esq = rotacionarEsq(i.esq);
-                    i = rotacionarDir(i);
-                } else throw new RuntimeException ("Erro!");
-            }
-            return i;
+                raiz.esq.cor = raiz.dir.cor = false;
+            } else if (raiz.dir == null) {
+                if (x > raiz.elemento) raiz.dir = new NoAN(x);
+                else if (x > raiz.esq.elemento) {
+                    raiz.dir = new NoAN(raiz.elemento);
+                    raiz.elemento = x;
+                } else {
+                    raiz.dir = new NoAN(raiz.elemento);
+                    raiz.elemento = raiz.esq.elemento;
+                    raiz.esq.elemento = x;
+                }
+                raiz.esq.cor = raiz.dir.cor = false;
+            } else inserirRef(x, null, null, null, raiz);
+            raiz.cor = false;
         }
 
-        private No rotacionarEsq (No i) {
-            No noDir = i.dir;
-            No noDirEsq = noDir.esq;
-            noDir.esq = i;
-            i.dir = noDirEsq;
-            i.setNivel();
-            noDir.setNivel();
-            return noDir;
+        private void balancear (NoAN bis, NoAN avo, NoAN pai, NoAN i) {
+            if (pai.cor == true) {
+                if (pai.elemento > avo.elemento) {
+                    if (i.elemento > pai.elemento) avo = rotacionarEsq(avo);
+                    else avo.dir = rotacionarDirEsq(avo);
+                } else {
+                    if (i.elemento < pai.elemento) avo = rotacionarDir(avo);
+                    else avo.esq = rotacionarEsqDir(avo);
+                }
+                if (bis == null) raiz = avo;
+                else if (avo.elemento < bis.elemento) bis.esq = avo;
+                else bis.dir = avo;
+                avo.cor = false;
+                avo.esq.cor = avo.dir.cor = true;
+            }
         }
-        private No rotacionarDir (No i) {
-            No noEsq = i.esq;
-            No noEsqDir = noEsq.dir;
+
+        private NoAN rotacionarDir (NoAN i) {
+            NoAN noEsq = i.esq;
+            NoAN noEsqDir = noEsq.dir;
             noEsq.dir = i;
             i.esq = noEsqDir;
-            i.setNivel();
-            noEsq.setNivel();
             return noEsq;
         }
+        private NoAN rotacionarEsq (NoAN i) {
+            NoAN noDir = i.dir;
+            NoAN noDirEsq = noDir.esq;
+            noDir.esq = i;
+            i.dir = noDirEsq;
+            return noDir;
+        }
+        private NoAN rotacionarDirEsq (NoAN i) {
+            i.dir = rotacionarDir(i.dir);
+            return rotacionarEsq(i);
+        }
+        private NoAN rotacionarEsqDir (NoAN i) {
+            i.esq = rotacionarEsq(i.esq);
+            return rotacionarDir(i);
+        }
 
-        private boolean pesquisar (int x, No i) {
+        private boolean pesquisar (int x, NoAN i) {
             if (i == null) return false;
             else if (x == i.elemento) return true;
             else if (x < i.elemento) return pesquisar(x, i.esq);
@@ -74,21 +115,21 @@ public class arvoreAN {
             return pesquisar(x, raiz);
         }
 
-        public void caminharCentral (No i) {
+        public void caminharCentral (NoAN i) {
             if (i != null) {
                 caminharCentral(i.esq);
                 System.out.print(i.elemento + ((i.cor) ? "(P) " : "(B) "));
                 caminharCentral(i.dir);
             }
         }
-        public void caminharPre (No i) {
+        public void caminharPre (NoAN i) {
             if (i != null) {
                 System.out.print(i.elemento + ((i.cor) ? "(P) " : "(B) "));
                 caminharPre(i.esq);
                 caminharPre(i.dir);
             }
         }
-        public void caminharPos (No i) {
+        public void caminharPos (NoAN i) {
             if (i != null) {
                 caminharPos(i.esq);
                 caminharPos(i.dir);
@@ -96,20 +137,20 @@ public class arvoreAN {
             }
         }
 
-        private No remover (int x, No i) {
+        private NoAN remover (int x, NoAN i) {
             if (i == null) throw new RuntimeException ("Erro!");
             else if (x < i.elemento) i.esq = remover(x, i.esq);
             else if (x > i.elemento) i.dir = remover(x, i.dir);
             else if (i.dir == null) i = i.esq;
             else if (i.esq == null) i = i.dir;
             else i.esq = maiorEsq(i, i.esq);
-            return balancear(i);
+            return i;
         }
         public void remover (int x) {
             raiz = remover(x, raiz);
         }
 
-        private No maiorEsq (No i, No j) {
+        private NoAN maiorEsq (NoAN i, NoAN j) {
             if (j.dir == null) {
                 i.elemento = j.elemento;
                 j = j.esq;
@@ -117,7 +158,7 @@ public class arvoreAN {
             else j.dir = maiorEsq(i, j.dir);
             return j;
         }
-        private No menorDir (No i, No j) {
+        private NoAN menorDir (NoAN i, NoAN j) {
             if (j.esq == null) {
                 i.elemento = j.elemento;
                 j =j.dir;
@@ -126,7 +167,7 @@ public class arvoreAN {
             return j;
         }
 
-        public int getAlturaRec (No i) {
+        public int getAlturaRec (NoAN i) {
             if (i == null) return 0;
             else {
                 int altEsq = getAlturaRec(i.esq);
@@ -137,23 +178,23 @@ public class arvoreAN {
 
         public int getMaior () {
             if (raiz == null) throw new RuntimeException ("Erro!");
-            No i;
+            NoAN i;
             for (i = raiz; i.dir != null; i = i.dir);
             return i.elemento;
         }
         public int getMenor () {
             if (raiz == null) throw new RuntimeException ("Erro!");
-            No i;
+            NoAN i;
             for (i = raiz; i.esq != null; i = i.esq);
             return i.elemento;
         }
 
-        public int somarRec (No i) {
+        public int somarRec (NoAN i) {
             if (i == null) return 0;
             else return i.elemento + somarRec(i.esq) + somarRec(i.dir);
         }
 
-        private boolean igual (No a, No b) {
+        private boolean igual (NoAN a, NoAN b) {
             if (a == null && b == null) return true;
             else if (a == null || b == null) return false;
             else if (a.elemento != b.elemento) return false;
@@ -162,7 +203,7 @@ public class arvoreAN {
         public boolean igual (Arvore b) {
             return igual(this.raiz, b.raiz);
         }
-        private boolean espelho (No a, No b) {
+        private boolean espelho (NoAN a, NoAN b) {
             if (a == null && b == null) return true;
             else if (a == null || b == null) return false;
             else if (a.elemento != b.elemento) return false;
