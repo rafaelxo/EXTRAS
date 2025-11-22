@@ -23,15 +23,15 @@ void ArvoreAN () {
 }
 
 NoAN* rotacionarDir (NoAN *i) {
-    No *noEsq = i->esq;
-    No *noEsqDir = noEsq->dir;
+    NoAN *noEsq = i->esq;
+    NoAN *noEsqDir = noEsq->dir;
     noEsq->dir = i;
     i->esq = noEsqDir;
     return noEsq;
 }
 NoAN* rotacionarEsq (NoAN *i) {
-    No *noDir = i->dir;
-    No *noDirEsq = noDir->esq;
+    NoAN *noDir = i->dir;
+    NoAN *noDirEsq = noDir->esq;
     noDir->esq = i;
     i->dir = noDirEsq;
     return noDir;
@@ -45,33 +45,69 @@ NoAN* rotacionarEsqDir (NoAN *i) {
     return rotacionarDir(i);
 }
 
-NoAN* balancear (NoAN *i) {
-    if (i != NULL) {
-        int fator = getNivel(i->dir) - getNivel(i->esq);
-        if (abs(fator) <= 1) setNivel(i);
-        else if (fator == 2) {
-            int fatorFilhoDir = getNivel(i->dir->dir) - getNivel(i->dir->esq);
-            if (fatorFilhoDir == -1) i->dir = rotacionarDir(i->dir);
-            i = rotacionarEsq(i);
+void balancear (NoAN *bis, NoAN *avo, NoAN *pai, NoAN *i) {
+    if (pai->cor == true) {
+        if (pai->elemento > avo->elemento) {
+            if (i->elemento > pai->elemento) avo = rotacionarEsq(avo);
+            else avo = rotacionarDirEsq(avo);
+        } else {
+            if (i->elemento < pai->elemento) avo = rotacionarDir(avo);
+            else avo = rotacionarEsqDir(avo);
         }
-        else if (fator == -2) {
-            int fatorFilhoEsq = getNivel(i->esq->dir) - getNivel(i->esq->esq);
-            if (fatorFilhoEsq == 1) rotacionarEsq(i->esq);
-            i = rotacionarDir(i);
-        } else exit(1);
+        if (bis == NULL) raiz = avo;
+        else if (avo->elemento < bis->elemento) bis->esq = avo;
+        else bis->dir = avo;
+        avo->cor = false;
+        avo->esq->cor = avo->dir->cor = true;
     }
-    return i;
 }
 
-void inserirRec (int x, NoAN *i) {
-    if (i == NULL) i = newNo(x);
-    else if (x < i->elemento) i->esq = inserirRec(x, i->esq);
-    else if (x > i->elemento) i->dir = inserirRec(x, i->dir);
-    else exit(1);
-    return balancear(i);
+void inserirRec (int x, NoAN *bis, NoAN *avo, NoAN *pai, NoAN *i) {
+    if (i == NULL) {
+        if (x < pai->elemento) i = pai->esq = newNo(x);
+        else i = pai->dir = newNo(x);
+        if (pai->cor == true) balancear(bis, avo, pai, i);
+    } else {
+        if (i->esq != NULL && i->dir != NULL && i->esq->cor == true && i->dir->cor == true) {
+            i->cor = true;
+            i->esq->cor = i->dir->cor = false;
+            if (i == raiz) i->cor = false;
+            else if (pai->cor == true) balancear(bis, avo, pai, i);
+        }
+        if (x < i->elemento) inserirRec(x, pai, avo, i, i->esq);
+        else if (x > i->elemento) inserirRec(x, pai, avo, i, i->dir);
+        else exit(1);
+    }
 }
 void inserir (int x) {
-    raiz = inserirRec(x, raiz);
+    if (raiz == NULL) raiz = newNo(x);
+    else if (raiz->esq == NULL && raiz->dir == NULL) {
+        if (x < raiz->elemento) raiz->esq = newNo(x);
+        else if (x > raiz->elemento) raiz->dir = newNo(x);
+    } else if (raiz->esq == NULL) {
+        if (x < raiz->elemento) raiz->esq = newNo(x);
+        else if (x < raiz->dir->elemento) {
+            raiz->esq = newNo(raiz->elemento);
+            raiz->elemento = x;
+        } else {
+            raiz->esq = newNo(raiz->elemento);
+            raiz->elemento = raiz->dir->elemento;
+            raiz->dir->elemento = x;
+        }
+        raiz->esq->cor = raiz->dir->cor = false;
+    } else if (raiz->dir == NULL) {
+        if (x > raiz->elemento) raiz->dir = newNo(x);
+        else if (x > raiz->esq->elemento) {
+            raiz->dir = newNo(raiz->elemento);
+            raiz->elemento = x;
+        } else {
+            raiz->dir = newNo(raiz->elemento);
+            raiz->elemento = raiz->esq->elemento;
+            raiz->esq->elemento = x;
+        }
+        raiz->esq->cor = raiz->dir->cor = false;
+    } else inserirRec(x, NULL, NULL, NULL, raiz);
+    raiz->cor = false;
 }
 
 bool pesquisarNo (NoAN *i, int x) {
@@ -91,7 +127,7 @@ NoAN* removerNo (int x, NoAN *i) {
     else if (i->dir == NULL) i = i->esq;
     else if (i->esq == NULL) i = i->dir;
     else i->esq = maiorEsq(i, i->esq);
-    return i
+    return i;
 }
 void remover (int x) {
     raiz = removerNo(x, raiz);

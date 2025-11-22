@@ -69,10 +69,10 @@ public class arvoreAN {
             if (pai.cor == true) {
                 if (pai.elemento > avo.elemento) {
                     if (i.elemento > pai.elemento) avo = rotacionarEsq(avo);
-                    else avo.dir = rotacionarDirEsq(avo);
+                    else avo = rotacionarDirEsq(avo);
                 } else {
                     if (i.elemento < pai.elemento) avo = rotacionarDir(avo);
-                    else avo.esq = rotacionarEsqDir(avo);
+                    else avo = rotacionarEsqDir(avo);
                 }
                 if (bis == null) raiz = avo;
                 else if (avo.elemento < bis.elemento) bis.esq = avo;
