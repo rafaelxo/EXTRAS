@@ -1,5 +1,5 @@
 public class hashReserva {
-    public class Hash {
+    static class Hash {
         int tamTab;
         int tabela[];
         int tamRes;
@@ -27,15 +27,15 @@ public class hashReserva {
             }
         }
 
-        public boolean pesquisar (int x) {
+        public int pesquisar (int x) {
             int i = hashar(x);
-            if (tabela[i] == x) return true;
+            if (tabela[i] == x) return i;
             if (tabela[i] != -1) {
                 for (int j = 0; j < tamRes; j++) {
-                    if (reserva[j] == x) return true;
+                    if (reserva[j] == x) return tamTab + j;
                 }
             }
-            return false;
+            return -1;
         }
 
         int remover (int x) {

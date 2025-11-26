@@ -1,5 +1,5 @@
 public class hashRehash {
-    public class Hash {
+    static class Hash {
         int tamTab;
         int tabela[];
 
@@ -24,14 +24,14 @@ public class hashRehash {
             }
         }
 
-        public boolean pesquisar (int x) {
+        public int pesquisar (int x) {
             int i = hashar(x);
-            if (tabela[i] == x) return true;
+            if (tabela[i] == x) return i;
             if (tabela[i] != -1) {
                 int j = rehashar(x);
-                if (tabela[j] == x) return true;
+                if (tabela[j] == x) return j;
             }
-            return false;
+            return -1;
         }
 
         int remover (int x) {

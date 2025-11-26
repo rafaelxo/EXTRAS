@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int tamTab = 0;
 int tamRes = 0;
@@ -30,15 +29,15 @@ void inserir (int x, int* tabela, int* reserva) {
     }
 }
 
-bool pesquisar (int x, int* tabela, int* reserva) {
+int pesquisar (int x, int* tabela, int* reserva) {
     int i = hashar(x);
-    if (tabela[i] == x) return true;
+    if (tabela[i] == x) return i;
     if (tabela[i] != -1) {
         for (int j = 0; j < qtd; j++) {
-            if (reserva[j] == x) return true;
+            if (reserva[j] == x) return tamTab + j;
         }
     }
-    return false;
+    return -1;
 }
 
 int remover (int x, int* tabela, int* reserva) {
