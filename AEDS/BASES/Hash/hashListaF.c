@@ -64,3 +64,29 @@ void mostrar () {
     for (Celula *i = primeiro->prox; i != NULL; i = i->prox) printf("%d ", i->elemento);
     printf("]\n");
 }
+
+int tam = 0;
+
+int* inicializar (int x) {
+    tam = x;
+    int* tabela = (int*) malloc(tam * sizeof(int));
+    for (int i = 0; i < tam; i++) tabela[i] = -1;
+    return tabela;
+}
+
+int hashar (int x) { return x % tam; }
+
+void inserir (int x, int *tabela) {
+    int i = hashar(x);
+    inserir(x);
+}
+
+int remover (int x, int *tabela) {
+    int i = hashar(x);
+    return remover(x);
+}
+
+int pesquisar (int x, int *tabela) {
+    int i = hashar(x);
+    return pesquisar(x);
+}

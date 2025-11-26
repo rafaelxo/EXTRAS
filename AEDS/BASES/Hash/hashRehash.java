@@ -1,16 +1,16 @@
 public class hashRehash {
     static class Hash {
-        private int tamTab;
+        private int tam;
         private int[] tabela;
 
         public Hash (int x) {
-            this.tamTab = x;
+            this.tam = x;
             this.tabela = new int[x];
             for (int i = 0; i < x; i++) tabela[i] = -1;
         }
 
-        public int hashar (int x) { return x % tamTab; }
-        public int rehashar (int x) { return ++x % tamTab; }
+        public int hashar (int x) { return x % tam; }
+        public int rehashar (int x) { return ++x % tam; }
 
         public void inserir (int x) {
             if (x != -1) {

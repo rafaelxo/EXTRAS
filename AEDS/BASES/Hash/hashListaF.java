@@ -63,13 +63,30 @@ public class hashListaF {
     }
 
     static class Hash {
-        private Celula[] tabela;
+        private Lista[] tabela;
         private int tam;
 
         public Hash (int x) {
             this.tam = x;
-            tabela = new Celula[tam];
+            tabela = new Lista[tam];
             for (int i = 0; i < tam; i++) tabela[i] = null;
+        }
+
+        private int hashar (int x) { return x % tam; }
+
+        public void inserir (int x) {
+            int i = hashar(x);
+            tabela[i].inserir(x);
+        }
+
+        public int remover (int x) {
+            int i = hashar(x);
+            return tabela[i].remover(x);
+        }
+
+        public int pesquisar (int x) {
+            int i = hashar(x);
+            return tabela[i].pesquisar(x);
         }
     }
 }

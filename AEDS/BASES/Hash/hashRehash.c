@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int tamTab = 0;
+int tam = 0;
 
-int* inicializar (int x, int y) {
-    tamTab = x;
+int* inicializar (int x) {
+    tam = x;
     int* tabela = (int*)malloc(x*sizeof(int*));
     for (int i = 0; i < x; i++) tabela[i] = -1;
     return tabela;
 }
 
-int hashar (int x) { return x % tamTab; }
-int rehashar (int x) { return ++x % tamTab; }
+int hashar (int x) { return x % tam; }
+int rehashar (int x) { return ++x % tam; }
 
 void inserir (int x, int* tabela) {
     if (x != -1) {
