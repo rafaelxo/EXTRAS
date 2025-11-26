@@ -1,7 +1,7 @@
 public class hashRehash {
     static class Hash {
-        int tamTab;
-        int tabela[];
+        private int tamTab;
+        private int[] tabela;
 
         public Hash (int x) {
             this.tamTab = x;

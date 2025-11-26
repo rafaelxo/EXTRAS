@@ -1,10 +1,10 @@
 public class hashReserva {
     static class Hash {
-        int tamTab;
-        int tabela[];
-        int tamRes;
-        int reserva[];
-        int qnt;
+        private int tamTab;
+        private int tabela[];
+        private int tamRes;
+        private int reserva[];
+        private int qnt;
 
         public Hash (int x, int y) {
             this.tamTab = x;
