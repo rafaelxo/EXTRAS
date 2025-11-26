@@ -1,4 +1,4 @@
-public class arvoreBin {
+public class arvoreBIN {
     public class No {
         private int elemento;
         private No esq, dir;
