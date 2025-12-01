@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class exercicio2 {
+public class aplicativo {
     public static Scanner sc = new Scanner(System.in);
 
     public static class Processo {
