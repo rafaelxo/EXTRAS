@@ -25,4 +25,5 @@ int main () {
         for (int i = n - 1; i >= n - k; i--) soma += vet[i];
         printf("%d\n", soma);
     }
+    return 0;
 }
