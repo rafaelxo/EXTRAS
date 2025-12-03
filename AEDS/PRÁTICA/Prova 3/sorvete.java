@@ -35,13 +35,13 @@ public class sorvete {
 
             for (int i = 1; i < s; i++) {
                 int ultimoFim = mesclados[qtdMesclados - 1][1];
-                int atualInicio = intervalos[i][0];
+                int atuaIni = intervalos[i][0];
                 int atualFim = intervalos[i][1];
 
-                if (atualInicio <= ultimoFim) {
+                if (atuaIni <= ultimoFim) {
                     if (atualFim > ultimoFim) mesclados[qtdMesclados - 1][1] = atualFim;
                 } else {
-                    mesclados[qtdMesclados][0] = atualInicio;
+                    mesclados[qtdMesclados][0] = atuaIni;
                     mesclados[qtdMesclados][1] = atualFim;
                     qtdMesclados++;
                 }
