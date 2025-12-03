@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class hasharvore {
+public class arvore {
     public static Scanner sc = new Scanner (System.in);
 
     static class Carro {
