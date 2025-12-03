@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class hasharvore {
     public static Scanner sc = new Scanner (System.in);
@@ -13,7 +13,7 @@ public class hasharvore {
             chassi = partes[3];
         }
         void imprimir () {
-            System.out.println("[" + placa + "] [" + modelo + "] [" + tipo + "] [" + chassi + "]");
+            System.out.println(placa + " " + modelo + " " + tipo + " " + chassi);
         }
     }
 
@@ -30,10 +30,15 @@ public class hasharvore {
         No raiz;
         public Arvore() { raiz = null; }
 
-        public void inserir (Carro x, No i) {
-            if (i == null) raiz = new No(x);
-            else if (x.placa.compareTo(i.elemento.placa) < 0) inserir(x, i.esq);
-            else if (x.placa.compareTo(i.elemento.placa) > 0) inserir(x, i.dir);
+        public void inserir (Carro x) {
+            raiz = inserir(x, raiz);
+        }
+
+        private No inserir (Carro x, No i) {
+            if (i == null) i = new No(x);
+            else if (x.placa.compareTo(i.elemento.placa) < 0) i.esq = inserir(x, i.esq);
+            else if (x.placa.compareTo(i.elemento.placa) > 0) i.dir = inserir(x, i.dir);
+            return i;
         }
         public void caminhar (No i) {
             if (i != null) {
@@ -50,7 +55,7 @@ public class hasharvore {
         while (!dados.equals("FIM")) {
             Carro c = new Carro();
             c.ler(dados);
-            carros.inserir(c, carros.raiz);
+            carros.inserir(c);
             dados = sc.nextLine();
         }
         carros.caminhar(carros.raiz);
