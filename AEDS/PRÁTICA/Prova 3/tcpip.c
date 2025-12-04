@@ -10,9 +10,11 @@ void swap (int *a, int i, int j) {
 
 void ordenar (int *v, int n) {
     for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (v[j] > v[j + 1]) swap(v, j, j + 1);
+        int menor = i;
+        for (int j = i + 1; j < n; j++) {
+            if (v[j] < v[menor]) menor = j;
         }
+        swap(v, i, menor);
     }
 }
 
