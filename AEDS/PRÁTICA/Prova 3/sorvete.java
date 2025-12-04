@@ -25,19 +25,15 @@ public class sorvete {
                 intervalos[i][0] = sc.nextInt();
                 intervalos[i][1] = sc.nextInt();
             }
-
             ordenar(intervalos, s);
-
             int qtdMesclados = 1;
             int[][] mesclados = new int[s][2];
             mesclados[0][0] = intervalos[0][0];
             mesclados[0][1] = intervalos[0][1];
-
             for (int i = 1; i < s; i++) {
                 int ultimoFim = mesclados[qtdMesclados - 1][1];
                 int atuaIni = intervalos[i][0];
                 int atualFim = intervalos[i][1];
-
                 if (atuaIni <= ultimoFim) {
                     if (atualFim > ultimoFim) mesclados[qtdMesclados - 1][1] = atualFim;
                 } else {
@@ -46,7 +42,6 @@ public class sorvete {
                     qtdMesclados++;
                 }
             }
-
             System.out.println("Teste " + teste);
             for (int i = 0; i < qtdMesclados; i++) System.out.println(mesclados[i][0] + " " + mesclados[i][1]);
             teste++;

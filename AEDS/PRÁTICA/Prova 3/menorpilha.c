@@ -39,7 +39,6 @@ int main () {
     int n;
     scanf("%d", &n);
     Pilha();
-
     for (int i = 0; i < n; i++) {
         char comando[10];
         scanf("%s", comando);

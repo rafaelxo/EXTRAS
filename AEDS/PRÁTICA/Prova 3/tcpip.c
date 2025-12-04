@@ -30,7 +30,6 @@ int main () {
             scanf("%d", &num);
             ips[count++] = num;
         }
-
         ordenar(ips, count);
         for (int i = 0; i < count; i++) printf("Package %03d\n", ips[i]);
         printf("\n");
