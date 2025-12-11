@@ -1,11 +1,6 @@
 # SPRINT 5 – MÉTRICAS E MEDIÇÕES DE SOFTWARE
 ## Sistema de Gestão Logística
 
-**Aluno:** Rafael Xavier  
-**Data:** 11 de Dezembro de 2025  
-**Curso:** Engenharia de Software  
-**Disciplina:** Métricas e Medições de Software  
-
 ---
 
 ## 1. INTRODUÇÃO
@@ -216,7 +211,6 @@ PF Ajustado = 567 × [0,65 + (0,01 × 64)]
 PF Ajustado = 567 × [0,65 + 0,64]
 PF Ajustado = 567 × 1,29
 PF Ajustado = 731,43 ≈ 731 PF
-
 
 **✅ RESULTADO:  731 Pontos de Função Ajustados**
 
@@ -481,12 +475,6 @@ O projeto é **VIÁVEL** técnica e financeiramente, com:
 2. **FENTON, Norman E.; BIEMAN, James. ** *Software Metrics: A Rigorous and Practical Approach*. 3rd ed. CRC Press, 2014.
 
 3. **SOMMERVILLE, Ian. ** *Engenharia de Software*. 10ª ed. São Paulo: Pearson, 2018.
-
----
-
-**Documento elaborado por:** Rafael Xavier  
-**Data:** 11 de Dezembro de 2025  
-**Versão:** 1.0 - Final
 
 ---
 
